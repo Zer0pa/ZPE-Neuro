@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: >-
+  If you use ZPE-Neuro, cite this private staging repository record.
+type: software
+title: "ZPE-Neuro: Wave-1 Neural Signal Package and Curated Proof Surface"
+authors:
+  - given-names: Zer0pa
+    family-names: Architect-Prime
+  - name: Zer0pa Labs
+repository-code: https://github.com/Zer0pa/ZPE-Neuro
+url: https://github.com/Zer0pa/ZPE-Neuro
+license: LicenseRef-Zer0pa-SAL-6.0
+abstract: >-
+  ZPE-Neuro packages the Wave-1 neural signal codec surface, gate runners,
+  and a curated proof subset from the adjudicated 2026-02-21 Neuro bundle.
+  This repository is a private staged snapshot, not a public release verdict.
+keywords:
+  - neural signal encoding
+  - spike processing
+  - deterministic codec
+  - proof curation
+  - evidence discipline
+  - zero-point encoding

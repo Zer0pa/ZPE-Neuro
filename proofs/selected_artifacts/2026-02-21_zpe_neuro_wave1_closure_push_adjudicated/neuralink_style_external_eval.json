@@ -1,0 +1,19 @@
+{
+  "channels_unique": [
+    1
+  ],
+  "compression_ratio_max": 2.7355911074174113,
+  "compression_ratio_mean": 2.3163077470489304,
+  "compression_ratio_min": 1.7505054804724913,
+  "compression_ratio_p50": 2.3419688821456317,
+  "dataset_source": "/Users/prinivenpillay/ZPE Multimodality/ZPE Neuro/artifacts/2026-02-21_zpe_neuro_wave1_closure_push_adjudicated/tmp_n1_codec_repo",
+  "duration_s_total": 323.5778505964876,
+  "files_processed": 64,
+  "generated_at_utc": "2026-02-21T15:58:19.438756+00:00",
+  "lossless_roundtrip_all": true,
+  "sample_rate_hz_unique": [
+    19531
+  ],
+  "schema_version": "wave1-2026-02-20",
+  "status": "PASS"
+}

@@ -1,0 +1,26 @@
+{
+  "executed_commands": [
+    "python3.11 tools/run_gate_m1.py",
+    "python3.11 tools/run_gate_m2.py",
+    "python3.11 tools/run_gate_m3.py",
+    "python3.11 tools/run_gate_m4.py",
+    "python3.11 tools/run_gate_appendix_e.py"
+  ],
+  "execution_mode": "LOCAL_EQUIVALENT_CHAIN",
+  "gate_results": {
+    "E-G": "PASS",
+    "M1": "PASS",
+    "M2": "PASS",
+    "M3": "PASS",
+    "M4": "PASS"
+  },
+  "generated_at_utc": "2026-02-21T15:59:42.163686+00:00",
+  "manifest_trigger": "No IMP-COMPUTE entries",
+  "notes": [
+    "RunPod readiness manifest currently indicates no IMP-COMPUTE trigger.",
+    "Equivalent command chain executed in-lane with deterministic seeds."
+  ],
+  "schema_version": "wave1-2026-02-20",
+  "source_manifest": "/Users/prinivenpillay/ZPE Multimodality/ZPE Neuro/artifacts/2026-02-21_zpe_neuro_wave1_closure_push_adjudicated/runpod_readiness_manifest.json",
+  "status": "PASS"
+}

@@ -1,0 +1,10 @@
+{
+  "claims_stable": true,
+  "gate": "M4",
+  "generated_at_utc": "2026-02-21T15:59:09.036626+00:00",
+  "m1_status": "PASS",
+  "m2_status": "PASS",
+  "m3_status": "PASS",
+  "schema_version": "wave1-2026-02-20",
+  "status": "PASS"
+}

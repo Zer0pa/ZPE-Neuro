@@ -1,0 +1,62 @@
+{
+  "commercialization_status": "PASS",
+  "compatibility_matrix": {
+    "allen_neuropixels_metadata": {
+      "access_level": "metadata_only_bounded",
+      "artifact": "allen_ecephys_manifest.json",
+      "status": "PASS",
+      "waveform_parity_artifact": "allen_waveform_parity_eval.json",
+      "waveform_parity_attempt_count": 4,
+      "waveform_parity_status": "INCONCLUSIVE"
+    },
+    "kilosort4": {
+      "reason": "Direct comparator run completed at >=0.90 mean unit accuracy.",
+      "status": "PASS",
+      "substitution": "MountainSort5 + simple/tridesclous2 comparators"
+    },
+    "mountainsort5": {
+      "artifact": "neuro_sort_eval.json",
+      "license": "Apache-2.0",
+      "reason": "Direct comparator run completed at >=0.90 mean unit accuracy.",
+      "status": "PASS"
+    },
+    "neuralink_challenge_external": {
+      "artifact": "neuralink_style_external_eval.json",
+      "files_processed": 64,
+      "lossless_roundtrip_all": true,
+      "status": "PASS"
+    },
+    "pynwb": {
+      "artifact": "neuro_nwb_roundtrip.json",
+      "status": "PASS"
+    },
+    "spikeinterface_simple": {
+      "artifact": "neuro_spikeinterface_e2e.json",
+      "status": "PASS"
+    }
+  },
+  "evidence_paths": [
+    "neuro_nwb_roundtrip.json",
+    "neuro_spikeinterface_e2e.json",
+    "neuro_sort_eval.json",
+    "allen_ecephys_manifest.json",
+    "allen_waveform_parity_eval.json",
+    "neuralink_style_external_eval.json"
+  ],
+  "generated_at_utc": "2026-02-21T16:00:38.820574+00:00",
+  "interfaces": {
+    "nwb_roundtrip": "PASS",
+    "spikeinterface_pipeline": "PASS"
+  },
+  "known_limitations": [
+    "MountainSort5 comparator status is PASS: Direct comparator run completed at >=0.90 mean unit accuracy.",
+    "Kilosort4 comparator status is PASS: Direct comparator run completed at >=0.90 mean unit accuracy.",
+    "Allen external corpus waveform parity remains bounded; see explicit attempt evidence.",
+    "Neuralink challenge-style external eval status is PASS across 64 files."
+  ],
+  "schema_version": "wave1-2026-02-20",
+  "versioning": {
+    "codec_version": "zpe-neuro-wave1-0.1.0",
+    "schema_version": "wave1-2026-02-20"
+  }
+}

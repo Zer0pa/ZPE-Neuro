@@ -1,0 +1,27 @@
+{
+  "expected_outputs": [
+    "gate_m1_summary.json",
+    "gate_m2_summary.json",
+    "gate_m3_summary.json",
+    "gate_m4_summary.json",
+    "gate_appendix_e_summary.json",
+    "net_new_gap_closure_matrix.json",
+    "neuro_sort_eval.json",
+    "allen_ecephys_manifest.json",
+    "allen_api_probe_results.json",
+    "allen_waveform_parity_eval.json",
+    "neuralink_style_external_eval.json",
+    "impracticality_decisions.json",
+    "max_resource_validation_log.md"
+  ],
+  "generated_at_utc": "2026-02-21T16:01:21.239092+00:00",
+  "required_for_gate": [
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "E-G",
+    "F-G"
+  ],
+  "schema_version": "wave1-2026-02-20"
+}

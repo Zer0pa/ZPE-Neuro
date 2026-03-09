@@ -1,0 +1,63 @@
+{
+  "after_open_count": 0,
+  "all_blockers": [
+    {
+      "after_status": "MITIGATED",
+      "before_status": "OPEN",
+      "blocker_id": "BLK-KS4-HIGH-STRINGENCY",
+      "evidence_paths": [
+        "tmp_ks4_tuning_results.json",
+        "tmp_ks4_container_probe.json",
+        "runpod_readiness_manifest.json"
+      ],
+      "reason_code": "IMP-COMPUTE",
+      "severity": "P1"
+    },
+    {
+      "after_status": "ADJUDICATED_FAIL",
+      "before_status": "OPEN",
+      "blocker_id": "BLK-ALLEN-WAVEFORM-PARITY",
+      "evidence_paths": [
+        "allen_ecephys_manifest.json",
+        "allen_api_probe_results.json",
+        "allen_waveform_parity_eval.json",
+        "max_resource_validation_log.md"
+      ],
+      "reason_code": "IMP-ACCESS",
+      "severity": "P1"
+    },
+    {
+      "after_status": "MITIGATED",
+      "before_status": "OPEN",
+      "blocker_id": "BLK-NEURALINK-EXTERNAL-CORPUS",
+      "evidence_paths": [
+        "neuralink_style_external_eval.json",
+        "max_resource_validation_log.md"
+      ],
+      "reason_code": "RESOLVED",
+      "severity": "P1"
+    },
+    {
+      "after_status": "MITIGATED",
+      "before_status": "OPEN",
+      "blocker_id": "BLK-LATENCY-TARGET-PROFILE",
+      "evidence_paths": [
+        "neuro_embedded_latency.json",
+        "max_resource_validation_log.md"
+      ],
+      "reason_code": "RESOLVED",
+      "severity": "P1"
+    }
+  ],
+  "before_open_count": 4,
+  "closed_blockers": [
+    "BLK-KS4-HIGH-STRINGENCY",
+    "BLK-ALLEN-WAVEFORM-PARITY",
+    "BLK-NEURALINK-EXTERNAL-CORPUS",
+    "BLK-LATENCY-TARGET-PROFILE"
+  ],
+  "closed_count": 4,
+  "generated_at_utc": "2026-02-21T16:00:38.821101+00:00",
+  "remaining_blockers": [],
+  "schema_version": "wave1-2026-02-20"
+}

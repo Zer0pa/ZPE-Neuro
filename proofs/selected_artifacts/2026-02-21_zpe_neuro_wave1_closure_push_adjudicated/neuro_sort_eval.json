@@ -1,0 +1,70 @@
+{
+  "claim_id": "NEU-C004",
+  "comparators": {
+    "incumbent_baseline": "template_matcher_raw",
+    "kilosort4_probe": {
+      "available": false,
+      "comparability_impact": "Kilosort4 equivalence not proven.",
+      "failure_signature": "llvmlite build failure during pip install kilosort",
+      "install_attempt": "failed",
+      "substitution": "Template-matching baseline sorter + SpikeInterface simple/tridesclous2 comparators"
+    },
+    "modern_comparator": "spikeinterface_tridesclous2_or_simple"
+  },
+  "evidence": [
+    "neuro_sort_eval.json"
+  ],
+  "gate": "B",
+  "generated_at_utc": "2026-02-21T15:36:06.373532+00:00",
+  "kilosort4_direct_comparator": {
+    "acceptance_accuracy_min": 0.9,
+    "attempted_at_utc": "2026-02-21T15:44:18.346404+00:00",
+    "error": null,
+    "fix_attempts_artifact": "tmp_ks4_tuning_results.json",
+    "installed": true,
+    "mean_accuracy": 0.915316949383473,
+    "mean_precision": 0.9163333333333333,
+    "mean_recall": 0.9156450022513664,
+    "run_success": true,
+    "true_unit_count": 12,
+    "unit_count": 25
+  },
+  "measurements": {
+    "agreement": 1.0,
+    "baseline_accuracy_vs_truth": 1.0,
+    "compressed_accuracy_vs_truth": 1.0,
+    "event_count": 20808
+  },
+  "mountainsort5_direct_comparator": {
+    "acceptance_accuracy_min": 0.9,
+    "attempted_at_utc": "2026-02-21T15:44:18.346393+00:00",
+    "error": null,
+    "installed": true,
+    "mean_accuracy": 0.9749581939799331,
+    "mean_precision": 1.0,
+    "mean_recall": 0.9749581939799331,
+    "run_success": true,
+    "true_unit_count": 5,
+    "unit_count": 5
+  },
+  "notes": [
+    "Baseline sorter: deterministic template matcher on raw waveforms.",
+    "Compressed sorter: template IDs from token stream.",
+    "Kilosort4 comparator unavailable; substitution logged."
+  ],
+  "schema_version": "wave1-2026-02-20",
+  "seed_policy": {
+    "global_seed": 20260220,
+    "replay_seeds": [
+      20260220,
+      20260221,
+      20260222,
+      20260223,
+      20260224
+    ]
+  },
+  "status": "PASS",
+  "thresholds": {
+    "agreement_min": 0.9
+  }
+}

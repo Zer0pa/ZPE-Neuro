@@ -1,0 +1,76 @@
+{
+  "env_bootstrap": {
+    "dotenv_exists": true,
+    "missing_vars": [],
+    "present_vars": [
+      "HUGGINGFACE_HUB_TOKEN",
+      "HF_TOKEN",
+      "HF_HUB_ENABLE_HF_TRANSFER",
+      "HF_HOME"
+    ],
+    "required_vars": [
+      "HUGGINGFACE_HUB_TOKEN",
+      "HF_TOKEN",
+      "HF_HUB_ENABLE_HF_TRANSFER",
+      "HF_HOME"
+    ],
+    "status": "PASS"
+  },
+  "generated_at_utc": "2026-02-21T16:01:21.238477+00:00",
+  "resource_catalog": [
+    {
+      "claim_linkage": [
+        "NEU-C001",
+        "NEU-C002",
+        "NEU-C004",
+        "NEU-C005"
+      ],
+      "required_action": "Run spike-sorting comparator on benchmark sessions (commercial-safe path)",
+      "resource": "MountainSort5"
+    },
+    {
+      "claim_linkage": [
+        "NEU-C001",
+        "NEU-C002",
+        "NEU-C005"
+      ],
+      "required_action": "Run spike-sorting comparator on benchmark sessions",
+      "resource": "Kilosort4"
+    },
+    {
+      "claim_linkage": [
+        "NEU-C001",
+        "NEU-C003",
+        "NEU-C004"
+      ],
+      "required_action": "Run external corpus replay and timing-fidelity checks",
+      "resource": "Allen Neuropixels (AWS)"
+    },
+    {
+      "claim_linkage": [
+        "NEU-C006",
+        "NEU-C007"
+      ],
+      "required_action": "Run cardiac proxy timing/fidelity checks",
+      "resource": "MIT-BIH via WFDB"
+    },
+    {
+      "claim_linkage": [
+        "NEU-C008"
+      ],
+      "required_action": "Integrate hypothesis alignment and falsification notes",
+      "resource": "Rhythm-SNN evidence"
+    }
+  ],
+  "schema_version": "wave1-2026-02-20",
+  "seed_policy": {
+    "global_seed": 20260220,
+    "replay_seeds": [
+      20260220,
+      20260221,
+      20260222,
+      20260223,
+      20260224
+    ]
+  }
+}

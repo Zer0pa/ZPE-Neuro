@@ -1,0 +1,34 @@
+{
+  "claim_id": "NEU-C001",
+  "evidence": [
+    "neuro_sparse_benchmark.json"
+  ],
+  "gate": "B",
+  "generated_at_utc": "2026-02-21T15:36:06.372418+00:00",
+  "measurements": {
+    "channels": 64,
+    "compression_ratio": 6823.482374891717,
+    "duration_s": 5.0,
+    "encoded_bits": 15007,
+    "event_count": 262,
+    "raw_bits": 102400000
+  },
+  "notes": [
+    "Synthetic sparse benchmark with deterministic seed."
+  ],
+  "schema_version": "wave1-2026-02-20",
+  "seed_policy": {
+    "global_seed": 20260220,
+    "replay_seeds": [
+      20260220,
+      20260221,
+      20260222,
+      20260223,
+      20260224
+    ]
+  },
+  "status": "PASS",
+  "thresholds": {
+    "compression_ratio_min": 50.0
+  }
+}

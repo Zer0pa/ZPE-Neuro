@@ -1,0 +1,6 @@
+$ python3.11 -m unittest discover -s tests -q
+----------------------------------------------------------------------
+Ran 3 tests in 0.111s
+
+OK
+exit_code=0

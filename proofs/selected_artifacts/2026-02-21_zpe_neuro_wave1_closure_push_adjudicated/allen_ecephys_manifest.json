@@ -1,0 +1,31 @@
+{
+  "api_probe": {
+    "probe": {
+      "bytes": 2656,
+      "ok": true,
+      "status_code": 200,
+      "url": "https://api.brain-map.org/api/v2/data/query.json?criteria=model::EcephysProbe,rma::options[num_rows$eq10]"
+    },
+    "session": {
+      "bytes": 2298,
+      "ok": true,
+      "status_code": 200,
+      "url": "https://api.brain-map.org/api/v2/data/query.json?criteria=model::EcephysSession,rma::options[num_rows$eq10]"
+    },
+    "unit": {
+      "bytes": 8114,
+      "ok": true,
+      "status_code": 200,
+      "url": "https://api.brain-map.org/api/v2/data/query.json?criteria=model::EcephysUnit,rma::options[num_rows$eq10]"
+    }
+  },
+  "content_length": 10287,
+  "data_access_level": "metadata_only_bounded",
+  "generated_at_utc": "2026-02-21T15:58:14.068032+00:00",
+  "registry_http_status": 200,
+  "registry_url": "https://registry.opendata.aws/allen-brain-observatory/",
+  "schema_version": "wave1-2026-02-20",
+  "sdk_import_check": "PASS",
+  "waveform_eval_artifact": "allen_waveform_parity_eval.json",
+  "waveform_parity_status": "INCONCLUSIVE"
+}

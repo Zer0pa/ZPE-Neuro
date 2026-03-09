@@ -1,0 +1,74 @@
+{
+  "claim_to_resources": {
+    "NEU-C001": [
+      "MountainSort5",
+      "Kilosort4",
+      "Allen Neuropixels (AWS)",
+      "Neuralink challenge-style corpus"
+    ],
+    "NEU-C002": [
+      "MountainSort5",
+      "Kilosort4"
+    ],
+    "NEU-C003": [
+      "Allen Neuropixels (AWS)"
+    ],
+    "NEU-C004": [
+      "Allen Neuropixels (AWS)",
+      "MountainSort5",
+      "Kilosort4"
+    ],
+    "NEU-C005": [
+      "MountainSort5",
+      "Kilosort4",
+      "Embedded C99 harness"
+    ],
+    "NEU-C006": [
+      "MIT-BIH via WFDB"
+    ],
+    "NEU-C007": [
+      "MIT-BIH via WFDB"
+    ],
+    "NEU-C008": [
+      "Rhythm-SNN evidence",
+      "SpikeSift drift campaign"
+    ]
+  },
+  "closure_state": {
+    "Allen Neuropixels (AWS)": {
+      "claim_impact": "Allen waveform-level parity for NEU-C001/C003/C004 remains bounded but unresolved.",
+      "details": "ALLEN_WAVEFORM_PARITY_UNPROVEN: all waveform attempts failed or remained partial.",
+      "imp_code": "IMP-ACCESS",
+      "status": "INCONCLUSIVE"
+    },
+    "MIT-BIH via WFDB": {
+      "claim_impact": null,
+      "details": "Peak timing p95 error=0.0000 ms",
+      "imp_code": null,
+      "status": "PASS"
+    },
+    "Neuralink challenge-style corpus": {
+      "claim_impact": null,
+      "details": "Repository cloned and external corpus evaluated on 64 WAV files; mean CR=2.3163; lossless=True.",
+      "imp_code": null,
+      "status": "PASS"
+    },
+    "Rhythm-SNN evidence": {
+      "claim_impact": null,
+      "details": "Article fetched; used for alignment notes only, not executable claim closure.",
+      "imp_code": null,
+      "status": "PASS"
+    }
+  },
+  "evidence_paths": [
+    "max_resource_validation_log.md",
+    "impracticality_decisions.json",
+    "spike_timing_error_distribution.json",
+    "allen_ecephys_manifest.json",
+    "allen_api_probe_results.json",
+    "allen_waveform_parity_eval.json",
+    "neuralink_style_external_eval.json"
+  ],
+  "generated_at_utc": "2026-02-21T15:58:31.309568+00:00",
+  "schema_version": "wave1-2026-02-20"
+}

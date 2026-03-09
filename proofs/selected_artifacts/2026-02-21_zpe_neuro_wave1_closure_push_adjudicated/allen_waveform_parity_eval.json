@@ -1,0 +1,49 @@
+{
+  "attempt_count": 4,
+  "attempts": [
+    {
+      "attempt_id": "ALLEN-FIX-A",
+      "error_signature": "ALLEN_NWB_READ_FAIL:Unable to synchronously open file (truncated file: eof = 951255040, sblock->base_addr = 0, stored_eof = 2856232912)",
+      "method": "local_cached_nwb_read",
+      "path": "/Users/prinivenpillay/ZPE Multimodality/ZPE Neuro/artifacts/2026-02-21_zpe_neuro_wave1_closure_push_adjudicated/session_715093703/session_715093703.nwb",
+      "status": "FAIL"
+    },
+    {
+      "attempt_id": "ALLEN-FIX-A",
+      "error_signature": "ALLEN_NWB_READ_FAIL:Unable to synchronously open file (truncated file: eof = 39168000, sblock->base_addr = 0, stored_eof = 2856232912)",
+      "method": "local_cached_nwb_read",
+      "path": "/Users/prinivenpillay/ZPE Multimodality/ZPE Neuro/artifacts/2026-02-20_zpe_neuro_wave1/session_715093703/session_715093703.nwb",
+      "status": "FAIL"
+    },
+    {
+      "attempt_id": "ALLEN-FIX-B",
+      "error_signature": "TIMEOUT_EXPIRED:180s",
+      "method": "allensdk_warehouse_get_session_data",
+      "returncode": 124,
+      "status": "FAIL",
+      "stdout_tail": ""
+    },
+    {
+      "attempt_id": "ALLEN-FIX-C",
+      "bytes_read": 0,
+      "content_length_bytes": null,
+      "download_url": null,
+      "error_signature": "NO_WELL_KNOWN_FILE_DOWNLOAD_LINK",
+      "method": "direct_well_known_file_stream_probe",
+      "status": "FAIL",
+      "wkf_http_status": 200,
+      "wkf_payload_type": "str"
+    }
+  ],
+  "external_dependency_proof": {
+    "api_session_query": "https://api.brain-map.org/api/v2/data/query.json?criteria=model::EcephysSession,rma::options[num_rows$eq10]",
+    "registry_url": "https://registry.opendata.aws/allen-brain-observatory/",
+    "well_known_file_query": "https://api.brain-map.org/api/v2/data/query.json?criteria=model::WellKnownFile,rma::criteria,well_known_file_type[name$eqEcephysNwb],attachable_type[name$eqEcephysSession],attachable_id$eq847657808"
+  },
+  "generated_at_utc": "2026-02-21T15:58:14.066749+00:00",
+  "imp_code_hint": "IMP-ACCESS",
+  "schema_version": "wave1-2026-02-20",
+  "status": "INCONCLUSIVE",
+  "target_session_id": 847657808,
+  "waveform_metrics": null
+}

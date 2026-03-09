@@ -1,0 +1,34 @@
+{
+  "blocking_items": [],
+  "commercialization_gate": "PASS",
+  "evidence_paths": [
+    "gate_m1_summary.json",
+    "gate_m2_summary.json",
+    "gate_m3_summary.json",
+    "gate_m4_summary.json",
+    "comparator_license_isolation_note.md",
+    "max_resource_validation_log.md",
+    "impracticality_decisions.json",
+    "runpod_readiness_manifest.json",
+    "runpod_requirements_lock.txt",
+    "runpod_expected_artifacts.json",
+    "allen_waveform_parity_eval.json"
+  ],
+  "gates": {
+    "E-G1": "PASS",
+    "E-G2": "PASS",
+    "E-G3": "PASS",
+    "E-G4": "PASS",
+    "E-G5": "PASS",
+    "F-G1": "PASS",
+    "F-G2": "PASS",
+    "F-G3": "PASS",
+    "M1": "PASS",
+    "M2": "PASS",
+    "M3": "PASS",
+    "M4": "PASS"
+  },
+  "generated_at_utc": "2026-02-21T16:01:22.206000+00:00",
+  "schema_version": "wave1-2026-02-20",
+  "status": "PASS"
+}

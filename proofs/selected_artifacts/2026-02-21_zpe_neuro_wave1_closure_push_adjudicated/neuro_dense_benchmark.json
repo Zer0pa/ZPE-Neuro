@@ -1,0 +1,34 @@
+{
+  "claim_id": "NEU-C002",
+  "evidence": [
+    "neuro_dense_benchmark.json"
+  ],
+  "gate": "B",
+  "generated_at_utc": "2026-02-21T15:36:06.373009+00:00",
+  "measurements": {
+    "channels": 64,
+    "compression_ratio": 209.3123557655947,
+    "duration_s": 5.0,
+    "encoded_bits": 489221,
+    "event_count": 20808,
+    "raw_bits": 102400000
+  },
+  "notes": [
+    "Deterministic dense firing benchmark."
+  ],
+  "schema_version": "wave1-2026-02-20",
+  "seed_policy": {
+    "global_seed": 20260220,
+    "replay_seeds": [
+      20260220,
+      20260221,
+      20260222,
+      20260223,
+      20260224
+    ]
+  },
+  "status": "PASS",
+  "thresholds": {
+    "compression_ratio_min": 20.0
+  }
+}

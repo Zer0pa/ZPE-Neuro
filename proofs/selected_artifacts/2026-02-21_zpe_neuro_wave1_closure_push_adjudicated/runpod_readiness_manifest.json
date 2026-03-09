@@ -1,0 +1,12 @@
+{
+  "deferred_paths": [],
+  "dependency_lock_artifact": "runpod_requirements_lock.txt",
+  "environment_spec": {
+    "status": "NOT_REQUIRED"
+  },
+  "execution_plan_artifact": null,
+  "expected_artifacts_contract": "runpod_expected_artifacts.json",
+  "generated_at_utc": "2026-02-21T16:01:22.205490+00:00",
+  "schema_version": "wave1-2026-02-20",
+  "trigger": "No IMP-COMPUTE entries"
+}

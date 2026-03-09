@@ -1,0 +1,62 @@
+{
+  "claim_id": "determinism",
+  "evidence": [
+    "determinism_replay_results.json"
+  ],
+  "gate": "D",
+  "generated_at_utc": "2026-02-21T15:38:55.403563+00:00",
+  "measurements": {
+    "identical_hash_runs": 5,
+    "runs": [
+      {
+        "hash_first": "e75643ca78badeeb8bbcc44f86c74a6bd119fc94dfea592db7012fe71372a596",
+        "hash_second": "e75643ca78badeeb8bbcc44f86c74a6bd119fc94dfea592db7012fe71372a596",
+        "identical": true,
+        "seed": 20260220
+      },
+      {
+        "hash_first": "96760c7ab5ba9a0b060ecaf1f3875e906f193fa6b46c30b371ebdbc420597741",
+        "hash_second": "96760c7ab5ba9a0b060ecaf1f3875e906f193fa6b46c30b371ebdbc420597741",
+        "identical": true,
+        "seed": 20260221
+      },
+      {
+        "hash_first": "89fa267a00fa9ea269f00eb287ffd6440e4590b9eccec975f57edc66957ab613",
+        "hash_second": "89fa267a00fa9ea269f00eb287ffd6440e4590b9eccec975f57edc66957ab613",
+        "identical": true,
+        "seed": 20260222
+      },
+      {
+        "hash_first": "3f8d70cde1759d75bc120077e40cd9be8a72ae6fa78ceebf763e2ee81b166df7",
+        "hash_second": "3f8d70cde1759d75bc120077e40cd9be8a72ae6fa78ceebf763e2ee81b166df7",
+        "identical": true,
+        "seed": 20260223
+      },
+      {
+        "hash_first": "d39fc6fa67c7409b9bdfdb8bb540ca56f35a4dc6e72f85f5594ada1fdb59606c",
+        "hash_second": "d39fc6fa67c7409b9bdfdb8bb540ca56f35a4dc6e72f85f5594ada1fdb59606c",
+        "identical": true,
+        "seed": 20260224
+      }
+    ],
+    "total_runs": 5
+  },
+  "notes": [
+    "Two-pass hash replay per fixed seed."
+  ],
+  "schema_version": "wave1-2026-02-20",
+  "seed_policy": {
+    "global_seed": 20260220,
+    "replay_seeds": [
+      20260220,
+      20260221,
+      20260222,
+      20260223,
+      20260224
+    ]
+  },
+  "status": "PASS",
+  "thresholds": {
+    "identical_hash_runs_required": 5
+  }
+}

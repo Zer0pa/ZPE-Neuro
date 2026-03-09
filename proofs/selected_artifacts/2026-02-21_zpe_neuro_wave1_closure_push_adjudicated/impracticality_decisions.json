@@ -1,0 +1,29 @@
+{
+  "allowed_codes": [
+    "IMP-ACCESS",
+    "IMP-COMPUTE",
+    "IMP-LICENSE",
+    "IMP-NOCODE",
+    "IMP-STORAGE"
+  ],
+  "decisions": [
+    {
+      "claim_impact": "Allen waveform-level parity for NEU-C001/C003/C004 remains bounded but unresolved.",
+      "command_evidence": [
+        "python -c \"import requests; requests.get('https://registry.opendata.aws/allen-brain-observatory/')\"",
+        "python -c \"requests.get('https://api.brain-map.org/api/v2/data/query.json?criteria=model::EcephysSession,rma::options[num_rows$eq10]')\"",
+        "python -c \"from allensdk.brain_observatory.ecephys.ecephys_project_cache import EcephysProjectCache\"",
+        "python - <<'PY' (ALLEN-FIX-A: validate cached Allen NWB waveform read)",
+        "python - <<'PY' (ALLEN-FIX-B: EcephysProjectCache.from_warehouse + get_session_data)",
+        "python - <<'PY' (ALLEN-FIX-C: direct well_known_file_download stream probe)"
+      ],
+      "error_signature": "ALLEN_WAVEFORM_PARITY_UNPROVEN: all waveform attempts failed or remained partial.",
+      "fallback": "Keep Allen linkage bounded and retain synthetic/challenge comparators for non-Allen claims.",
+      "imp_code": "IMP-ACCESS",
+      "recorded_at_utc": "2026-02-21T15:58:31.309350+00:00",
+      "resource": "Allen Neuropixels (AWS)"
+    }
+  ],
+  "generated_at_utc": "2026-02-21T15:58:31.309336+00:00",
+  "schema_version": "wave1-2026-02-20"
+}
