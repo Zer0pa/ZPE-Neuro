@@ -8,7 +8,8 @@ version = "0.1.0"
 description = "Private staged repo for the ZPE Neuro Wave-1 package and curated proof surface."
 requires-python = ">=3.11"
 readme = "README.md"
-license = { file = "LICENSE" }
+license = "LicenseRef-ZPE-Neuro-Proprietary"
+license-files = ["LICENSE"]
 dependencies = [
     "numpy>=1.26",
     "scipy>=1.11",
@@ -20,20 +21,21 @@ gate = [
     "scikit-learn>=1.6",
     "spikeinterface>=0.103.2",
 ]
-proof = [
+public = [
     "dandi>=0.69",
     "h5py>=3.10",
-    "hdbscan>=0.8",
-    "ibl-neuropixel>=1.10.0",
-    "ONE-api>=3.0",
     "pynwb>=2.8",
     "remfile>=0.1.13",
     "scikit-learn>=1.6",
     "spikeinterface>=0.103.2",
-    "wfdb>=4.1",
 ]
-allen = [
-    "allensdk>=2.16",
+proof = [
+    "dandi>=0.69",
+    "h5py>=3.10",
+    "pynwb>=2.8",
+    "remfile>=0.1.13",
+    "scikit-learn>=1.6",
+    "spikeinterface>=0.103.2",
 ]
 ops = [
     "comet-ml>=3.49",

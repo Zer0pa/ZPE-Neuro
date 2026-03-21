@@ -1,24 +1,58 @@
-# Legal Boundaries
+<p>
+  <img src="../.github/assets/readme/zpe-masthead.gif" alt="ZPE-Neuro Masthead" width="100%">
+</p>
 
-This note is a repo-surface summary only. `LICENSE` at the repository root is the legal source of truth.
+<p>
+  <img src="../.github/assets/readme/section-bars/license-and-ip.svg" alt="LEGAL BOUNDARIES" width="100%">
+</p>
 
-## Package Surface
+This note is a repo-surface summary only. `LICENSE` at the repository root is
+the legal source of truth.
 
-- `pyproject.toml` governs the Python package boundary for this repo
-- `src/zpe_neuro/` is the package code
-- `tests/`, `tools/`, `runbooks/`, and `proofs/` are shipped as repository materials, not separately published packages
+Canonical anchors:
+- Repository: `https://github.com/Zer0pa/ZPE-Neuro`
+- Contact: `architects@zer0pa.ai`
 
-## Comparator And Corpus Boundaries
+<p>
+  <img src="../.github/assets/readme/section-bars/quickstart-and-license.svg" alt="PACKAGE SURFACE" width="100%">
+</p>
 
-- MountainSort5 comparator: treated as allowed comparator evidence with the current Apache-2.0 boundary reflected in the carried risk material
-- Kilosort4 comparator: treated as benchmark-only and not as commercialization-clear evidence
-- Allen external corpus parity: still open risk; shipped artifacts record `ADJUDICATED_FAIL` / `RISK`
-- SpikeInterface and NWB proof paths exist as evidence surfaces, but not all optional proof dependencies are part of the minimal install path
+Package boundary:
+- `pyproject.toml` defines the shipped install surfaces
+- `src/zpe_neuro/` is the installed package code
+- `tests/`, `tools/`, `runbooks/`, and `proofs/` are repo materials, not
+  installed runtime packages
+- the repo does not claim installed console scripts
 
-## Historical Proof Artifacts
+<p>
+  <img src="../.github/assets/readme/section-bars/evidence-and-claims.svg" alt="CORPUS AND COMPARATOR BOUNDARIES" width="100%">
+</p>
 
-Some preserved proof files contain historical machine-specific paths. Those strings are retained because they are part of the original evidence record. They are not current filesystem instructions for this repo.
+Corpus and comparator boundary:
+- DANDI/AJILE replay dependencies are part of the declared clean public replay
+  stack
+- IBL chunked probes remain a repo-local operator path
+- Allen parity remains a repo-local operator path
+- Kilosort4 remains benchmark-only
+- Allen parity/commercialization closure remains open
 
-## Release Posture
+No doc in this repo should turn those operator-only or open-risk surfaces into
+clean packaged or commercialization-clear claims.
 
-This is a private staged repo. No public-release legal conclusion is implied by the existence of this repo boundary.
+<p>
+  <img src="../.github/assets/readme/section-bars/proof-corpus.svg" alt="HISTORICAL EVIDENCE" width="100%">
+</p>
+
+Historical evidence boundary:
+- preserved historical proof files can retain machine-specific paths
+- those strings are evidence lineage, not current instructions
+- February 21 and early March bridge packets remain important, but they are not
+  automatically the current authority surface
+
+<p>
+  <img src="../.github/assets/readme/section-bars/release-notes.svg" alt="RELEASE POSTURE" width="100%">
+</p>
+
+This is a private staged repo. No public-release legal conclusion is implied by
+the existence of this repo boundary, and no commercialization clearance is
+implied by the current evidence packet.

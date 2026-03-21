@@ -1,5 +1,10 @@
 # Product And Authority Status
 
+Historical note:
+- this file is part of the internal handoff packet
+- it is not the current front-door authority surface
+- current authority routing now lives in `proofs/manifests/CURRENT_AUTHORITY_PACKET.md`
+
 ## Product Identity
 
 The current product is still the frozen first-lane version from the research lane:

@@ -1,5 +1,10 @@
 # ZPE-Neuro Team Packet
 
+Historical note:
+- this team packet is an internal handoff surface
+- it is not the current front-door authority surface
+- use `README.md` and `proofs/manifests/CURRENT_AUTHORITY_PACKET.md` for current repo truth
+
 ## Purpose
 
 This packet is the smallest useful document set for the science and engineering team to understand the current product state, the decisive repo-local evidence, and the recommended next moves.

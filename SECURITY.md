@@ -1,36 +1,49 @@
-# Security Policy
+<p>
+  <img src=".github/assets/readme/zpe-masthead.gif" alt="ZPE-Neuro Masthead" width="100%">
+</p>
 
-This policy covers the `zpe_neuro` package surface and the private staged proof corpus in this repo.
+<p>
+  <img src=".github/assets/readme/section-bars/reporting-a-vulnerability.svg" alt="REPORTING A VULNERABILITY" width="100%">
+</p>
 
-## Report Privately
+This policy covers the `zpe_neuro` package surface, the shipped GitHub
+workflow logic, and the tracked proof/documentation corpus in this repository.
+
+Canonical anchors:
+- Repository: `https://github.com/Zer0pa/ZPE-Neuro`
+- Contact: `architects@zer0pa.ai`
 
 Do not open a public issue for a security vulnerability.
 
 Report privately to:
-
 - `architects@zer0pa.ai`
 
-## What Counts
+<p>
+  <img src=".github/assets/readme/section-bars/scope.svg" alt="SCOPE" width="100%">
+</p>
 
-- remote code execution or arbitrary code execution paths
-- secret exposure in tracked files
-- supply-chain or dependency risks in declared package surfaces
-- workflow or release process flaws that could expose private material
+In scope:
+- arbitrary code execution or unsafe deserialization paths
+- secret exposure in tracked files or workflows
+- dependency or supply-chain risks in declared install surfaces
+- release-process or CI flaws that could publish private material
 
-## What Does Not Count
+Out of scope for this policy:
+- ordinary codec or regression failures
+- evidence disputes backed by proof review
+- inconclusive scientific or commercialization status
 
-- ordinary codec/regression failures
-- claim disputes supported by artifact review
-- inconclusive scientific results
+Those are engineering, governance, or evidence issues and should be routed
+through the normal repo workflows instead.
 
-Those are engineering or evidence issues, not security issues.
+<p>
+  <img src=".github/assets/readme/section-bars/response-commitment.svg" alt="RESPONSE COMMITMENT" width="100%">
+</p>
 
-## Response Targets
+Target response windows:
+- acknowledgement within 48 hours
+- initial assessment within 7 days
+- remediation plan for confirmed issues within 30 days
 
-- acknowledgement: within 48 hours
-- initial assessment: within 7 days
-- remediation plan for confirmed issues: within 30 days
-
-## Scope Note
-
-This is a private staged repo. Public-release security posture is not claimed yet.
+This is still a private staged repo. No public-release security posture is
+implied beyond the currently shipped package and workflow surface.

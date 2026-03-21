@@ -4,15 +4,16 @@ from __future__ import annotations
 import argparse
 import json
 
-from _bootstrap import bootstrap
-
-bootstrap()
-
-from zpe_neuro.ibl_refinement import run_ibl_bounded_refinement
+from _bootstrap import bootstrap, configure_artifact_root
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--artifact-root",
+        default=None,
+        help="Override the repo-local artifact root for this run.",
+    )
     parser.add_argument("--window-samples", type=int, default=6000)
     parser.add_argument("--channel-limit", type=int, default=8)
     parser.add_argument("--search-chunk-count", type=int, default=9)
@@ -21,6 +22,10 @@ def main() -> int:
     parser.add_argument("--top-k-peak-probe", type=int, default=12)
     parser.add_argument("--top-k-full-eval", type=int, default=3)
     args = parser.parse_args()
+    configure_artifact_root(args.artifact_root)
+    bootstrap()
+    from zpe_neuro.ibl_refinement import run_ibl_bounded_refinement
+
     result = run_ibl_bounded_refinement(
         window_samples=args.window_samples,
         channel_limit=args.channel_limit,

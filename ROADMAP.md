@@ -1,36 +1,48 @@
-# Roadmap
+<p>
+  <img src=".github/assets/readme/zpe-masthead.gif" alt="ZPE-Neuro Masthead" width="100%">
+</p>
 
-This roadmap is staging-first, not marketing-first.
+<p>
+  <img src=".github/assets/readme/section-bars/summary.svg" alt="ROADMAP" width="100%">
+</p>
 
-## Current Position
+This roadmap is status-first and release-boundary-first. It is not a marketing
+document.
 
-- Phase 5 bounded IBL refinement is complete: the narrowed extracellular lane now has DANDI `000034` as the Tier 1 anchor and a counted IBL second-target `PASS`
+<p>
+  <img src=".github/assets/readme/section-bars/lane-status-snapshot.svg" alt="CURRENT POSITION" width="100%">
+</p>
 
-## Deferred To The Next Ratified Push
+| Surface | Current position |
+|---|---|
+| Lane scope | Extracellular wedge |
+| Tier 1 authority anchor | DANDI `000034` |
+| Counted breadth | `PASS` in the current bounded local IBL refinement packet |
+| AJILE12 posture | `OUT_OF_FAMILY` |
+| Technical release alignment | complete for the current packaged surface |
+| Blind-clone authority pack | `OPEN` |
+| Public release | `OPEN` |
+| Commercialization / Allen closure | `OPEN` |
 
-- blind-clone authority-pack preparation
-- broader test or replay validation
-- release-boundary and public-claim decisions
-- performance augmentation once the authority pack is frozen
+<p>
+  <img src=".github/assets/readme/section-bars/downstream-action-items.svg" alt="NEXT TECHNICAL WORK" width="100%">
+</p>
 
-## Deferred Beyond The Current Lane
+Next technical work:
+- blind-clone authority-pack preparation and replay
+- explicit release-boundary ratification against the current packaged surface
+- operator-only IBL and Allen path hardening if those surfaces are meant to
+  become shipped extras later
 
-- broader human or intracranial mode design
-- Allen-standardization and commercialization closure
+<p>
+  <img src=".github/assets/readme/section-bars/open-risks-non-blocking.svg" alt="DEFERRED OR PARKED" width="100%">
+</p>
+
+Deferred or parked beyond the current lane:
+- broader human or intracranial coverage
+- second-mode design for out-of-family neural data
 - hardware-facing expansion
+- commercialization-safe Allen closure
 
-## Resolved In The Current Repo-Local Rerun
-
-- `NEU-C007` contradiction is repaired in the repo-local Gate C rerun
-- Gate D versus `DT-NEU-5` contradiction is repaired in the repo-local Gate D rerun
-- real public Tier 1 execution now exists inside the repo-local proof surface
-- the counted IBL extracellular breadth target now passes under bounded search
-
-## Known Open Items
-
-- blind-clone verification remains open
-- AJILE12 is now explicitly out-of-family for Lane 1 rather than an unresolved breadth near-miss
-- broader human or intracranial coverage now sits outside Lane 1 unless a second representation mode is added
-- Gate E, release-boundary work, and public-claim decisions remain open
-- Allen commercialization and broader real-corpus risk remain open
-- the outer workspace still contains a separate Git surface and non-authoritative historical materials
+The repo still carries historical proof packets and a separate outer workspace
+exists. Neither changes the current front-door scope lock.

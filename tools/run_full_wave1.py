@@ -4,12 +4,7 @@ from __future__ import annotations
 import argparse
 import json
 
-from _bootstrap import bootstrap
-
-bootstrap()
-
-from zpe_neuro.max_wave import run_max_wave
-from zpe_neuro.wave1 import run_full, run_gate_a, run_gate_b, run_gate_c, run_gate_d, run_gate_e
+from _bootstrap import bootstrap, configure_artifact_root
 
 
 def _parse_replay_seeds(raw: str) -> list[int]:
@@ -19,6 +14,11 @@ def _parse_replay_seeds(raw: str) -> list[int]:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--artifact-root",
+        default=None,
+        help="Override the repo-local artifact root for this run.",
+    )
     parser.add_argument("--gate", choices=["A", "B", "C", "D", "E"], default=None)
     parser.add_argument("--max-wave", action="store_true")
     parser.add_argument("--seed", type=int, default=20260220)
@@ -27,6 +27,11 @@ def main() -> int:
         default="20260220,20260221,20260222,20260223,20260224",
     )
     args = parser.parse_args()
+    configure_artifact_root(args.artifact_root)
+    bootstrap()
+    from zpe_neuro.max_wave import run_max_wave
+    from zpe_neuro.wave1 import run_full, run_gate_a, run_gate_b, run_gate_c, run_gate_d, run_gate_e
+
     replay = _parse_replay_seeds(args.replay_seeds)
 
     if args.max_wave and args.gate is not None:

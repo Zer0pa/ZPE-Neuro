@@ -1,5 +1,10 @@
 # Way Forward
 
+Historical note:
+- this file is part of the internal handoff packet
+- it is not the current front-door authority surface
+- current authority routing now lives in `proofs/manifests/CURRENT_AUTHORITY_PACKET.md`
+
 ## My View
 
 The right move is not to chase a better narrative. The right move is to keep the inner repo as the source-of-truth lane and make the public-corpus harness the center of gravity while answering one hard question:

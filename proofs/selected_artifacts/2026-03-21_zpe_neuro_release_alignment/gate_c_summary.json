@@ -1,0 +1,8 @@
+{
+  "gate": "C",
+  "generated_at_utc": "2026-03-21T20:41:06.621330+00:00",
+  "nwb_status": "PASS",
+  "schema_version": "wave1-2026-02-20",
+  "spikeinterface_status": "PASS",
+  "status": "PASS"
+}

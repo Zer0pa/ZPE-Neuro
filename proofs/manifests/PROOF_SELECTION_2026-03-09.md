@@ -1,5 +1,11 @@
 # Proof Selection 2026-03-09
 
+Historical note:
+- this file is the original March 9 selection record for the initial curated
+  proof subset
+- it is not the current authority-routing manifest
+- current routing now lives in `proofs/manifests/CURRENT_AUTHORITY_PACKET.md`
+
 Source bundle:
 
 `artifacts/2026-02-21_zpe_neuro_wave1_closure_push_adjudicated`

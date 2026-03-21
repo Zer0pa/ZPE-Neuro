@@ -1,5 +1,10 @@
 # Risks, Blockers, And Decisions
 
+Historical note:
+- this file is part of the internal handoff packet
+- it is not the current front-door authority surface
+- current authority routing now lives in `proofs/manifests/CURRENT_AUTHORITY_PACKET.md`
+
 ## Active Blockers
 
 ### Blocker 1: Blind-Clone And Release Work Has Not Started

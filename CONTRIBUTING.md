@@ -1,48 +1,86 @@
-# Contributing
+<p>
+  <img src=".github/assets/readme/zpe-masthead.gif" alt="ZPE-Neuro Masthead" width="100%">
+</p>
 
-This repo is private-first and evidence-first.
+<p>
+  <img src=".github/assets/readme/section-bars/before-you-start.svg" alt="BEFORE YOU START" width="100%">
+</p>
 
-## Before You Start
+ZPE-Neuro is private-first and evidence-first. Contribute against the repo's
+current truth, not against a hoped-for release state.
 
-- Read `README.md`
-- Read `docs/ARCHITECTURE.md`
-- Read `PUBLIC_AUDIT_LIMITS.md`
-- Read `proofs/README.md`
+Read these first:
+- `README.md`
+- `proofs/manifests/CURRENT_AUTHORITY_PACKET.md`
+- `docs/ARCHITECTURE.md`
+- `PUBLIC_AUDIT_LIMITS.md`
+- `docs/LEGAL_BOUNDARIES.md`
 
-## Baseline Rules
+<p>
+  <img src=".github/assets/readme/section-bars/setup-and-verification.svg" alt="SETUP AND VERIFICATION" width="100%">
+</p>
 
-- Keep scope tight
-- Preserve negative and inconclusive results
-- Do not remove contradiction evidence without a replacement artifact
-- Do not treat private staging as publish-ready by default
-
-## Environment
-
-Core path:
+Baseline environment:
 
 ```bash
-python -m venv .venv
+python3.11 -m venv .venv
 source .venv/bin/activate
+python -m pip install --upgrade pip
 python -m pip install -e .
-python -m unittest discover -s tests -v
+python -c "import zpe_neuro"
 ```
 
-Optional proof dependencies:
+Shipped repo-local checks:
 
 ```bash
+python -m pip install -e '.[dev]'
+python -m pytest tests
+```
+
+Optional clean repo-local execution surfaces:
+
+```bash
+python -m pip install -e '.[gate,dev]'
+python -m pip install -e '.[public]'
 python -m pip install -e '.[proof]'
 ```
 
-## Pull Request Expectations
+`tools/` runners require a checkout. Use `--artifact-root` when you need an
+isolated output tree or when comparing reruns.
 
-- explain what changed
-- explain what did not change
-- include evidence when behavior changes
-- call out any remaining contradictions explicitly
+Operator-only paths:
+- IBL metadata/chunked-waveform tooling
+- bounded IBL refinement runners
+- Allen parity runners
 
-## What Not To Submit
+If you work on those paths, record the exact manual dependency and toolchain
+setup because they are not currently claimed as clean packaged extras.
 
-- cosmetic claim inflation
-- proof deletions without justification
-- machine-specific path hardcoding
-- public-release assumptions without verification evidence
+<p>
+  <img src=".github/assets/readme/section-bars/pr-process.svg" alt="PR PROCESS" width="100%">
+</p>
+
+Every pull request should state:
+- what changed
+- what did not change
+- which claim or runtime surface moved
+- which evidence or rerun supports the change
+- which open gaps remain
+
+If a doc changes a status word, the evidence path must change with it.
+
+<p>
+  <img src=".github/assets/readme/section-bars/scope-discipline.svg" alt="SCOPE DISCIPLINE" width="100%">
+</p>
+
+Do:
+- keep prose subordinate to code and proof artifacts
+- preserve negative and inconclusive evidence
+- name historical versus current surfaces explicitly
+- route readers back to canonical docs instead of duplicating claims
+
+Do not:
+- borrow ZPE-IMC claims, metrics, or proof posture
+- point the front door at ignored local-only artifacts
+- hardcode machine-specific paths as current instructions
+- upgrade private staging into public-release language without evidence

@@ -472,7 +472,17 @@ def _run_target_insertion_evals(
 
 
 def _probe_ibl_public_metadata() -> dict[str, Any]:
-    from one.api import ONE
+    try:
+        from one.api import ONE
+    except ModuleNotFoundError:
+        return {
+            "status": "SKIPPED",
+            "waveform_slice_executed": False,
+            "blocked_reason": (
+                "ONE-api is not part of the clean packaged public replay surface. "
+                "Provision it manually only when you are explicitly working the repo-local IBL metadata path."
+            ),
+        }
 
     one = ONE(
         base_url="https://openalyx.internationalbrainlab.org",

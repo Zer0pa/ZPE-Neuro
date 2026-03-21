@@ -13,10 +13,20 @@
 5. `proofs/selected_artifacts/2026-02-21_zpe_neuro_wave1_closure_push_adjudicated/`
 6. Historical external concept-pack references remain outside this repo and are treated as lineage inputs only.
 
-## Environment Bootstrap (Mandatory)
-1. `set -a; [ -f .env ] && source .env; set +a`
-2. Verify tokenized access via env var names only (no secret values in logs).
-3. If bootstrap fails, log blocker and halt before implementation.
+## Install Surfaces
+1. Core import surface: `python -m pip install -e .`
+2. Repo-local test surface: `python -m pip install -e '.[dev]'`
+3. Synthetic gate surface: `python -m pip install -e '.[gate]'`
+4. DANDI/AJILE replay surface: `python -m pip install -e '.[public]'`
+5. Convenience replay alias: `python -m pip install -e '.[proof]'`
+6. IBL metadata and chunked waveform probes remain repo-local operator paths and are not claimed as clean packaged extras while the upstream `ONE-api` / `ibl-neuropixel` / `llvmlite` chain remains unverified in clean environments.
+7. Allen / MIT-BIH parity remains a repo-local operator path and is not claimed as a clean packaged extra while `allensdk 2.16.x` still conflicts with the package floor `numpy>=1.26`.
+8. `tools/` runners are repo-local scripts. No installed console entry point is claimed.
+
+## Environment Bootstrap
+1. Core, gate, public-corpus, and bounded IBL replay surfaces do not require `.env`.
+2. Source `.env` only when a later external path or telemetry surface explicitly needs credentials.
+3. If a credentialed external path is required and credentials are absent, log that exact blocker before continuing.
 
 ## Gate Order (Hard, No Skip)
 1. Gate A: runbook/resource lock/schema freeze
@@ -32,7 +42,8 @@
 11. Gate F-G: Appendix F closure gates (`F-G1`..`F-G3`) commercialization + comparator closure
 
 ## Artifact Contract Freeze
-- Output root: `artifacts/2026-02-20_zpe_neuro_wave1/`
+- Historical default output root: `artifacts/2026-02-20_zpe_neuro_wave1/`
+- Isolated rerun roots are allowed and preferred for independent or parallel execution so long as the full artifact contract is preserved within that root and the command log records the chosen path.
 - Required PRD artifacts:
   - `handoff_manifest.json`
   - `before_after_metrics.json`
@@ -92,16 +103,16 @@
 |---|---|---|---|---|
 | A | `python3.11 tools/validate_runbook_contract.py` | `RUNBOOK_CONTRACT_OK` | missing gate/runbook/schema file | patch runbooks/schema only |
 | B | `python3.11 tools/run_gate_b.py --seed 20260220` | C001-C004 artifacts generated | threshold breach/crash | revert to Gate A snapshot; patch codec |
-| C | `python3.11 tools/run_gate_c.py --seed 20260220` | NWB/SI evidence artifacts | import/contract mismatch | patch adapters; rerun C+ |
-| D | `python3.11 tools/run_gate_d.py --replay-seeds 20260220,20260221,20260222,20260223,20260224` | falsification, determinism, drift artifacts | non-zero crash, hash mismatch | patch minimal failure; rerun D+ |
-| E | `python3.11 tools/run_gate_e.py --artifact-root artifacts/2026-02-20_zpe_neuro_wave1` | claim/rubric/manifest pack | missing file or invalid schema | patch packaging metadata only |
+| C | `python3.11 tools/run_gate_c.py --artifact-root artifacts/manual_gate_c --seed 20260220` | NWB/SI evidence artifacts | import/contract mismatch | patch adapters; rerun C+ |
+| D | `python3.11 tools/run_gate_d.py --artifact-root artifacts/manual_gate_d --replay-seeds 20260220,20260221,20260222,20260223,20260224` | falsification, determinism, drift artifacts | non-zero crash, hash mismatch | patch minimal failure; rerun D+ |
+| E | `python3.11 tools/run_gate_e.py --artifact-root artifacts/manual_gate_e` | claim/rubric/manifest pack | missing file or invalid schema | patch packaging metadata only |
 | M1 | `python3.11 tools/run_gate_m1.py` | Kilosort4 attempt evidence + comparator closure decision | install/runtime failure | log IMP-* + fallback + impact |
 | M2 | `python3.11 tools/run_gate_m2.py` | Allen/Neuralink-style/MIT-BIH attempt matrix | access/license/compute failure | log IMP-* + keep dependent status open |
 | M3 | `python3.11 tools/run_gate_m3.py` | target-profile latency evidence update | no target profile evidence | keep NEU-C005 open if unproven |
 | M4 | `python3.11 tools/run_gate_m4.py` | post-expansion claim stability adjudication | regression after expansion | patch minimally and rerun M1-M4 |
 | E-G | `python3.11 tools/run_gate_appendix_e.py` | E-G1..E-G5 summary + RunPod readiness | missing attempts/invalid IMP code/missing runpod artifact | patch gating metadata only |
 | F-G | `python3.11 tools/run_gate_appendix_e.py` | F-G1..F-G3 summary (MountainSort5/Kilosort4 closure + license boundary) | comparator unresolved or no commercialization status | patch comparator closure pipeline, rerun M1+ |
-| All | `python3.11 tools/run_full_wave1.py --max-wave` | full A-E + M/E gates complete | any hard gate fail | fix failed gate + downstream rerun |
+| All | `python3.11 tools/run_full_wave1.py --artifact-root artifacts/manual_full_wave1 --max-wave` | full A-E + M/E gates complete | any hard gate fail | fix failed gate + downstream rerun |
 
 ## Closure Push Addendum (2026-02-21)
 Objective: close remaining `IMP-COMPUTE` and `INCONCLUSIVE` blockers with executable evidence before adjudication.

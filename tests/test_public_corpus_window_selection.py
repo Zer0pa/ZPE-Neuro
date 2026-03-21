@@ -3,6 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 import sys
 import unittest
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "src"
@@ -12,6 +13,7 @@ if str(SRC) not in sys.path:
 from zpe_neuro.public_corpus import (
     _candidate_rank_key,
     _candidate_window_starts,
+    _probe_ibl_public_metadata,
     _select_window_candidate,
 )
 
@@ -41,6 +43,20 @@ class PublicCorpusWindowSelectionTests(unittest.TestCase):
         selected = _select_window_candidate([quiet, active_late, active_early])
         self.assertEqual(selected["start_sample"], 200)
         self.assertGreater(_candidate_rank_key(active_early), _candidate_rank_key(quiet))
+
+    def test_ibl_probe_skips_when_one_api_is_not_installed(self) -> None:
+        original_import = __import__
+
+        def fake_import(name, globals=None, locals=None, fromlist=(), level=0):
+            if name == "one.api":
+                raise ModuleNotFoundError("No module named 'one'")
+            return original_import(name, globals, locals, fromlist, level)
+
+        with patch("builtins.__import__", side_effect=fake_import):
+            payload = _probe_ibl_public_metadata()
+
+        self.assertEqual(payload["status"], "SKIPPED")
+        self.assertFalse(payload["waveform_slice_executed"])
 
 
 if __name__ == "__main__":

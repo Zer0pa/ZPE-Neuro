@@ -3,9 +3,14 @@
 ## Objective
 Validate format/tooling interoperability through NWB roundtrip and SpikeInterface E2E harness.
 
+## Prerequisites
+1. Run from a repo checkout.
+2. Install the gate stack: `python -m pip install -e '.[gate]'`
+3. Use an isolated artifact root per run when comparing or parallelizing results.
+
 ## Commands
-1. `python3.11 tools/run_gate_c.py --seed 20260220`
-2. `python3.11 tools/validate_artifact_schema.py --artifact-root artifacts/2026-02-20_zpe_neuro_wave1 --files neuro_nwb_roundtrip.json neuro_spikeinterface_e2e.json`
+1. `python3.11 tools/run_gate_c.py --artifact-root artifacts/manual_gate_c --seed 20260220`
+2. `python3.11 tools/validate_artifact_schema.py --artifact-root artifacts/manual_gate_c --files neuro_nwb_roundtrip.json neuro_spikeinterface_e2e.json`
 
 ## Expected Outputs
 - `neuro_nwb_roundtrip.json`

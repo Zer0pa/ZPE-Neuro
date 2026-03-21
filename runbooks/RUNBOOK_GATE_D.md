@@ -3,9 +3,14 @@
 ## Objective
 Run Popper-first falsification campaigns and reproducibility checks before final claim adjudication.
 
+## Prerequisites
+1. Run from a repo checkout.
+2. Install the gate stack: `python -m pip install -e '.[gate]'`
+3. Use an isolated artifact root per run when comparing or parallelizing results.
+
 ## Commands
-1. `python3.11 tools/run_gate_d.py --replay-seeds 20260220,20260221,20260222,20260223,20260224`
-2. `python3.11 tools/validate_artifact_schema.py --artifact-root artifacts/2026-02-20_zpe_neuro_wave1 --files neuro_embedded_latency.json neuro_drift_resilience.json determinism_replay_results.json`
+1. `python3.11 tools/run_gate_d.py --artifact-root artifacts/manual_gate_d --replay-seeds 20260220,20260221,20260222,20260223,20260224`
+2. `python3.11 tools/validate_artifact_schema.py --artifact-root artifacts/manual_gate_d --files neuro_embedded_latency.json neuro_drift_resilience.json determinism_replay_results.json`
 
 ## Expected Outputs
 - `neuro_embedded_latency.json`
