@@ -3,7 +3,7 @@
 </p>
 
 <p>
-  <img src=".github/assets/readme/section-bars/release-notes.svg" alt="CHANGELOG" width="100%">
+  <img src=".github/assets/readme/section-bars/changelog.svg" alt="CHANGELOG" width="100%">
 </p>
 
 This changelog tracks repo-surface changes for ZPE-Neuro. It is not a full
@@ -18,6 +18,18 @@ Canonical anchors:
 </p>
 
 ## Unreleased
+
+### 2026-03-22
+- collapsed the live proof surface onto the current March 21 release-alignment
+  and IBL-refinement packets
+- made the March 21 IBL refinement packet self-contained by folding forward the
+  DANDI and AJILE support artifacts it still depended on
+- removed superseded bridge proof folders and the historical `docs/team_packet/`
+  handoff set from the live repo surface
+- updated the breadth-adjudication defaults so runtime defaults match the
+  current authority packet
+- tightened status semantics, section-bar labeling, and root README navigation
+  around the actual current repo truth
 
 ### 2026-03-21
 - aligned package metadata and dependency truth to the clean install surface
@@ -34,4 +46,3 @@ Canonical anchors:
 ### Notes
 - no public release is declared by this changelog entry
 - blind-clone closure and commercialization remain open
-

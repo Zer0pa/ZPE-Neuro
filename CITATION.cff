@@ -12,8 +12,9 @@ url: https://github.com/Zer0pa/ZPE-Neuro
 license: LicenseRef-Zer0pa-SAL-6.0
 abstract: >-
   ZPE-Neuro packages the Wave-1 neural signal codec surface, gate runners,
-  and a curated proof subset from the adjudicated 2026-02-21 Neuro bundle.
-  This repository is a private staged snapshot, not a public release verdict.
+  and the current March 21, 2026 release-alignment and bounded lane-evidence
+  proof packets. This repository is a private staged snapshot, not a public
+  release verdict.
 keywords:
   - neural signal encoding
   - spike processing

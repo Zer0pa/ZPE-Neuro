@@ -6,9 +6,9 @@ from typing import Any
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_ARTIFACT_ROOT = REPO_ROOT / "proofs" / "selected_artifacts" / "2026-03-21_zpe_neuro_breadth_adjudication"
-DEFAULT_WINDOW_ROOT = REPO_ROOT / "proofs" / "selected_artifacts" / "2026-03-20_zpe_neuro_window_policy_rerun"
-DEFAULT_IBL_ROOT = REPO_ROOT / "proofs" / "selected_artifacts" / "2026-03-20_zpe_neuro_ibl_waveform_probe"
+DEFAULT_ARTIFACT_ROOT = REPO_ROOT / "proofs" / "selected_artifacts" / "2026-03-21_zpe_neuro_ibl_refinement"
+DEFAULT_WINDOW_ROOT = DEFAULT_ARTIFACT_ROOT
+DEFAULT_IBL_ROOT = DEFAULT_ARTIFACT_ROOT
 
 
 def _read_json(path: Path) -> dict[str, Any]:
@@ -71,9 +71,10 @@ def build_family_boundary_decision(
             f"{ajile_eval.get('status', 'UNKNOWN')}."
         ),
         (
-            "IBL now proves a second extracellular-style waveform path exists locally, but the first "
-            f"bounded slice still failed downstream with {int(ibl_spike.get('peak_count') or 0)} "
-            "detected peaks, so breadth remains open even though the family is better aligned than AJILE."
+            "IBL now provides the counted second extracellular-style waveform path in the current "
+            f"packet, with {int(ibl_spike.get('peak_count') or 0)} detected peaks and downstream "
+            f"status {ibl_eval.get('evaluation_status', 'UNKNOWN')}. Breadth is therefore bounded "
+            "to the extracellular lane rather than broad neural generality."
         ),
     ]
     return {
@@ -177,8 +178,8 @@ def build_public_summary(
             "counted_passes": len(counted_passes),
         },
         "next_step": (
-            "Move to Phase 4 and make the Lane 1 wedge explicit: a narrower extracellular product with stronger authority, "
-            "while keeping IBL downstream improvement as optional refinement rather than a hidden closure requirement."
+            "Keep the lane explicit as a bounded extracellular product, preserve the counted IBL pass, "
+            "and keep blind-clone and commercialization gates separate from the current breadth verdict."
         ),
     }
 

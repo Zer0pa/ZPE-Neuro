@@ -1,5 +1,0 @@
-{
-  "error": "IBL_PUBLIC_PROBE_FAIL:503 Server Error: Service Unavailable for url: https://openalyx.internationalbrainlab.org/auth-token",
-  "status": "FAIL",
-  "waveform_slice_executed": false
-}

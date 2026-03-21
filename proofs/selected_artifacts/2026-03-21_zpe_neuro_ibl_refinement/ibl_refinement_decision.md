@@ -1,6 +1,6 @@
 # IBL Refinement Decision
 
-Bounded IBL refinement found a real second extracellular breadth pass.
+Bounded IBL refinement found a counted second extracellular target `PASS`.
 
 ## Best Candidate
 - chunk index: `732`

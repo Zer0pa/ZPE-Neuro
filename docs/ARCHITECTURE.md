@@ -11,7 +11,7 @@ repo surface. It defines where package truth, proof truth, and release truth
 live.
 
 Canonical anchors:
-- Repository: `https://github.com/Zer0pa/ZPE-Neuro`
+- Repository: private GitHub repo `https://github.com/Zer0pa/ZPE-Neuro` for authorized readers
 - Contact: `architects@zer0pa.ai`
 - Current authority routing: `proofs/manifests/CURRENT_AUTHORITY_PACKET.md`
 - Current technical proof packet: `proofs/selected_artifacts/2026-03-21_zpe_neuro_release_alignment/`
@@ -29,10 +29,10 @@ Canonical anchors:
 | Repo-local runners | gate, replay, and validation scripts | `tools/` |
 | Docs | front door, release, governance, support | `README.md`, `docs/` |
 | Runbooks | operational lane/run receipts and instructions | `runbooks/` |
-| Proof corpus | tracked current and historical authority packets | `proofs/` |
+| Proof corpus | current authority packets and proof manifests | `proofs/` |
 
 <p>
-  <img src="../.github/assets/readme/section-bars/quickstart-and-authority-point.svg" alt="PACKAGED SURFACE" width="100%">
+  <img src="../.github/assets/readme/section-bars/packaged-surface.svg" alt="PACKAGED SURFACE" width="100%">
 </p>
 
 | Install surface | Current truth | Notes |
@@ -55,8 +55,7 @@ is claimed.
 | `proofs/manifests/CURRENT_AUTHORITY_PACKET.md` | current routing anchor | current versus historical packet ownership |
 | `proofs/selected_artifacts/2026-03-21_zpe_neuro_release_alignment/` | current technical authority | package/install/gate alignment summaries |
 | `proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/` | current lane evidence authority | bounded local extracellular breadth and current machine-readable lane verdict |
-| `proofs/selected_artifacts/2026-03-21_zpe_neuro_lane1_wedge_decision/` | supporting boundary note | why the lane remains extracellular |
-| `proofs/selected_artifacts/2026-02-21_zpe_neuro_wave1_closure_push_adjudicated/` | historical-only | adjudicated closure lineage and commercial-risk history |
+| `CHANGELOG.md` and `runbooks/` | chronology only | how the current surface was reached |
 
 <p>
   <img src="../.github/assets/readme/section-bars/optional-dependency-groups.svg" alt="OPERATOR-ONLY SURFACES" width="100%">
@@ -73,12 +72,11 @@ is claimed.
 </p>
 
 Known lagging defaults:
-- the default breadth-adjudication code still points at a pre-refinement fail
-  bundle, so the front door routes through `CURRENT_AUTHORITY_PACKET.md`
-  instead
-- some historical prose packets still speak in pre-refinement fail-forward
-  language
+- some tracked runtime artifacts still contain machine-absolute paths captured
+  during execution
+- operator-only IBL and Allen paths remain outside the declared packaged
+  install surface
 
-The docs resolve this by making the later March 21 bounded refinement packet
-the current lane-evidence surface while keeping the older packets visible as
-history.
+The docs resolve this by keeping the live proof surface small and routing
+chronology through `CHANGELOG.md` and `runbooks/` instead of through shipped
+bridge packets.

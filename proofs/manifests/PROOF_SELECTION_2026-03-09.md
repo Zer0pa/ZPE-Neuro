@@ -5,14 +5,16 @@ Historical note:
   proof subset
 - it is not the current authority-routing manifest
 - current routing now lives in `proofs/manifests/CURRENT_AUTHORITY_PACKET.md`
+- the original live target selected by this note was retired from the shipped
+  proof surface on `2026-03-22`
 
 Source bundle:
 
-`artifacts/2026-02-21_zpe_neuro_wave1_closure_push_adjudicated`
+retired local handoff bundle from the February 21 adjudicated closure push
 
 Repo target:
 
-`proofs/selected_artifacts/2026-02-21_zpe_neuro_wave1_closure_push_adjudicated`
+retired February 21 proof packet (no longer part of the live shipped proof surface)
 
 ## Selection Rule
 

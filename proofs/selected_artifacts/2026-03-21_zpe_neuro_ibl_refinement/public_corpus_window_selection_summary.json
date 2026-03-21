@@ -1,13 +1,13 @@
 {
   "candidate_windows": 9,
   "channel_limit": 8,
-  "generated_at_utc": "2026-03-21T13:10:08.278359+00:00",
+  "generated_at_utc": "2026-03-21T23:28:41.444750+00:00",
   "sample_limit": 6000,
   "schema_version": "window-policy-2026-03-20",
-  "source_artifact": "proofs/selected_artifacts/2026-03-20_zpe_neuro_window_policy_rerun/public_corpus_window_selection_summary.json",
+  "source_artifact": "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_window_selection_summary.json",
   "target_artifacts": {
-    "ajile": "proofs/selected_artifacts/2026-03-20_zpe_neuro_window_policy_rerun/public_corpus_window_selection_ajile12_sub01_ses7_ecephys.json",
-    "dandi": "proofs/selected_artifacts/2026-03-20_zpe_neuro_window_policy_rerun/public_corpus_window_selection_dandi_000034_mouse412804_ecephys.json"
+    "ajile": "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_window_selection_ajile12_sub01_ses7_ecephys.json",
+    "dandi": "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_window_selection_dandi_000034_mouse412804_ecephys.json"
   },
   "targets": [
     {

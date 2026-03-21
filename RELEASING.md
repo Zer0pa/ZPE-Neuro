@@ -3,13 +3,13 @@
 </p>
 
 <p>
-  <img src=".github/assets/readme/section-bars/release-notes.svg" alt="RELEASING" width="100%">
+  <img src=".github/assets/readme/section-bars/release-gate.svg" alt="RELEASE GATE" width="100%">
 </p>
 
 This document defines the release gate and decision boundary for ZPE-Neuro.
 
 Canonical anchors:
-- Repository: `https://github.com/Zer0pa/ZPE-Neuro`
+- Repository: private GitHub repo `https://github.com/Zer0pa/ZPE-Neuro` for authorized readers
 - Contact: `architects@zer0pa.ai`
 
 <p>
@@ -20,7 +20,8 @@ Release statements in this repository are bounded to evidence-backed technical
 claims and the current shipped proof surface.
 
 Current release posture:
-- technically aligned for final release-surface documentation/finalization
+- package, install, docs, and proof surfaces are aligned for the current
+  private staged repo
 - not blind-clone closed
 - not a public-release verdict
 
@@ -39,7 +40,7 @@ Current release posture:
 | Commercialization boundary | Allen/comparator/licensing closure | `OPEN` |
 
 <p>
-  <img src=".github/assets/readme/section-bars/compatibility-vector-impact.svg" alt="RELEASE CONSEQUENCES" width="100%">
+  <img src=".github/assets/readme/section-bars/release-consequences.svg" alt="RELEASE CONSEQUENCES" width="100%">
 </p>
 
 Until the open gates close:
@@ -48,6 +49,6 @@ Until the open gates close:
 - do not treat operator-only extras as shipped install surfaces
 - keep commercialization posture explicit
 
-The current docs pass is allowed to finalize the release surface because the
-package/install/docs/proof boundaries are now technically aligned. It does not
-override the blind-clone or commercialization gates.
+The current docs pass closes documentation drift around the shipped repo
+surface. It does not override the blind-clone, public-release, or
+commercialization gates.

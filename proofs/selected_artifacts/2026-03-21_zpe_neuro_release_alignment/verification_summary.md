@@ -1,3 +1,11 @@
+<p>
+  <img src="../../../.github/assets/readme/zpe-masthead.gif" alt="ZPE-Neuro Masthead" width="100%">
+</p>
+
+<p>
+  <img src="../../../.github/assets/readme/section-bars/verification.svg" alt="VERIFICATION" width="100%">
+</p>
+
 # Verification Summary
 
 This summary records the March 21, 2026 release-alignment verification in the
@@ -14,8 +22,8 @@ tracked repo surface.
 - the package metadata was aligned to the clean install surface that is
   actually declared in `pyproject.toml`
 - the repo-local technical alignment receipt is
-  `runbooks/20260321T205155Z_codex_receipt.md`
-- the verification workflow is `.github/workflows/verify-package.yml`
+  [runbooks/20260321T205155Z_codex_receipt.md](../../../runbooks/20260321T205155Z_codex_receipt.md)
+- the verification workflow is [verify-package.yml](../../../.github/workflows/verify-package.yml)
 
 ## Important Boundary
 

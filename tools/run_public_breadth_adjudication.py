@@ -16,15 +16,15 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--artifact-root",
-        default="proofs/selected_artifacts/2026-03-21_zpe_neuro_breadth_adjudication",
+        default="proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement",
     )
     parser.add_argument(
         "--window-root",
-        default="proofs/selected_artifacts/2026-03-20_zpe_neuro_window_policy_rerun",
+        default="proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement",
     )
     parser.add_argument(
         "--ibl-root",
-        default="proofs/selected_artifacts/2026-03-20_zpe_neuro_ibl_waveform_probe",
+        default="proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement",
     )
     args = parser.parse_args()
     result = run_breadth_adjudication(

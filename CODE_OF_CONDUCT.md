@@ -1,3 +1,11 @@
+<p>
+  <img src=".github/assets/readme/zpe-masthead.gif" alt="ZPE-Neuro Masthead" width="100%">
+</p>
+
+<p>
+  <img src=".github/assets/readme/section-bars/our-standards.svg" alt="OUR STANDARDS" width="100%">
+</p>
+
 # Code Of Conduct
 
 This repo follows an evidence-first contributor standard.

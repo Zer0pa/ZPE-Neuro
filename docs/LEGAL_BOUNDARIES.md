@@ -3,18 +3,18 @@
 </p>
 
 <p>
-  <img src="../.github/assets/readme/section-bars/license-and-ip.svg" alt="LEGAL BOUNDARIES" width="100%">
+  <img src="../.github/assets/readme/section-bars/legal-boundaries.svg" alt="LEGAL BOUNDARIES" width="100%">
 </p>
 
 This note is a repo-surface summary only. `LICENSE` at the repository root is
 the legal source of truth.
 
 Canonical anchors:
-- Repository: `https://github.com/Zer0pa/ZPE-Neuro`
+- Repository: private GitHub repo `https://github.com/Zer0pa/ZPE-Neuro` for authorized readers
 - Contact: `architects@zer0pa.ai`
 
 <p>
-  <img src="../.github/assets/readme/section-bars/quickstart-and-license.svg" alt="PACKAGE SURFACE" width="100%">
+  <img src="../.github/assets/readme/section-bars/packaged-surface.svg" alt="PACKAGED SURFACE" width="100%">
 </p>
 
 Package boundary:
@@ -50,7 +50,7 @@ Historical evidence boundary:
   automatically the current authority surface
 
 <p>
-  <img src="../.github/assets/readme/section-bars/release-notes.svg" alt="RELEASE POSTURE" width="100%">
+  <img src="../.github/assets/readme/section-bars/release-posture.svg" alt="RELEASE POSTURE" width="100%">
 </p>
 
 This is a private staged repo. No public-release legal conclusion is implied by

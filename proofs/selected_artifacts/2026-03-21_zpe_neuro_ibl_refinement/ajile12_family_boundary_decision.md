@@ -11,12 +11,12 @@ AJILE12 is out-of-family for the current Lane 1 spike-oriented codec; the lane s
 - DANDI remains the sovereign positive anchor: the selected-window rerun stayed PASS with 41 codec events and 34 detected peaks.
 - AJILE no longer hides behind a quiet first window: the scan policy promoted an informative slice at sample 20889595 where the first window ranked 9.
 - That informative AJILE slice still produced only 3 codec events at 500 Hz, with 0 detected peaks and final status FAIL.
-- IBL now proves a second extracellular-style waveform path exists locally, but the first bounded slice still failed downstream with 120 detected peaks, so breadth remains open even though the family is better aligned than AJILE.
+- IBL now provides the counted second extracellular-style waveform path in the current packet, with 120 detected peaks and downstream status PASS. Breadth is therefore bounded to the extracellular lane rather than broad neural generality.
 
 ## Source Artifacts
-- DANDI selected-window eval: `proofs/selected_artifacts/2026-03-20_zpe_neuro_window_policy_rerun/public_corpus_eval_dandi_000034_mouse412804_ecephys.json`
-- AJILE selected-window eval: `proofs/selected_artifacts/2026-03-20_zpe_neuro_window_policy_rerun/public_corpus_eval_ajile12_sub01_ses7_ecephys.json`
-- AJILE selection artifact: `proofs/selected_artifacts/2026-03-20_zpe_neuro_window_policy_rerun/public_corpus_window_selection_ajile12_sub01_ses7_ecephys.json`
+- DANDI selected-window eval: `proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_eval_dandi_000034_mouse412804_ecephys.json`
+- AJILE selected-window eval: `proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_eval_ajile12_sub01_ses7_ecephys.json`
+- AJILE selection artifact: `proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_window_selection_ajile12_sub01_ses7_ecephys.json`
 - IBL waveform eval: `proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_ibl_waveform_eval.json`
 
 ## Next-Lane Implication

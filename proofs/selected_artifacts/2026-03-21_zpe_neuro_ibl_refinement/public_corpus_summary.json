@@ -17,8 +17,8 @@
   },
   "family_boundary_artifact": "ajile12_family_boundary_decision.md",
   "family_boundary_decision": "OUT_OF_FAMILY",
-  "generated_at_utc": "2026-03-21T13:10:08.269815+00:00",
-  "next_step": "Move to Phase 4 and make the Lane 1 wedge explicit: a narrower extracellular product with stronger authority, while keeping IBL downstream improvement as optional refinement rather than a hidden closure requirement.",
+  "generated_at_utc": "2026-03-21T23:28:41.442151+00:00",
+  "next_step": "Keep the lane explicit as a bounded extracellular product, preserve the counted IBL pass, and keep blind-clone and commercialization gates separate from the current breadth verdict.",
   "schema_version": "breadth-adjudication-2026-03-21",
   "status": "PASS",
   "targets": [

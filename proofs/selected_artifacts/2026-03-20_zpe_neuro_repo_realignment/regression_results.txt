@@ -1,6 +1,0 @@
-$ /Users/Zer0pa/ZPE/ZPE Neuro/.venv/bin/python -m unittest discover -s tests -q
-----------------------------------------------------------------------
-Ran 3 tests in 0.166s
-
-OK
-exit_code=0

@@ -10,8 +10,10 @@
 2. `docs/ARCHITECTURE.md`
 3. `docs/LEGAL_BOUNDARIES.md`
 4. `proofs/README.md`
-5. `proofs/selected_artifacts/2026-02-21_zpe_neuro_wave1_closure_push_adjudicated/`
-6. Historical external concept-pack references remain outside this repo and are treated as lineage inputs only.
+5. `proofs/manifests/CURRENT_AUTHORITY_PACKET.md`
+6. `proofs/selected_artifacts/2026-03-21_zpe_neuro_release_alignment/`
+7. `proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/`
+8. Historical external concept-pack references remain outside this repo and are treated as lineage inputs only.
 
 ## Install Surfaces
 1. Core import surface: `python -m pip install -e .`
@@ -115,6 +117,10 @@
 | All | `python3.11 tools/run_full_wave1.py --artifact-root artifacts/manual_full_wave1 --max-wave` | full A-E + M/E gates complete | any hard gate fail | fix failed gate + downstream rerun |
 
 ## Closure Push Addendum (2026-02-21)
+Historical note: the sections below are retained as chronology and backlog only.
+They do not redefine the current front-door proof surface, which is governed by
+`CURRENT_AUTHORITY_PACKET.md`.
+
 Objective: close remaining `IMP-COMPUTE` and `INCONCLUSIVE` blockers with executable evidence before adjudication.
 
 ### Predeclared Kilosort4 Blocker Exhaustion Loop (Minimum 3 concrete fixes)

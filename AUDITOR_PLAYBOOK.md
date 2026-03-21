@@ -3,7 +3,7 @@
 </p>
 
 <p>
-  <img src=".github/assets/readme/section-bars/quick-start.svg" alt="AUDITOR PLAYBOOK" width="100%">
+  <img src=".github/assets/readme/section-bars/auditor-playbook.svg" alt="AUDITOR PLAYBOOK" width="100%">
 </p>
 
 This is the shortest honest audit path for the current ZPE-Neuro repo surface.
@@ -12,10 +12,10 @@ It is not a blind-clone verification packet and it is not a substitute for the
 top acceptance gate.
 
 <p>
-  <img src=".github/assets/readme/section-bars/setup-and-verification.svg" alt="SHORTEST AUDIT PATH" width="100%">
+  <img src=".github/assets/readme/section-bars/shortest-audit-path.svg" alt="SHORTEST AUDIT PATH" width="100%">
 </p>
 
-1. Clone the repo:
+1. Clone the repo if you have authorized access:
 
 ```bash
 git clone https://github.com/Zer0pa/ZPE-Neuro.git
@@ -56,7 +56,7 @@ python tools/run_gate_d.py --artifact-root artifacts/audit_gate_d --replay-seeds
 - `PUBLIC_AUDIT_LIMITS.md`
 
 <p>
-  <img src=".github/assets/readme/section-bars/summary.svg" alt="AUTHORITY MATRIX" width="100%">
+  <img src=".github/assets/readme/section-bars/authority-matrix.svg" alt="AUTHORITY MATRIX" width="100%">
 </p>
 
 | Anchor / artifact | Class | What it is for | What it is not for |
@@ -64,7 +64,7 @@ python tools/run_gate_d.py --artifact-root artifacts/audit_gate_d --replay-seeds
 | `proofs/manifests/CURRENT_AUTHORITY_PACKET.md` | current routing anchor | tells you which packet is current and which are historical | direct proof by itself |
 | `proofs/selected_artifacts/2026-03-21_zpe_neuro_release_alignment/` | current technical authority | March 21 package/install/gate alignment surface | blind-clone closure |
 | `proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/` | current lane evidence authority | bounded local extracellular lane posture | public-release verdict |
-| `proofs/selected_artifacts/2026-02-21_zpe_neuro_wave1_closure_push_adjudicated/` | historical authority | contradiction review, lineage, commercial-risk history | current repo authority without the later manifest |
+| `CHANGELOG.md` and `runbooks/` | chronology only | how the current surface was reached | current proof authority |
 
 <p>
   <img src=".github/assets/readme/section-bars/questions.svg" alt="EXPECTED CURRENT TRUTH" width="100%">
@@ -74,7 +74,7 @@ Expected current truth:
 - packaged baseline is clean only for the declared extras that remain in
   `pyproject.toml`
 - current lane scope is extracellular
-- DANDI `000034` is the sovereign positive anchor
+- DANDI `000034` is the strongest positive public anchor
 - bounded local counted breadth is `PASS`
 - blind-clone and commercialization remain `OPEN`
 

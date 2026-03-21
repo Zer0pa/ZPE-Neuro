@@ -2,6 +2,10 @@
   <img src="../.github/assets/readme/zpe-masthead.gif" alt="ZPE-Neuro Masthead" width="100%">
 </p>
 
+<p>
+  <img src="../.github/assets/readme/section-bars/documentation-registry.svg" alt="DOCUMENTATION REGISTRY" width="100%">
+</p>
+
 Navigation index for the ZPE-Neuro documentation surface.
 
 This directory routes readers to the canonical repo docs, release boundaries,
@@ -21,27 +25,27 @@ and current proof authority. It does not replace the root README.
   </thead>
   <tbody>
     <tr>
-      <td><code>README.md</code></td>
+      <td><a href="../README.md"><code>README.md</code></a></td>
       <td>Front door, canonical authority block, quickstart, and routing</td>
     </tr>
     <tr>
-      <td><code>docs/FAQ.md</code></td>
+      <td><a href="FAQ.md"><code>docs/FAQ.md</code></a></td>
       <td>Reader questions about scope, authority, install truth, and open gaps</td>
     </tr>
     <tr>
-      <td><code>AUDITOR_PLAYBOOK.md</code></td>
+      <td><a href="../AUDITOR_PLAYBOOK.md"><code>AUDITOR_PLAYBOOK.md</code></a></td>
       <td>Shortest honest replay path for the current shipped surface</td>
     </tr>
     <tr>
-      <td><code>PUBLIC_AUDIT_LIMITS.md</code></td>
+      <td><a href="../PUBLIC_AUDIT_LIMITS.md"><code>PUBLIC_AUDIT_LIMITS.md</code></a></td>
       <td>What a repo checkout can and cannot prove</td>
     </tr>
     <tr>
-      <td><code>docs/SUPPORT.md</code></td>
+      <td><a href="SUPPORT.md"><code>docs/SUPPORT.md</code></a></td>
       <td>Canonical support routing and response expectations</td>
     </tr>
     <tr>
-      <td><code>SUPPORT.md</code></td>
+      <td><a href="../SUPPORT.md"><code>SUPPORT.md</code></a></td>
       <td>Legacy redirect only</td>
     </tr>
   </tbody>
@@ -50,7 +54,7 @@ and current proof authority. It does not replace the root README.
 ---
 
 <p>
-  <img src="../.github/assets/readme/section-bars/architecture-and-theory.svg" alt="ARCHITECTURE AND BOUNDARIES" width="100%">
+  <img src="../.github/assets/readme/section-bars/architecture-and-boundaries.svg" alt="ARCHITECTURE AND BOUNDARIES" width="100%">
 </p>
 <table width="100%" border="1" bordercolor="#b8c0ca" cellpadding="0" cellspacing="0">
   <thead>
@@ -61,19 +65,19 @@ and current proof authority. It does not replace the root README.
   </thead>
   <tbody>
     <tr>
-      <td><code>docs/ARCHITECTURE.md</code></td>
+      <td><a href="ARCHITECTURE.md"><code>docs/ARCHITECTURE.md</code></a></td>
       <td>Repo/runtime/proof map, packaged surfaces, and known drift points</td>
     </tr>
     <tr>
-      <td><code>docs/LEGAL_BOUNDARIES.md</code></td>
+      <td><a href="LEGAL_BOUNDARIES.md"><code>docs/LEGAL_BOUNDARIES.md</code></a></td>
       <td>License, corpus, comparator, and release-boundary caveats</td>
     </tr>
     <tr>
-      <td><code>proofs/manifests/CURRENT_AUTHORITY_PACKET.md</code></td>
+      <td><a href="../proofs/manifests/CURRENT_AUTHORITY_PACKET.md"><code>proofs/manifests/CURRENT_AUTHORITY_PACKET.md</code></a></td>
       <td>Single current routing manifest for current versus historical proof packets</td>
     </tr>
     <tr>
-      <td><code>proofs/README.md</code></td>
+      <td><a href="../proofs/README.md"><code>proofs/README.md</code></a></td>
       <td>Proof-corpus index and packet classes</td>
     </tr>
   </tbody>
@@ -82,7 +86,7 @@ and current proof authority. It does not replace the root README.
 ---
 
 <p>
-  <img src="../.github/assets/readme/section-bars/release-notes.svg" alt="GOVERNANCE AND RELEASE" width="100%">
+  <img src="../.github/assets/readme/section-bars/governance-and-release.svg" alt="GOVERNANCE AND RELEASE" width="100%">
 </p>
 <table width="100%" border="1" bordercolor="#b8c0ca" cellpadding="0" cellspacing="0">
   <thead>
@@ -93,27 +97,27 @@ and current proof authority. It does not replace the root README.
   </thead>
   <tbody>
     <tr>
-      <td><code>CHANGELOG.md</code></td>
+      <td><a href="../CHANGELOG.md"><code>CHANGELOG.md</code></a></td>
       <td>Repo-surface change log</td>
     </tr>
     <tr>
-      <td><code>GOVERNANCE.md</code></td>
+      <td><a href="../GOVERNANCE.md"><code>GOVERNANCE.md</code></a></td>
       <td>Status semantics and evidence-governance rules</td>
     </tr>
     <tr>
-      <td><code>RELEASING.md</code></td>
+      <td><a href="../RELEASING.md"><code>RELEASING.md</code></a></td>
       <td>Release gate and decision boundary</td>
     </tr>
     <tr>
-      <td><code>ROADMAP.md</code></td>
+      <td><a href="../ROADMAP.md"><code>ROADMAP.md</code></a></td>
       <td>Current lane position and deferred work</td>
     </tr>
     <tr>
-      <td><code>SECURITY.md</code></td>
+      <td><a href="../SECURITY.md"><code>SECURITY.md</code></a></td>
       <td>Security routing and response expectations</td>
     </tr>
     <tr>
-      <td><code>CONTRIBUTING.md</code></td>
+      <td><a href="../CONTRIBUTING.md"><code>CONTRIBUTING.md</code></a></td>
       <td>Contribution rules and evidence discipline</td>
     </tr>
   </tbody>
@@ -122,7 +126,7 @@ and current proof authority. It does not replace the root README.
 ---
 
 <p>
-  <img src="../.github/assets/readme/section-bars/runbooks.svg" alt="RUNBOOKS AND INTERNAL PACKETS" width="100%">
+  <img src="../.github/assets/readme/section-bars/runbooks.svg" alt="RUNBOOKS" width="100%">
 </p>
 <table width="100%" border="1" bordercolor="#b8c0ca" cellpadding="0" cellspacing="0">
   <thead>
@@ -131,14 +135,10 @@ and current proof authority. It does not replace the root README.
       <th align="left">How to read it</th>
     </tr>
   </thead>
-  <tbody>
+<tbody>
     <tr>
-      <td><code>runbooks/</code></td>
-      <td>Operational runbooks and receipts carried with the repo</td>
-    </tr>
-    <tr>
-      <td><code>docs/team_packet/</code></td>
-      <td>Historical internal handoff packet, not current front-door authority</td>
+      <td><a href="../runbooks/README.md"><code>runbooks/README.md</code></a></td>
+      <td>Runbook index, current operational specs, and historical receipts</td>
     </tr>
   </tbody>
 </table>

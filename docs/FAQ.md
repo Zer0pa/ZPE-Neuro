@@ -15,8 +15,8 @@ see `docs/SUPPORT.md` or `AUDITOR_PLAYBOOK.md`.
 
 ZPE-Neuro is a private staged repo for the `zpe_neuro` package, the current
 Neuro proof corpus, and the release-surface documentation for the workstream.
-It is not a public release, not a blind-clone-closed authority pack, and not a
-commercialization-clear product surface.
+It is not a public release, not a clean-clone-closed authority packet, and not
+a commercialization-clear product surface.
 
 ---
 
@@ -30,29 +30,28 @@ current bounded local lane-evidence packet is
 
 ---
 
-**Why is the February 21 closure packet not the front-door authority anymore?**
+**Why are older February and March bridge packets not the front-door authority anymore?**
 
-Because later March 20-21 packets changed the repo state. The February 21
-packet is still valuable lineage, contradiction, and commercialization history,
-but it no longer outranks the later authority manifest and later refinement
-packet.
+Because the live proof surface was collapsed onto the self-contained March 21
+release-alignment and IBL-refinement packets. Older bridge material now lives
+only as chronology in [CHANGELOG.md](../CHANGELOG.md) and
+[runbooks/README.md](../runbooks/README.md).
 
 ---
 
 **What is historical-only?**
 
-The February 21 adjudicated closure packet is historical-only for front-door
-status. The March 20 realignment/window-policy packets and the early March 21
-breadth-adjudication fail packet are historical bridge packets. They explain
-how the current lane shape emerged, but they are not the latest authority
+Older receipts and runbooks in `runbooks/` are chronology only. They explain
+how the current repo state was reached, but they are not the live proof
 surface.
 
 ---
 
 **What is the current lane boundary?**
 
-An extracellular wedge. DANDI `000034` is the sovereign positive anchor.
-AJILE12 is explicitly out-of-family for the current lane. Broader
+It is a narrow extracellular recording lane. DANDI `000034` is the strongest
+positive public anchor in the current repo surface. AJILE12 is explicitly
+out-of-family for the current lane. Broader
 human/intracranial coverage is not claimed here.
 
 ---
@@ -77,9 +76,9 @@ Allen parity currently conflicts with the package floor `numpy>=1.26` through
 
 **Why doesn't the default breadth-adjudication code define the front door?**
 
-Because the default runner still points at a pre-refinement fail bundle. The
-docs therefore route through `CURRENT_AUTHORITY_PACKET.md`, which explicitly
-states which packet is current and which are historical.
+It now points at the current March 21 IBL refinement packet. The docs still
+route through `CURRENT_AUTHORITY_PACKET.md` so readers can see the current
+proof ownership and the chronology boundary before widening any claim.
 
 ---
 
@@ -88,6 +87,8 @@ states which packet is current and which are historical.
 </p>
 
 **How do I install and verify the current shipped surface?**
+
+Use the private GitHub clone path only if you are an authorized repo reader.
 
 ```bash
 git clone https://github.com/Zer0pa/ZPE-Neuro.git
@@ -119,4 +120,3 @@ Do not claim:
 - public release readiness
 - broad neural generalization beyond the extracellular lane
 - commercialization clearance
-

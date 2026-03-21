@@ -3,6 +3,10 @@
 Date: `2026-03-21`
 Repo: `https://github.com/Zer0pa/ZPE-Neuro`
 
+Historical note:
+- superseded by `runbooks/DOCS_FALSIFICATION_REPORT_2026-03-22.md`
+- the breadth-default retarget listed below was resolved on `2026-03-22`
+
 ## Unsupported Claims Removed Or Downgraded
 
 - downgraded the February 21 closure packet from front-door authority to `HISTORICAL_ONLY`
@@ -19,7 +23,7 @@ Repo: `https://github.com/Zer0pa/ZPE-Neuro`
 
 ## Remaining Owner Inputs
 
-- whether the default breadth-adjudication code path should be retargeted from the pre-refinement fail bundle to the later bounded-IBL pass bundle
+- historical note: the breadth-adjudication default retarget listed here was resolved on `2026-03-22`
 - whether the operator-only IBL path should ever be promoted to a shipped extra after dependency and blind-clone closure
 
 ## Live-Vs-Local Drift Found And Resolved

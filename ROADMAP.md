@@ -3,33 +3,34 @@
 </p>
 
 <p>
-  <img src=".github/assets/readme/section-bars/summary.svg" alt="ROADMAP" width="100%">
+  <img src=".github/assets/readme/section-bars/roadmap.svg" alt="ROADMAP" width="100%">
 </p>
 
 This roadmap is status-first and release-boundary-first. It is not a marketing
 document.
 
 <p>
-  <img src=".github/assets/readme/section-bars/lane-status-snapshot.svg" alt="CURRENT POSITION" width="100%">
+  <img src=".github/assets/readme/section-bars/current-position.svg" alt="CURRENT POSITION" width="100%">
 </p>
 
 | Surface | Current position |
 |---|---|
-| Lane scope | Extracellular wedge |
+| Lane scope | Narrow extracellular recording lane |
 | Tier 1 authority anchor | DANDI `000034` |
-| Counted breadth | `PASS` in the current bounded local IBL refinement packet |
+| Counted breadth | `PASS` in the current March 21 IBL refinement packet |
+| Lane evidence posture | `BOUNDED_PASS` for the current extracellular lane only |
 | AJILE12 posture | `OUT_OF_FAMILY` |
-| Technical release alignment | complete for the current packaged surface |
+| Package/install/docs/proof alignment | aligned for the current private staged repo surface |
 | Blind-clone authority pack | `OPEN` |
 | Public release | `OPEN` |
 | Commercialization / Allen closure | `OPEN` |
 
 <p>
-  <img src=".github/assets/readme/section-bars/downstream-action-items.svg" alt="NEXT TECHNICAL WORK" width="100%">
+  <img src=".github/assets/readme/section-bars/next-technical-work.svg" alt="NEXT TECHNICAL WORK" width="100%">
 </p>
 
 Next technical work:
-- blind-clone authority-pack preparation and replay
+ - fresh clean-clone authority-packet preparation and replay
 - explicit release-boundary ratification against the current packaged surface
 - operator-only IBL and Allen path hardening if those surfaces are meant to
   become shipped extras later
@@ -44,5 +45,5 @@ Deferred or parked beyond the current lane:
 - hardware-facing expansion
 - commercialization-safe Allen closure
 
-The repo still carries historical proof packets and a separate outer workspace
-exists. Neither changes the current front-door scope lock.
+The current live proof surface is intentionally small. Historical chronology now
+routes through `CHANGELOG.md` and `runbooks/`, not through live bridge packets.

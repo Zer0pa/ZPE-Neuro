@@ -5,6 +5,11 @@
 <p>
   <img src="../.github/assets/readme/section-bars/where-to-go.svg" alt="WHERE TO GO" width="100%">
 </p>
+
+This repository is private staged. GitHub web pages and issue templates are for
+authorized repo readers only. If you do not have access, use
+`architects@zer0pa.ai`.
+
 <table width="100%" border="1" bordercolor="#b8c0ca" cellpadding="0" cellspacing="0">
   <thead>
     <tr>
@@ -15,19 +20,19 @@
   <tbody>
     <tr>
       <td>Bug report</td>
-      <td>GitHub Issues — use the Bug Report template</td>
+      <td>Private GitHub Issues for authorized readers, otherwise <code>architects@zer0pa.ai</code></td>
     </tr>
     <tr>
       <td>Evidence dispute</td>
-      <td>GitHub Issues — use the Evidence Dispute template</td>
+      <td>Private GitHub Issues for authorized readers, otherwise <code>architects@zer0pa.ai</code></td>
     </tr>
     <tr>
       <td>Feature request</td>
-      <td>GitHub Issues — use the Feature Request template</td>
+      <td>Private GitHub Issues for authorized readers, otherwise <code>architects@zer0pa.ai</code></td>
     </tr>
     <tr>
       <td>General question</td>
-      <td>GitHub Issues — use the Question template</td>
+      <td>Private GitHub Issues for authorized readers, otherwise <code>architects@zer0pa.ai</code></td>
     </tr>
     <tr>
       <td>Security vulnerability</td>
