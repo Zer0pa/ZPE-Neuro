@@ -1,0 +1,1 @@
+[2026-03-21T13:05:40Z] python3.11 tools/run_ibl_bounded_refinement.py --window-samples 6000 --channel-limit 8 --search-chunk-count 9 --channel-step 32 --windows-per-chunk 5 --top-k-peak-probe 12 --top-k-full-eval 3

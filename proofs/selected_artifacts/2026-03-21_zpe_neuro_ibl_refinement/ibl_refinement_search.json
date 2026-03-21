@@ -1,0 +1,1437 @@
+{
+  "best_candidate": {
+    "absolute_start_sample": 21972000,
+    "absolute_stop_sample": 21978000,
+    "active_channels": 8,
+    "artifact": "candidates/ibl_ks014_2019_12_03_probe00_ap__chunk0732_ch128_w12000.json",
+    "channel_limit": 8,
+    "channel_start": 128,
+    "channel_stop": 136,
+    "chunk_index": 732,
+    "chunk_sample_start": 21960000,
+    "chunk_sample_stop": 21990000,
+    "coarse_rank": 1,
+    "codec_metrics": {
+      "compression_ratio": 224.29906542056074,
+      "dropped_overlap_events": 4,
+      "encoded_bits": 3424,
+      "event_count": 110,
+      "raw_bits": 768000,
+      "rmse_uv": 38.15912379977647
+    },
+    "duration_s": 0.2,
+    "evaluation_failure_reasons": [],
+    "evaluation_status": "PASS",
+    "event_count": 110,
+    "max_abs_uv": 438.0,
+    "mean_channel_std_uv": 41.84710693359375,
+    "nwb_roundtrip": {
+      "bit_consistent": true,
+      "nwb_path": "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/ibl_ks014_2019_12_03_probe00_ap__chunk0732_ch128_w12000/gate_c_roundtrip.nwb",
+      "original_sha256": "e0262015d4acece7a02c2cd4c5ff7e2213d7cec9c421aeea68329da9ce5dd353",
+      "roundtrip_sha256": "e0262015d4acece7a02c2cd4c5ff7e2213d7cec9c421aeea68329da9ce5dd353",
+      "status": "PASS"
+    },
+    "p95_abs_uv": 80.0,
+    "peak_count": 120,
+    "peak_probe": {
+      "bandpass_hz": {
+        "freq_max": 6000.0,
+        "freq_min": 300.0
+      },
+      "channel_locations_shape": [
+        8,
+        2
+      ],
+      "peak_count": 120,
+      "peak_detection_method": "by_channel",
+      "peak_error": null,
+      "peak_threshold": 5.0,
+      "snippet_shape": [
+        2048,
+        8
+      ],
+      "status": "PASS"
+    },
+    "rank_key": [
+      110,
+      8,
+      80,
+      438,
+      -12000
+    ],
+    "source": {
+      "absolute_sample_start": 21972000,
+      "absolute_sample_stop": 21978000,
+      "bucket": "ibl-brain-wide-map-public",
+      "cbin_key": "data/cortexlab/Subjects/KS014/2019-12-03/001/raw_ephys_data/probe00/_spikeglx_ephysData_g0_t0.imec0.ap.d4fee543-dc5e-4df8-80f2-aa42b1f252ec.cbin",
+      "ch_key": "data/cortexlab/Subjects/KS014/2019-12-03/001/raw_ephys_data/probe00/_spikeglx_ephysData_g0_t0.imec0.ap.35b7a884-522a-4be5-aab4-c80a05dd34e4.ch",
+      "channel_start": 128,
+      "channel_stop": 136,
+      "channels": 8,
+      "chunk_index": 732,
+      "chunk_local_start": 12000,
+      "chunk_local_stop": 18000,
+      "chunk_sample_start": 21960000,
+      "chunk_sample_stop": 21990000,
+      "chunk_samples": 30000,
+      "duration_s": 0.2,
+      "event_count": 110,
+      "experiment_number": 1,
+      "materialized": {
+        "cbin_bytes": 9105031,
+        "cbin_path": "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/ibl_ks014_2019_12_03_probe00_ap/remote_probe_cache/chunk0732__spikeglx_ephysData_g0_t0.imec0.ap.d4fee543-dc5e-4df8-80f2-aa42b1f252ec.cbin",
+        "ch_bytes": 89408,
+        "ch_path": "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/ibl_ks014_2019_12_03_probe00_ap/remote_probe_cache/chunk0732__spikeglx_ephysData_g0_t0.imec0.ap.35b7a884-522a-4be5-aab4-c80a05dd34e4.ch",
+        "meta_bytes": 17792,
+        "meta_path": "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/ibl_ks014_2019_12_03_probe00_ap/remote_probe_cache/_spikeglx_ephysData_g0_t0.imec0.ap.45c44949-8d6a-4caa-80bf-8c79708cbd1d.meta",
+        "range_header": "bytes=6618610671-6627715701"
+      },
+      "meta_key": "data/cortexlab/Subjects/KS014/2019-12-03/001/raw_ephys_data/probe00/_spikeglx_ephysData_g0_t0.imec0.ap.45c44949-8d6a-4caa-80bf-8c79708cbd1d.meta",
+      "normalization_scale": 1.0,
+      "probe": "probe00",
+      "sample2volts_first": 2.3437501113221515e-06,
+      "sample_limit_loaded": 6000,
+      "sample_limit_requested": 6000,
+      "sampling_rate_hz": 30000.0,
+      "session_date": "2019-12-03",
+      "subject": "KS014",
+      "sync_bits": 16,
+      "target_label": "ibl_ks014_2019_12_03_probe00_ap",
+      "tier": "tier2_breadth",
+      "total_channels": 385,
+      "total_samples": 6000
+    },
+    "spikeinterface": {
+      "bandpass_hz": {
+        "freq_max": 6000.0,
+        "freq_min": 300.0
+      },
+      "channel_locations_shape": [
+        8,
+        2
+      ],
+      "kilosort4_installed": false,
+      "peak_count": 120,
+      "peak_detection_method": "by_channel",
+      "peak_error": null,
+      "serialized_recording_path": "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/ibl_ks014_2019_12_03_probe00_ap__chunk0732_ch128_w12000/spikeinterface_serialized_recording",
+      "snippet_shape": [
+        2048,
+        8
+      ],
+      "sorter_probe_error": null,
+      "sorter_probe_status": "PASS",
+      "status": "PASS",
+      "tridesclous2_available": true
+    },
+    "start_sample": 12000,
+    "target_artifact_root": "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/ibl_ks014_2019_12_03_probe00_ap__chunk0732_ch128_w12000",
+    "window_start": 12000,
+    "window_stop": 18000
+  },
+  "best_eval_artifact": "public_corpus_ibl_waveform_eval.json",
+  "candidate_counts": {
+    "coarse": 585,
+    "evaluated": 3,
+    "peak_probed": 12
+  },
+  "cleanup": {
+    "freed_bytes": 66546026,
+    "removed_files": [
+      "chunk0000__spikeglx_ephysData_g0_t0.imec0.ap.35b7a884-522a-4be5-aab4-c80a05dd34e4.ch",
+      "chunk0000__spikeglx_ephysData_g0_t0.imec0.ap.d4fee543-dc5e-4df8-80f2-aa42b1f252ec.cbin",
+      "chunk0366__spikeglx_ephysData_g0_t0.imec0.ap.35b7a884-522a-4be5-aab4-c80a05dd34e4.ch",
+      "chunk0366__spikeglx_ephysData_g0_t0.imec0.ap.d4fee543-dc5e-4df8-80f2-aa42b1f252ec.cbin",
+      "chunk1097__spikeglx_ephysData_g0_t0.imec0.ap.35b7a884-522a-4be5-aab4-c80a05dd34e4.ch",
+      "chunk1097__spikeglx_ephysData_g0_t0.imec0.ap.d4fee543-dc5e-4df8-80f2-aa42b1f252ec.cbin",
+      "chunk1463__spikeglx_ephysData_g0_t0.imec0.ap.35b7a884-522a-4be5-aab4-c80a05dd34e4.ch",
+      "chunk1463__spikeglx_ephysData_g0_t0.imec0.ap.d4fee543-dc5e-4df8-80f2-aa42b1f252ec.cbin",
+      "chunk1829__spikeglx_ephysData_g0_t0.imec0.ap.35b7a884-522a-4be5-aab4-c80a05dd34e4.ch",
+      "chunk1829__spikeglx_ephysData_g0_t0.imec0.ap.d4fee543-dc5e-4df8-80f2-aa42b1f252ec.cbin",
+      "chunk2194__spikeglx_ephysData_g0_t0.imec0.ap.35b7a884-522a-4be5-aab4-c80a05dd34e4.ch",
+      "chunk2194__spikeglx_ephysData_g0_t0.imec0.ap.d4fee543-dc5e-4df8-80f2-aa42b1f252ec.cbin",
+      "chunk2560__spikeglx_ephysData_g0_t0.imec0.ap.35b7a884-522a-4be5-aab4-c80a05dd34e4.ch",
+      "chunk2560__spikeglx_ephysData_g0_t0.imec0.ap.d4fee543-dc5e-4df8-80f2-aa42b1f252ec.cbin",
+      "chunk2926__spikeglx_ephysData_g0_t0.imec0.ap.35b7a884-522a-4be5-aab4-c80a05dd34e4.ch",
+      "chunk2926__spikeglx_ephysData_g0_t0.imec0.ap.d4fee543-dc5e-4df8-80f2-aa42b1f252ec.cbin"
+    ]
+  },
+  "decision_artifact": "ibl_refinement_decision.md",
+  "evaluated_candidates": [
+    {
+      "absolute_start_sample": 21972000,
+      "absolute_stop_sample": 21978000,
+      "active_channels": 8,
+      "artifact": "candidates/ibl_ks014_2019_12_03_probe00_ap__chunk0732_ch128_w12000.json",
+      "channel_limit": 8,
+      "channel_start": 128,
+      "channel_stop": 136,
+      "chunk_index": 732,
+      "chunk_sample_start": 21960000,
+      "chunk_sample_stop": 21990000,
+      "coarse_rank": 1,
+      "codec_metrics": {
+        "compression_ratio": 224.29906542056074,
+        "dropped_overlap_events": 4,
+        "encoded_bits": 3424,
+        "event_count": 110,
+        "raw_bits": 768000,
+        "rmse_uv": 38.15912379977647
+      },
+      "duration_s": 0.2,
+      "evaluation_failure_reasons": [],
+      "evaluation_status": "PASS",
+      "event_count": 110,
+      "max_abs_uv": 438.0,
+      "mean_channel_std_uv": 41.84710693359375,
+      "nwb_roundtrip": {
+        "bit_consistent": true,
+        "nwb_path": "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/ibl_ks014_2019_12_03_probe00_ap__chunk0732_ch128_w12000/gate_c_roundtrip.nwb",
+        "original_sha256": "e0262015d4acece7a02c2cd4c5ff7e2213d7cec9c421aeea68329da9ce5dd353",
+        "roundtrip_sha256": "e0262015d4acece7a02c2cd4c5ff7e2213d7cec9c421aeea68329da9ce5dd353",
+        "status": "PASS"
+      },
+      "p95_abs_uv": 80.0,
+      "peak_count": 120,
+      "peak_probe": {
+        "bandpass_hz": {
+          "freq_max": 6000.0,
+          "freq_min": 300.0
+        },
+        "channel_locations_shape": [
+          8,
+          2
+        ],
+        "peak_count": 120,
+        "peak_detection_method": "by_channel",
+        "peak_error": null,
+        "peak_threshold": 5.0,
+        "snippet_shape": [
+          2048,
+          8
+        ],
+        "status": "PASS"
+      },
+      "rank_key": [
+        110,
+        8,
+        80,
+        438,
+        -12000
+      ],
+      "source": {
+        "absolute_sample_start": 21972000,
+        "absolute_sample_stop": 21978000,
+        "bucket": "ibl-brain-wide-map-public",
+        "cbin_key": "data/cortexlab/Subjects/KS014/2019-12-03/001/raw_ephys_data/probe00/_spikeglx_ephysData_g0_t0.imec0.ap.d4fee543-dc5e-4df8-80f2-aa42b1f252ec.cbin",
+        "ch_key": "data/cortexlab/Subjects/KS014/2019-12-03/001/raw_ephys_data/probe00/_spikeglx_ephysData_g0_t0.imec0.ap.35b7a884-522a-4be5-aab4-c80a05dd34e4.ch",
+        "channel_start": 128,
+        "channel_stop": 136,
+        "channels": 8,
+        "chunk_index": 732,
+        "chunk_local_start": 12000,
+        "chunk_local_stop": 18000,
+        "chunk_sample_start": 21960000,
+        "chunk_sample_stop": 21990000,
+        "chunk_samples": 30000,
+        "duration_s": 0.2,
+        "event_count": 110,
+        "experiment_number": 1,
+        "materialized": {
+          "cbin_bytes": 9105031,
+          "cbin_path": "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/ibl_ks014_2019_12_03_probe00_ap/remote_probe_cache/chunk0732__spikeglx_ephysData_g0_t0.imec0.ap.d4fee543-dc5e-4df8-80f2-aa42b1f252ec.cbin",
+          "ch_bytes": 89408,
+          "ch_path": "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/ibl_ks014_2019_12_03_probe00_ap/remote_probe_cache/chunk0732__spikeglx_ephysData_g0_t0.imec0.ap.35b7a884-522a-4be5-aab4-c80a05dd34e4.ch",
+          "meta_bytes": 17792,
+          "meta_path": "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/ibl_ks014_2019_12_03_probe00_ap/remote_probe_cache/_spikeglx_ephysData_g0_t0.imec0.ap.45c44949-8d6a-4caa-80bf-8c79708cbd1d.meta",
+          "range_header": "bytes=6618610671-6627715701"
+        },
+        "meta_key": "data/cortexlab/Subjects/KS014/2019-12-03/001/raw_ephys_data/probe00/_spikeglx_ephysData_g0_t0.imec0.ap.45c44949-8d6a-4caa-80bf-8c79708cbd1d.meta",
+        "normalization_scale": 1.0,
+        "probe": "probe00",
+        "sample2volts_first": 2.3437501113221515e-06,
+        "sample_limit_loaded": 6000,
+        "sample_limit_requested": 6000,
+        "sampling_rate_hz": 30000.0,
+        "session_date": "2019-12-03",
+        "subject": "KS014",
+        "sync_bits": 16,
+        "target_label": "ibl_ks014_2019_12_03_probe00_ap",
+        "tier": "tier2_breadth",
+        "total_channels": 385,
+        "total_samples": 6000
+      },
+      "spikeinterface": {
+        "bandpass_hz": {
+          "freq_max": 6000.0,
+          "freq_min": 300.0
+        },
+        "channel_locations_shape": [
+          8,
+          2
+        ],
+        "kilosort4_installed": false,
+        "peak_count": 120,
+        "peak_detection_method": "by_channel",
+        "peak_error": null,
+        "serialized_recording_path": "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/ibl_ks014_2019_12_03_probe00_ap__chunk0732_ch128_w12000/spikeinterface_serialized_recording",
+        "snippet_shape": [
+          2048,
+          8
+        ],
+        "sorter_probe_error": null,
+        "sorter_probe_status": "PASS",
+        "status": "PASS",
+        "tridesclous2_available": true
+      },
+      "start_sample": 12000,
+      "target_artifact_root": "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/ibl_ks014_2019_12_03_probe00_ap__chunk0732_ch128_w12000",
+      "window_start": 12000,
+      "window_stop": 18000
+    },
+    {
+      "absolute_start_sample": 6000,
+      "absolute_stop_sample": 12000,
+      "active_channels": 8,
+      "artifact": "candidates/ibl_ks014_2019_12_03_probe00_ap__chunk0000_ch096_w06000.json",
+      "channel_limit": 8,
+      "channel_start": 96,
+      "channel_stop": 104,
+      "chunk_index": 0,
+      "chunk_sample_start": 0,
+      "chunk_sample_stop": 30000,
+      "coarse_rank": 4,
+      "codec_metrics": {
+        "compression_ratio": 235.51057957681692,
+        "dropped_overlap_events": 4,
+        "encoded_bits": 3261,
+        "event_count": 103,
+        "raw_bits": 768000,
+        "rmse_uv": 43.23149411405224
+      },
+      "duration_s": 0.2,
+      "evaluation_failure_reasons": [],
+      "evaluation_status": "PASS",
+      "event_count": 103,
+      "max_abs_uv": 483.0,
+      "mean_channel_std_uv": 47.68745422363281,
+      "nwb_roundtrip": {
+        "bit_consistent": true,
+        "nwb_path": "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/ibl_ks014_2019_12_03_probe00_ap__chunk0000_ch096_w06000/gate_c_roundtrip.nwb",
+        "original_sha256": "9f3adae41cfe7dc23faba0d68fac206517b16d4748ce4c1695ab5cdec5dc3f17",
+        "roundtrip_sha256": "9f3adae41cfe7dc23faba0d68fac206517b16d4748ce4c1695ab5cdec5dc3f17",
+        "status": "PASS"
+      },
+      "p95_abs_uv": 94.0,
+      "peak_count": 120,
+      "peak_probe": {
+        "bandpass_hz": {
+          "freq_max": 6000.0,
+          "freq_min": 300.0
+        },
+        "channel_locations_shape": [
+          8,
+          2
+        ],
+        "peak_count": 120,
+        "peak_detection_method": "by_channel",
+        "peak_error": null,
+        "peak_threshold": 5.0,
+        "snippet_shape": [
+          2048,
+          8
+        ],
+        "status": "PASS"
+      },
+      "rank_key": [
+        103,
+        8,
+        94,
+        483,
+        -6000
+      ],
+      "source": {
+        "absolute_sample_start": 6000,
+        "absolute_sample_stop": 12000,
+        "bucket": "ibl-brain-wide-map-public",
+        "cbin_key": "data/cortexlab/Subjects/KS014/2019-12-03/001/raw_ephys_data/probe00/_spikeglx_ephysData_g0_t0.imec0.ap.d4fee543-dc5e-4df8-80f2-aa42b1f252ec.cbin",
+        "ch_key": "data/cortexlab/Subjects/KS014/2019-12-03/001/raw_ephys_data/probe00/_spikeglx_ephysData_g0_t0.imec0.ap.35b7a884-522a-4be5-aab4-c80a05dd34e4.ch",
+        "channel_start": 96,
+        "channel_stop": 104,
+        "channels": 8,
+        "chunk_index": 0,
+        "chunk_local_start": 6000,
+        "chunk_local_stop": 12000,
+        "chunk_sample_start": 0,
+        "chunk_sample_stop": 30000,
+        "chunk_samples": 30000,
+        "duration_s": 0.2,
+        "event_count": 103,
+        "experiment_number": 1,
+        "materialized": {
+          "cbin_bytes": 8928919,
+          "cbin_path": "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/ibl_ks014_2019_12_03_probe00_ap/remote_probe_cache/chunk0000__spikeglx_ephysData_g0_t0.imec0.ap.d4fee543-dc5e-4df8-80f2-aa42b1f252ec.cbin",
+          "ch_bytes": 89408,
+          "ch_path": "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/ibl_ks014_2019_12_03_probe00_ap/remote_probe_cache/chunk0000__spikeglx_ephysData_g0_t0.imec0.ap.35b7a884-522a-4be5-aab4-c80a05dd34e4.ch",
+          "meta_bytes": 17792,
+          "meta_path": "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/ibl_ks014_2019_12_03_probe00_ap/remote_probe_cache/_spikeglx_ephysData_g0_t0.imec0.ap.45c44949-8d6a-4caa-80bf-8c79708cbd1d.meta",
+          "range_header": "bytes=0-8928918"
+        },
+        "meta_key": "data/cortexlab/Subjects/KS014/2019-12-03/001/raw_ephys_data/probe00/_spikeglx_ephysData_g0_t0.imec0.ap.45c44949-8d6a-4caa-80bf-8c79708cbd1d.meta",
+        "normalization_scale": 1.0,
+        "probe": "probe00",
+        "sample2volts_first": 2.3437501113221515e-06,
+        "sample_limit_loaded": 6000,
+        "sample_limit_requested": 6000,
+        "sampling_rate_hz": 30000.0,
+        "session_date": "2019-12-03",
+        "subject": "KS014",
+        "sync_bits": 16,
+        "target_label": "ibl_ks014_2019_12_03_probe00_ap",
+        "tier": "tier2_breadth",
+        "total_channels": 385,
+        "total_samples": 6000
+      },
+      "spikeinterface": {
+        "bandpass_hz": {
+          "freq_max": 6000.0,
+          "freq_min": 300.0
+        },
+        "channel_locations_shape": [
+          8,
+          2
+        ],
+        "kilosort4_installed": false,
+        "peak_count": 120,
+        "peak_detection_method": "by_channel",
+        "peak_error": null,
+        "serialized_recording_path": "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/ibl_ks014_2019_12_03_probe00_ap__chunk0000_ch096_w06000/spikeinterface_serialized_recording",
+        "snippet_shape": [
+          2048,
+          8
+        ],
+        "sorter_probe_error": null,
+        "sorter_probe_status": "PASS",
+        "status": "PASS",
+        "tridesclous2_available": true
+      },
+      "start_sample": 6000,
+      "target_artifact_root": "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/ibl_ks014_2019_12_03_probe00_ap__chunk0000_ch096_w06000",
+      "window_start": 6000,
+      "window_stop": 12000
+    },
+    {
+      "absolute_start_sample": 0,
+      "absolute_stop_sample": 6000,
+      "active_channels": 8,
+      "artifact": "candidates/ibl_ks014_2019_12_03_probe00_ap__chunk0000_ch096_w00000.json",
+      "channel_limit": 8,
+      "channel_start": 96,
+      "channel_stop": 104,
+      "chunk_index": 0,
+      "chunk_sample_start": 0,
+      "chunk_sample_stop": 30000,
+      "coarse_rank": 5,
+      "codec_metrics": {
+        "compression_ratio": 237.84453391142767,
+        "dropped_overlap_events": 4,
+        "encoded_bits": 3229,
+        "event_count": 100,
+        "raw_bits": 768000,
+        "rmse_uv": 43.16912718212712
+      },
+      "duration_s": 0.2,
+      "evaluation_failure_reasons": [],
+      "evaluation_status": "PASS",
+      "event_count": 100,
+      "max_abs_uv": 661.0,
+      "mean_channel_std_uv": 48.06362533569336,
+      "nwb_roundtrip": {
+        "bit_consistent": true,
+        "nwb_path": "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/ibl_ks014_2019_12_03_probe00_ap__chunk0000_ch096_w00000/gate_c_roundtrip.nwb",
+        "original_sha256": "cb7c6958984e881d61f92dd4f9e7550fe1135870b7fcc07e7c81ceb5aff1d013",
+        "roundtrip_sha256": "cb7c6958984e881d61f92dd4f9e7550fe1135870b7fcc07e7c81ceb5aff1d013",
+        "status": "PASS"
+      },
+      "p95_abs_uv": 91.0,
+      "peak_count": 114,
+      "peak_probe": {
+        "bandpass_hz": {
+          "freq_max": 6000.0,
+          "freq_min": 300.0
+        },
+        "channel_locations_shape": [
+          8,
+          2
+        ],
+        "peak_count": 114,
+        "peak_detection_method": "by_channel",
+        "peak_error": null,
+        "peak_threshold": 5.0,
+        "snippet_shape": [
+          2048,
+          8
+        ],
+        "status": "PASS"
+      },
+      "rank_key": [
+        100,
+        8,
+        91,
+        661,
+        0
+      ],
+      "source": {
+        "absolute_sample_start": 0,
+        "absolute_sample_stop": 6000,
+        "bucket": "ibl-brain-wide-map-public",
+        "cbin_key": "data/cortexlab/Subjects/KS014/2019-12-03/001/raw_ephys_data/probe00/_spikeglx_ephysData_g0_t0.imec0.ap.d4fee543-dc5e-4df8-80f2-aa42b1f252ec.cbin",
+        "ch_key": "data/cortexlab/Subjects/KS014/2019-12-03/001/raw_ephys_data/probe00/_spikeglx_ephysData_g0_t0.imec0.ap.35b7a884-522a-4be5-aab4-c80a05dd34e4.ch",
+        "channel_start": 96,
+        "channel_stop": 104,
+        "channels": 8,
+        "chunk_index": 0,
+        "chunk_local_start": 0,
+        "chunk_local_stop": 6000,
+        "chunk_sample_start": 0,
+        "chunk_sample_stop": 30000,
+        "chunk_samples": 30000,
+        "duration_s": 0.2,
+        "event_count": 100,
+        "experiment_number": 1,
+        "materialized": {
+          "cbin_bytes": 8928919,
+          "cbin_path": "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/ibl_ks014_2019_12_03_probe00_ap/remote_probe_cache/chunk0000__spikeglx_ephysData_g0_t0.imec0.ap.d4fee543-dc5e-4df8-80f2-aa42b1f252ec.cbin",
+          "ch_bytes": 89408,
+          "ch_path": "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/ibl_ks014_2019_12_03_probe00_ap/remote_probe_cache/chunk0000__spikeglx_ephysData_g0_t0.imec0.ap.35b7a884-522a-4be5-aab4-c80a05dd34e4.ch",
+          "meta_bytes": 17792,
+          "meta_path": "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/ibl_ks014_2019_12_03_probe00_ap/remote_probe_cache/_spikeglx_ephysData_g0_t0.imec0.ap.45c44949-8d6a-4caa-80bf-8c79708cbd1d.meta",
+          "range_header": "bytes=0-8928918"
+        },
+        "meta_key": "data/cortexlab/Subjects/KS014/2019-12-03/001/raw_ephys_data/probe00/_spikeglx_ephysData_g0_t0.imec0.ap.45c44949-8d6a-4caa-80bf-8c79708cbd1d.meta",
+        "normalization_scale": 1.0,
+        "probe": "probe00",
+        "sample2volts_first": 2.3437501113221515e-06,
+        "sample_limit_loaded": 6000,
+        "sample_limit_requested": 6000,
+        "sampling_rate_hz": 30000.0,
+        "session_date": "2019-12-03",
+        "subject": "KS014",
+        "sync_bits": 16,
+        "target_label": "ibl_ks014_2019_12_03_probe00_ap",
+        "tier": "tier2_breadth",
+        "total_channels": 385,
+        "total_samples": 6000
+      },
+      "spikeinterface": {
+        "bandpass_hz": {
+          "freq_max": 6000.0,
+          "freq_min": 300.0
+        },
+        "channel_locations_shape": [
+          8,
+          2
+        ],
+        "kilosort4_installed": false,
+        "peak_count": 114,
+        "peak_detection_method": "by_channel",
+        "peak_error": null,
+        "serialized_recording_path": "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/ibl_ks014_2019_12_03_probe00_ap__chunk0000_ch096_w00000/spikeinterface_serialized_recording",
+        "snippet_shape": [
+          2048,
+          8
+        ],
+        "sorter_probe_error": null,
+        "sorter_probe_status": "PASS",
+        "status": "PASS",
+        "tridesclous2_available": true
+      },
+      "start_sample": 0,
+      "target_artifact_root": "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/ibl_ks014_2019_12_03_probe00_ap__chunk0000_ch096_w00000",
+      "window_start": 0,
+      "window_stop": 6000
+    }
+  ],
+  "generated_at_utc": "2026-03-21T13:09:57.831206+00:00",
+  "peak_probe_candidates": [
+    {
+      "absolute_start_sample": 21972000,
+      "absolute_stop_sample": 21978000,
+      "active_channels": 8,
+      "channel_limit": 8,
+      "channel_start": 128,
+      "channel_stop": 136,
+      "chunk_index": 732,
+      "chunk_sample_start": 21960000,
+      "chunk_sample_stop": 21990000,
+      "coarse_rank": 1,
+      "duration_s": 0.2,
+      "event_count": 110,
+      "max_abs_uv": 438.0,
+      "mean_channel_std_uv": 41.84710693359375,
+      "p95_abs_uv": 80.0,
+      "peak_count": 120,
+      "peak_probe": {
+        "bandpass_hz": {
+          "freq_max": 6000.0,
+          "freq_min": 300.0
+        },
+        "channel_locations_shape": [
+          8,
+          2
+        ],
+        "peak_count": 120,
+        "peak_detection_method": "by_channel",
+        "peak_error": null,
+        "peak_threshold": 5.0,
+        "snippet_shape": [
+          2048,
+          8
+        ],
+        "status": "PASS"
+      },
+      "rank_key": [
+        110,
+        8,
+        80,
+        438,
+        -12000
+      ],
+      "start_sample": 12000,
+      "window_start": 12000,
+      "window_stop": 18000
+    },
+    {
+      "absolute_start_sample": 6000,
+      "absolute_stop_sample": 12000,
+      "active_channels": 8,
+      "channel_limit": 8,
+      "channel_start": 96,
+      "channel_stop": 104,
+      "chunk_index": 0,
+      "chunk_sample_start": 0,
+      "chunk_sample_stop": 30000,
+      "coarse_rank": 4,
+      "duration_s": 0.2,
+      "event_count": 103,
+      "max_abs_uv": 483.0,
+      "mean_channel_std_uv": 47.68745422363281,
+      "p95_abs_uv": 94.0,
+      "peak_count": 120,
+      "peak_probe": {
+        "bandpass_hz": {
+          "freq_max": 6000.0,
+          "freq_min": 300.0
+        },
+        "channel_locations_shape": [
+          8,
+          2
+        ],
+        "peak_count": 120,
+        "peak_detection_method": "by_channel",
+        "peak_error": null,
+        "peak_threshold": 5.0,
+        "snippet_shape": [
+          2048,
+          8
+        ],
+        "status": "PASS"
+      },
+      "rank_key": [
+        103,
+        8,
+        94,
+        483,
+        -6000
+      ],
+      "start_sample": 6000,
+      "window_start": 6000,
+      "window_stop": 12000
+    },
+    {
+      "absolute_start_sample": 0,
+      "absolute_stop_sample": 6000,
+      "active_channels": 8,
+      "channel_limit": 8,
+      "channel_start": 96,
+      "channel_stop": 104,
+      "chunk_index": 0,
+      "chunk_sample_start": 0,
+      "chunk_sample_stop": 30000,
+      "coarse_rank": 5,
+      "duration_s": 0.2,
+      "event_count": 100,
+      "max_abs_uv": 661.0,
+      "mean_channel_std_uv": 48.06362533569336,
+      "p95_abs_uv": 91.0,
+      "peak_count": 114,
+      "peak_probe": {
+        "bandpass_hz": {
+          "freq_max": 6000.0,
+          "freq_min": 300.0
+        },
+        "channel_locations_shape": [
+          8,
+          2
+        ],
+        "peak_count": 114,
+        "peak_detection_method": "by_channel",
+        "peak_error": null,
+        "peak_threshold": 5.0,
+        "snippet_shape": [
+          2048,
+          8
+        ],
+        "status": "PASS"
+      },
+      "rank_key": [
+        100,
+        8,
+        91,
+        661,
+        0
+      ],
+      "start_sample": 0,
+      "window_start": 0,
+      "window_stop": 6000
+    },
+    {
+      "absolute_start_sample": 12000,
+      "absolute_stop_sample": 18000,
+      "active_channels": 8,
+      "channel_limit": 8,
+      "channel_start": 96,
+      "channel_stop": 104,
+      "chunk_index": 0,
+      "chunk_sample_start": 0,
+      "chunk_sample_stop": 30000,
+      "coarse_rank": 7,
+      "duration_s": 0.2,
+      "event_count": 92,
+      "max_abs_uv": 511.0,
+      "mean_channel_std_uv": 45.30470657348633,
+      "p95_abs_uv": 87.0,
+      "peak_count": 110,
+      "peak_probe": {
+        "bandpass_hz": {
+          "freq_max": 6000.0,
+          "freq_min": 300.0
+        },
+        "channel_locations_shape": [
+          8,
+          2
+        ],
+        "peak_count": 110,
+        "peak_detection_method": "by_channel",
+        "peak_error": null,
+        "peak_threshold": 5.0,
+        "snippet_shape": [
+          2048,
+          8
+        ],
+        "status": "PASS"
+      },
+      "rank_key": [
+        92,
+        8,
+        87,
+        511,
+        -12000
+      ],
+      "start_sample": 12000,
+      "window_start": 12000,
+      "window_stop": 18000
+    },
+    {
+      "absolute_start_sample": 10992000,
+      "absolute_stop_sample": 10998000,
+      "active_channels": 8,
+      "channel_limit": 8,
+      "channel_start": 128,
+      "channel_stop": 136,
+      "chunk_index": 366,
+      "chunk_sample_start": 10980000,
+      "chunk_sample_stop": 11010000,
+      "coarse_rank": 2,
+      "duration_s": 0.2,
+      "event_count": 108,
+      "max_abs_uv": 488.0,
+      "mean_channel_std_uv": 38.02656936645508,
+      "p95_abs_uv": 73.0,
+      "peak_count": 108,
+      "peak_probe": {
+        "bandpass_hz": {
+          "freq_max": 6000.0,
+          "freq_min": 300.0
+        },
+        "channel_locations_shape": [
+          8,
+          2
+        ],
+        "peak_count": 108,
+        "peak_detection_method": "by_channel",
+        "peak_error": null,
+        "peak_threshold": 5.0,
+        "snippet_shape": [
+          2048,
+          8
+        ],
+        "status": "PASS"
+      },
+      "rank_key": [
+        108,
+        8,
+        73,
+        488,
+        -12000
+      ],
+      "start_sample": 12000,
+      "window_start": 12000,
+      "window_stop": 18000
+    },
+    {
+      "absolute_start_sample": 24000,
+      "absolute_stop_sample": 30000,
+      "active_channels": 8,
+      "channel_limit": 8,
+      "channel_start": 96,
+      "channel_stop": 104,
+      "chunk_index": 0,
+      "chunk_sample_start": 0,
+      "chunk_sample_stop": 30000,
+      "coarse_rank": 9,
+      "duration_s": 0.2,
+      "event_count": 91,
+      "max_abs_uv": 532.0,
+      "mean_channel_std_uv": 44.011474609375,
+      "p95_abs_uv": 84.0,
+      "peak_count": 101,
+      "peak_probe": {
+        "bandpass_hz": {
+          "freq_max": 6000.0,
+          "freq_min": 300.0
+        },
+        "channel_locations_shape": [
+          8,
+          2
+        ],
+        "peak_count": 101,
+        "peak_detection_method": "by_channel",
+        "peak_error": null,
+        "peak_threshold": 5.0,
+        "snippet_shape": [
+          2048,
+          8
+        ],
+        "status": "PASS"
+      },
+      "rank_key": [
+        91,
+        8,
+        84,
+        532,
+        -24000
+      ],
+      "start_sample": 24000,
+      "window_start": 24000,
+      "window_stop": 30000
+    },
+    {
+      "absolute_start_sample": 87784292,
+      "absolute_stop_sample": 87790292,
+      "active_channels": 8,
+      "channel_limit": 8,
+      "channel_start": 96,
+      "channel_stop": 104,
+      "chunk_index": 2926,
+      "chunk_sample_start": 87780000,
+      "chunk_sample_stop": 87791722,
+      "coarse_rank": 10,
+      "duration_s": 0.2,
+      "event_count": 90,
+      "max_abs_uv": 621.0,
+      "mean_channel_std_uv": 46.635841369628906,
+      "p95_abs_uv": 89.0,
+      "peak_count": 100,
+      "peak_probe": {
+        "bandpass_hz": {
+          "freq_max": 6000.0,
+          "freq_min": 300.0
+        },
+        "channel_locations_shape": [
+          8,
+          2
+        ],
+        "peak_count": 100,
+        "peak_detection_method": "by_channel",
+        "peak_error": null,
+        "peak_threshold": 5.0,
+        "snippet_shape": [
+          2048,
+          8
+        ],
+        "status": "PASS"
+      },
+      "rank_key": [
+        90,
+        8,
+        89,
+        621,
+        -4292
+      ],
+      "start_sample": 4292,
+      "window_start": 4292,
+      "window_stop": 10292
+    },
+    {
+      "absolute_start_sample": 10980000,
+      "absolute_stop_sample": 10986000,
+      "active_channels": 8,
+      "channel_limit": 8,
+      "channel_start": 96,
+      "channel_stop": 104,
+      "chunk_index": 366,
+      "chunk_sample_start": 10980000,
+      "chunk_sample_stop": 11010000,
+      "coarse_rank": 8,
+      "duration_s": 0.2,
+      "event_count": 91,
+      "max_abs_uv": 480.0,
+      "mean_channel_std_uv": 45.63514709472656,
+      "p95_abs_uv": 89.0,
+      "peak_count": 99,
+      "peak_probe": {
+        "bandpass_hz": {
+          "freq_max": 6000.0,
+          "freq_min": 300.0
+        },
+        "channel_locations_shape": [
+          8,
+          2
+        ],
+        "peak_count": 99,
+        "peak_detection_method": "by_channel",
+        "peak_error": null,
+        "peak_threshold": 5.0,
+        "snippet_shape": [
+          2048,
+          8
+        ],
+        "status": "PASS"
+      },
+      "rank_key": [
+        91,
+        8,
+        89,
+        480,
+        0
+      ],
+      "start_sample": 0,
+      "window_start": 0,
+      "window_stop": 6000
+    },
+    {
+      "absolute_start_sample": 76818000,
+      "absolute_stop_sample": 76824000,
+      "active_channels": 8,
+      "channel_limit": 8,
+      "channel_start": 128,
+      "channel_stop": 136,
+      "chunk_index": 2560,
+      "chunk_sample_start": 76800000,
+      "chunk_sample_stop": 76830000,
+      "coarse_rank": 6,
+      "duration_s": 0.2,
+      "event_count": 95,
+      "max_abs_uv": 347.0,
+      "mean_channel_std_uv": 35.021732330322266,
+      "p95_abs_uv": 68.0,
+      "peak_count": 88,
+      "peak_probe": {
+        "bandpass_hz": {
+          "freq_max": 6000.0,
+          "freq_min": 300.0
+        },
+        "channel_locations_shape": [
+          8,
+          2
+        ],
+        "peak_count": 88,
+        "peak_detection_method": "by_channel",
+        "peak_error": null,
+        "peak_threshold": 5.0,
+        "snippet_shape": [
+          2048,
+          8
+        ],
+        "status": "PASS"
+      },
+      "rank_key": [
+        95,
+        8,
+        68,
+        347,
+        -18000
+      ],
+      "start_sample": 18000,
+      "window_start": 18000,
+      "window_stop": 24000
+    },
+    {
+      "absolute_start_sample": 21960000,
+      "absolute_stop_sample": 21966000,
+      "active_channels": 8,
+      "channel_limit": 8,
+      "channel_start": 96,
+      "channel_stop": 104,
+      "chunk_index": 732,
+      "chunk_sample_start": 21960000,
+      "chunk_sample_stop": 21990000,
+      "coarse_rank": 12,
+      "duration_s": 0.2,
+      "event_count": 89,
+      "max_abs_uv": 539.0,
+      "mean_channel_std_uv": 49.618526458740234,
+      "p95_abs_uv": 96.0,
+      "peak_count": 88,
+      "peak_probe": {
+        "bandpass_hz": {
+          "freq_max": 6000.0,
+          "freq_min": 300.0
+        },
+        "channel_locations_shape": [
+          8,
+          2
+        ],
+        "peak_count": 88,
+        "peak_detection_method": "by_channel",
+        "peak_error": null,
+        "peak_threshold": 5.0,
+        "snippet_shape": [
+          2048,
+          8
+        ],
+        "status": "PASS"
+      },
+      "rank_key": [
+        89,
+        8,
+        96,
+        539,
+        0
+      ],
+      "start_sample": 0,
+      "window_start": 0,
+      "window_stop": 6000
+    },
+    {
+      "absolute_start_sample": 32910000,
+      "absolute_stop_sample": 32916000,
+      "active_channels": 8,
+      "channel_limit": 8,
+      "channel_start": 128,
+      "channel_stop": 136,
+      "chunk_index": 1097,
+      "chunk_sample_start": 32910000,
+      "chunk_sample_stop": 32940000,
+      "coarse_rank": 11,
+      "duration_s": 0.2,
+      "event_count": 90,
+      "max_abs_uv": 464.0,
+      "mean_channel_std_uv": 36.89540481567383,
+      "p95_abs_uv": 68.0,
+      "peak_count": 84,
+      "peak_probe": {
+        "bandpass_hz": {
+          "freq_max": 6000.0,
+          "freq_min": 300.0
+        },
+        "channel_locations_shape": [
+          8,
+          2
+        ],
+        "peak_count": 84,
+        "peak_detection_method": "by_channel",
+        "peak_error": null,
+        "peak_threshold": 5.0,
+        "snippet_shape": [
+          2048,
+          8
+        ],
+        "status": "PASS"
+      },
+      "rank_key": [
+        90,
+        8,
+        68,
+        464,
+        0
+      ],
+      "start_sample": 0,
+      "window_start": 0,
+      "window_stop": 6000
+    },
+    {
+      "absolute_start_sample": 21966000,
+      "absolute_stop_sample": 21972000,
+      "active_channels": 8,
+      "channel_limit": 8,
+      "channel_start": 32,
+      "channel_stop": 40,
+      "chunk_index": 732,
+      "chunk_sample_start": 21960000,
+      "chunk_sample_stop": 21990000,
+      "coarse_rank": 3,
+      "duration_s": 0.2,
+      "event_count": 108,
+      "max_abs_uv": 354.0,
+      "mean_channel_std_uv": 19.72370147705078,
+      "p95_abs_uv": 40.0,
+      "peak_count": 38,
+      "peak_probe": {
+        "bandpass_hz": {
+          "freq_max": 6000.0,
+          "freq_min": 300.0
+        },
+        "channel_locations_shape": [
+          8,
+          2
+        ],
+        "peak_count": 38,
+        "peak_detection_method": "by_channel",
+        "peak_error": null,
+        "peak_threshold": 5.0,
+        "snippet_shape": [
+          2048,
+          8
+        ],
+        "status": "PASS"
+      },
+      "rank_key": [
+        108,
+        8,
+        40,
+        354,
+        -6000
+      ],
+      "start_sample": 6000,
+      "window_start": 6000,
+      "window_stop": 12000
+    }
+  ],
+  "schema_version": "ibl-refinement-search-2026-03-21",
+  "search_config": {
+    "channel_limit": 8,
+    "channel_starts": [
+      0,
+      32,
+      64,
+      96,
+      128,
+      160,
+      192,
+      224,
+      256,
+      288,
+      320,
+      352,
+      377
+    ],
+    "channel_step": 32,
+    "chunk_indices": [
+      0,
+      366,
+      732,
+      1097,
+      1463,
+      1829,
+      2194,
+      2560,
+      2926
+    ],
+    "search_chunk_count": 9,
+    "top_k_full_eval": 3,
+    "top_k_peak_probe": 12,
+    "window_samples": 6000,
+    "windows_per_chunk": 5
+  },
+  "status": "PASS",
+  "target_label": "ibl_ks014_2019_12_03_probe00_ap",
+  "target_manifest": {
+    "chunk_count": 2927,
+    "n_channels": 385
+  },
+  "top_coarse_candidates": [
+    {
+      "absolute_start_sample": 21972000,
+      "absolute_stop_sample": 21978000,
+      "active_channels": 8,
+      "channel_limit": 8,
+      "channel_start": 128,
+      "channel_stop": 136,
+      "chunk_index": 732,
+      "chunk_sample_start": 21960000,
+      "chunk_sample_stop": 21990000,
+      "coarse_rank": 1,
+      "duration_s": 0.2,
+      "event_count": 110,
+      "max_abs_uv": 438.0,
+      "mean_channel_std_uv": 41.84710693359375,
+      "p95_abs_uv": 80.0,
+      "rank_key": [
+        110,
+        8,
+        80,
+        438,
+        -12000
+      ],
+      "start_sample": 12000,
+      "window_start": 12000,
+      "window_stop": 18000
+    },
+    {
+      "absolute_start_sample": 10992000,
+      "absolute_stop_sample": 10998000,
+      "active_channels": 8,
+      "channel_limit": 8,
+      "channel_start": 128,
+      "channel_stop": 136,
+      "chunk_index": 366,
+      "chunk_sample_start": 10980000,
+      "chunk_sample_stop": 11010000,
+      "coarse_rank": 2,
+      "duration_s": 0.2,
+      "event_count": 108,
+      "max_abs_uv": 488.0,
+      "mean_channel_std_uv": 38.02656936645508,
+      "p95_abs_uv": 73.0,
+      "rank_key": [
+        108,
+        8,
+        73,
+        488,
+        -12000
+      ],
+      "start_sample": 12000,
+      "window_start": 12000,
+      "window_stop": 18000
+    },
+    {
+      "absolute_start_sample": 21966000,
+      "absolute_stop_sample": 21972000,
+      "active_channels": 8,
+      "channel_limit": 8,
+      "channel_start": 32,
+      "channel_stop": 40,
+      "chunk_index": 732,
+      "chunk_sample_start": 21960000,
+      "chunk_sample_stop": 21990000,
+      "coarse_rank": 3,
+      "duration_s": 0.2,
+      "event_count": 108,
+      "max_abs_uv": 354.0,
+      "mean_channel_std_uv": 19.72370147705078,
+      "p95_abs_uv": 40.0,
+      "rank_key": [
+        108,
+        8,
+        40,
+        354,
+        -6000
+      ],
+      "start_sample": 6000,
+      "window_start": 6000,
+      "window_stop": 12000
+    },
+    {
+      "absolute_start_sample": 6000,
+      "absolute_stop_sample": 12000,
+      "active_channels": 8,
+      "channel_limit": 8,
+      "channel_start": 96,
+      "channel_stop": 104,
+      "chunk_index": 0,
+      "chunk_sample_start": 0,
+      "chunk_sample_stop": 30000,
+      "coarse_rank": 4,
+      "duration_s": 0.2,
+      "event_count": 103,
+      "max_abs_uv": 483.0,
+      "mean_channel_std_uv": 47.68745422363281,
+      "p95_abs_uv": 94.0,
+      "rank_key": [
+        103,
+        8,
+        94,
+        483,
+        -6000
+      ],
+      "start_sample": 6000,
+      "window_start": 6000,
+      "window_stop": 12000
+    },
+    {
+      "absolute_start_sample": 0,
+      "absolute_stop_sample": 6000,
+      "active_channels": 8,
+      "channel_limit": 8,
+      "channel_start": 96,
+      "channel_stop": 104,
+      "chunk_index": 0,
+      "chunk_sample_start": 0,
+      "chunk_sample_stop": 30000,
+      "coarse_rank": 5,
+      "duration_s": 0.2,
+      "event_count": 100,
+      "max_abs_uv": 661.0,
+      "mean_channel_std_uv": 48.06362533569336,
+      "p95_abs_uv": 91.0,
+      "rank_key": [
+        100,
+        8,
+        91,
+        661,
+        0
+      ],
+      "start_sample": 0,
+      "window_start": 0,
+      "window_stop": 6000
+    },
+    {
+      "absolute_start_sample": 76818000,
+      "absolute_stop_sample": 76824000,
+      "active_channels": 8,
+      "channel_limit": 8,
+      "channel_start": 128,
+      "channel_stop": 136,
+      "chunk_index": 2560,
+      "chunk_sample_start": 76800000,
+      "chunk_sample_stop": 76830000,
+      "coarse_rank": 6,
+      "duration_s": 0.2,
+      "event_count": 95,
+      "max_abs_uv": 347.0,
+      "mean_channel_std_uv": 35.021732330322266,
+      "p95_abs_uv": 68.0,
+      "rank_key": [
+        95,
+        8,
+        68,
+        347,
+        -18000
+      ],
+      "start_sample": 18000,
+      "window_start": 18000,
+      "window_stop": 24000
+    },
+    {
+      "absolute_start_sample": 12000,
+      "absolute_stop_sample": 18000,
+      "active_channels": 8,
+      "channel_limit": 8,
+      "channel_start": 96,
+      "channel_stop": 104,
+      "chunk_index": 0,
+      "chunk_sample_start": 0,
+      "chunk_sample_stop": 30000,
+      "coarse_rank": 7,
+      "duration_s": 0.2,
+      "event_count": 92,
+      "max_abs_uv": 511.0,
+      "mean_channel_std_uv": 45.30470657348633,
+      "p95_abs_uv": 87.0,
+      "rank_key": [
+        92,
+        8,
+        87,
+        511,
+        -12000
+      ],
+      "start_sample": 12000,
+      "window_start": 12000,
+      "window_stop": 18000
+    },
+    {
+      "absolute_start_sample": 10980000,
+      "absolute_stop_sample": 10986000,
+      "active_channels": 8,
+      "channel_limit": 8,
+      "channel_start": 96,
+      "channel_stop": 104,
+      "chunk_index": 366,
+      "chunk_sample_start": 10980000,
+      "chunk_sample_stop": 11010000,
+      "coarse_rank": 8,
+      "duration_s": 0.2,
+      "event_count": 91,
+      "max_abs_uv": 480.0,
+      "mean_channel_std_uv": 45.63514709472656,
+      "p95_abs_uv": 89.0,
+      "rank_key": [
+        91,
+        8,
+        89,
+        480,
+        0
+      ],
+      "start_sample": 0,
+      "window_start": 0,
+      "window_stop": 6000
+    },
+    {
+      "absolute_start_sample": 24000,
+      "absolute_stop_sample": 30000,
+      "active_channels": 8,
+      "channel_limit": 8,
+      "channel_start": 96,
+      "channel_stop": 104,
+      "chunk_index": 0,
+      "chunk_sample_start": 0,
+      "chunk_sample_stop": 30000,
+      "coarse_rank": 9,
+      "duration_s": 0.2,
+      "event_count": 91,
+      "max_abs_uv": 532.0,
+      "mean_channel_std_uv": 44.011474609375,
+      "p95_abs_uv": 84.0,
+      "rank_key": [
+        91,
+        8,
+        84,
+        532,
+        -24000
+      ],
+      "start_sample": 24000,
+      "window_start": 24000,
+      "window_stop": 30000
+    },
+    {
+      "absolute_start_sample": 87784292,
+      "absolute_stop_sample": 87790292,
+      "active_channels": 8,
+      "channel_limit": 8,
+      "channel_start": 96,
+      "channel_stop": 104,
+      "chunk_index": 2926,
+      "chunk_sample_start": 87780000,
+      "chunk_sample_stop": 87791722,
+      "coarse_rank": 10,
+      "duration_s": 0.2,
+      "event_count": 90,
+      "max_abs_uv": 621.0,
+      "mean_channel_std_uv": 46.635841369628906,
+      "p95_abs_uv": 89.0,
+      "rank_key": [
+        90,
+        8,
+        89,
+        621,
+        -4292
+      ],
+      "start_sample": 4292,
+      "window_start": 4292,
+      "window_stop": 10292
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "channel_limit": 8,
+  "generated_at_utc": "2026-03-20T15:34:27.047098+00:00",
+  "ibl_probe_artifact": "public_corpus_ibl_probe.json",
+  "ibl_probe_status": "PASS",
+  "sample_limit": 6000,
+  "schema_version": "wave1-2026-03-20",
+  "status": "FAIL",
+  "targets": [
+    {
+      "artifact": "public_corpus_eval_dandi_000034_mouse412804_ecephys.json",
+      "status": "PASS",
+      "target_label": "dandi_000034_mouse412804_ecephys",
+      "tier": "tier1_authority"
+    },
+    {
+      "artifact": "public_corpus_eval_ajile12_sub01_ses7_ecephys.json",
+      "status": "FAIL",
+      "target_label": "ajile12_sub01_ses7_ecephys",
+      "tier": "tier2_breadth"
+    }
+  ]
+}

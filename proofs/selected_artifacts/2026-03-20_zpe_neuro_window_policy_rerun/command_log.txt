@@ -1,0 +1,2 @@
+[2026-03-20T17:44:55Z] python3.11 tools/run_public_corpus_eval.py --sample-limit 6000 --channel-limit 8 --window-policy scan --candidate-windows 9
+[2026-03-20T17:46:34Z] python3.11 tools/run_public_corpus_eval.py --sample-limit 6000 --channel-limit 8 --window-policy scan --candidate-windows 9

@@ -1,0 +1,1 @@
+{"algorithm": "zlib", "chunk_bounds": [0, 30000], "chunk_offsets": [0, 8928919], "chunk_order": "F", "comp_level": -1, "do_spatial_diff": false, "do_time_diff": true, "dtype": "int16", "n_channels": 385, "sample_rate": 30000.0, "version": "1.0", "shape": [30000, 385], "sha1_compressed": null, "sha1_uncompressed": null, "chopped": true}

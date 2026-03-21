@@ -1,0 +1,100 @@
+{
+  "codec_metrics": {
+    "compression_ratio": 237.84453391142767,
+    "dropped_overlap_events": 4,
+    "encoded_bits": 3229,
+    "event_count": 100,
+    "raw_bits": 768000,
+    "rmse_uv": 43.16912718212712
+  },
+  "evaluation_failure_reasons": [],
+  "evaluation_status": "PASS",
+  "generated_at_utc": "2026-03-21T13:09:57.742396+00:00",
+  "nwb_roundtrip": {
+    "bit_consistent": true,
+    "nwb_path": "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/ibl_ks014_2019_12_03_probe00_ap__chunk0000_ch096_w00000/gate_c_roundtrip.nwb",
+    "original_sha256": "cb7c6958984e881d61f92dd4f9e7550fe1135870b7fcc07e7c81ceb5aff1d013",
+    "roundtrip_sha256": "cb7c6958984e881d61f92dd4f9e7550fe1135870b7fcc07e7c81ceb5aff1d013",
+    "status": "PASS"
+  },
+  "resource_notes": {
+    "local_feasibility": "Bounded IBL refinement reused the public S3 raw-byte path and searched chunk, channel, and representative window choice without changing the downstream insertion contract."
+  },
+  "schema_version": "ibl-refinement-2026-03-21",
+  "search_candidate": {
+    "absolute_start_sample": 0,
+    "channel_start": 96,
+    "channel_stop": 104,
+    "chunk_index": 0,
+    "coarse_rank": 5,
+    "peak_probe_rank": 3,
+    "window_start": 0
+  },
+  "source": {
+    "absolute_sample_start": 0,
+    "absolute_sample_stop": 6000,
+    "bucket": "ibl-brain-wide-map-public",
+    "cbin_key": "data/cortexlab/Subjects/KS014/2019-12-03/001/raw_ephys_data/probe00/_spikeglx_ephysData_g0_t0.imec0.ap.d4fee543-dc5e-4df8-80f2-aa42b1f252ec.cbin",
+    "ch_key": "data/cortexlab/Subjects/KS014/2019-12-03/001/raw_ephys_data/probe00/_spikeglx_ephysData_g0_t0.imec0.ap.35b7a884-522a-4be5-aab4-c80a05dd34e4.ch",
+    "channel_start": 96,
+    "channel_stop": 104,
+    "channels": 8,
+    "chunk_index": 0,
+    "chunk_local_start": 0,
+    "chunk_local_stop": 6000,
+    "chunk_sample_start": 0,
+    "chunk_sample_stop": 30000,
+    "chunk_samples": 30000,
+    "duration_s": 0.2,
+    "event_count": 100,
+    "experiment_number": 1,
+    "materialized": {
+      "cbin_bytes": 8928919,
+      "cbin_path": "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/ibl_ks014_2019_12_03_probe00_ap/remote_probe_cache/chunk0000__spikeglx_ephysData_g0_t0.imec0.ap.d4fee543-dc5e-4df8-80f2-aa42b1f252ec.cbin",
+      "ch_bytes": 89408,
+      "ch_path": "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/ibl_ks014_2019_12_03_probe00_ap/remote_probe_cache/chunk0000__spikeglx_ephysData_g0_t0.imec0.ap.35b7a884-522a-4be5-aab4-c80a05dd34e4.ch",
+      "meta_bytes": 17792,
+      "meta_path": "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/ibl_ks014_2019_12_03_probe00_ap/remote_probe_cache/_spikeglx_ephysData_g0_t0.imec0.ap.45c44949-8d6a-4caa-80bf-8c79708cbd1d.meta",
+      "range_header": "bytes=0-8928918"
+    },
+    "meta_key": "data/cortexlab/Subjects/KS014/2019-12-03/001/raw_ephys_data/probe00/_spikeglx_ephysData_g0_t0.imec0.ap.45c44949-8d6a-4caa-80bf-8c79708cbd1d.meta",
+    "normalization_scale": 1.0,
+    "probe": "probe00",
+    "sample2volts_first": 2.3437501113221515e-06,
+    "sample_limit_loaded": 6000,
+    "sample_limit_requested": 6000,
+    "sampling_rate_hz": 30000.0,
+    "session_date": "2019-12-03",
+    "subject": "KS014",
+    "sync_bits": 16,
+    "target_label": "ibl_ks014_2019_12_03_probe00_ap",
+    "tier": "tier2_breadth",
+    "total_channels": 385,
+    "total_samples": 6000
+  },
+  "spikeinterface": {
+    "bandpass_hz": {
+      "freq_max": 6000.0,
+      "freq_min": 300.0
+    },
+    "channel_locations_shape": [
+      8,
+      2
+    ],
+    "kilosort4_installed": false,
+    "peak_count": 114,
+    "peak_detection_method": "by_channel",
+    "peak_error": null,
+    "serialized_recording_path": "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/ibl_ks014_2019_12_03_probe00_ap__chunk0000_ch096_w00000/spikeinterface_serialized_recording",
+    "snippet_shape": [
+      2048,
+      8
+    ],
+    "sorter_probe_error": null,
+    "sorter_probe_status": "PASS",
+    "status": "PASS",
+    "tridesclous2_available": true
+  },
+  "status": "PASS",
+  "waveform_slice_executed": true
+}

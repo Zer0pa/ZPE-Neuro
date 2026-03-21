@@ -1,0 +1,50 @@
+{
+  "claim_id": "NEU-C007",
+  "evidence": [
+    "neuro_spikeinterface_e2e.json"
+  ],
+  "gate": "C",
+  "generated_at_utc": "2026-03-20T15:32:51.994070+00:00",
+  "measurements": {
+    "bandpass_hz": {
+      "freq_max": 6000.0,
+      "freq_min": 300.0
+    },
+    "channel_locations_shape": [
+      8,
+      2
+    ],
+    "kilosort4_installed": true,
+    "peak_count": 302,
+    "peak_detection_method": "by_channel",
+    "peak_error": null,
+    "serialized_recording_path": "proofs/selected_artifacts/2026-03-20_zpe_neuro_repo_realignment/spikeinterface_serialized_recording",
+    "snippet_shape": [
+      2048,
+      8
+    ],
+    "sorter_probe_error": null,
+    "sorter_probe_status": "PASS",
+    "status": "PASS",
+    "tridesclous2_available": true
+  },
+  "notes": [
+    "Pipeline includes NumpyRecording, bandpass preprocessing, and simple sorter run.",
+    "Kilosort4 availability recorded separately for traceability."
+  ],
+  "schema_version": "wave1-2026-02-20",
+  "seed_policy": {
+    "global_seed": 20260220,
+    "replay_seeds": [
+      20260220,
+      20260221,
+      20260222,
+      20260223,
+      20260224
+    ]
+  },
+  "status": "PASS",
+  "thresholds": {
+    "pipeline_pass": true
+  }
+}

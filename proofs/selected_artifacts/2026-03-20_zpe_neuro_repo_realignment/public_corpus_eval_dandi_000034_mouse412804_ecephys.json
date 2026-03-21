@@ -1,0 +1,65 @@
+{
+  "artifacts_root": "proofs/selected_artifacts/2026-03-20_zpe_neuro_repo_realignment/dandi_000034_mouse412804_ecephys",
+  "codec_metrics": {
+    "compression_ratio": 486.0759493670886,
+    "dropped_overlap_events": 0,
+    "encoded_bits": 1580,
+    "event_count": 28,
+    "raw_bits": 768000,
+    "rmse_uv": 66.01039533033162
+  },
+  "failure_reasons": [],
+  "generated_at_utc": "2026-03-20T15:33:41.637916+00:00",
+  "nwb_roundtrip": {
+    "bit_consistent": true,
+    "nwb_path": "proofs/selected_artifacts/2026-03-20_zpe_neuro_repo_realignment/dandi_000034_mouse412804_ecephys/gate_c_roundtrip.nwb",
+    "original_sha256": "d52cbb7a0e854bcf0b7e9f053330397c7120994980eceb54e7ad7514d313f3d9",
+    "roundtrip_sha256": "d52cbb7a0e854bcf0b7e9f053330397c7120994980eceb54e7ad7514d313f3d9",
+    "status": "PASS"
+  },
+  "schema_version": "wave1-2026-03-20",
+  "source": {
+    "asset_path": "sub-mouse412804/sub-mouse412804_ecephys.nwb",
+    "channels": 8,
+    "content_size_bytes": 13411878072,
+    "content_url": "https://api.dandiarchive.org/api/assets/3e0d4539-902e-46b4-9cfb-119e0f69fbd0/download/",
+    "dandiset_id": "000034",
+    "dataset_name": "SpikeInterface, a unified framework for spike sorting",
+    "duration_s": 0.2,
+    "event_count": 28,
+    "normalization_scale": 1.0,
+    "sampling_rate_hz": 30000,
+    "series_name": "ElectricalSeries",
+    "series_shape": [
+      27000000,
+      248
+    ],
+    "target_label": "dandi_000034_mouse412804_ecephys",
+    "tier": "tier1_authority",
+    "total_samples": 6000
+  },
+  "spikeinterface": {
+    "bandpass_hz": {
+      "freq_max": 6000.0,
+      "freq_min": 300.0
+    },
+    "channel_locations_shape": [
+      8,
+      2
+    ],
+    "kilosort4_installed": true,
+    "peak_count": 16,
+    "peak_detection_method": "by_channel",
+    "peak_error": null,
+    "serialized_recording_path": "proofs/selected_artifacts/2026-03-20_zpe_neuro_repo_realignment/dandi_000034_mouse412804_ecephys/spikeinterface_serialized_recording",
+    "snippet_shape": [
+      2048,
+      8
+    ],
+    "sorter_probe_error": null,
+    "sorter_probe_status": "PASS",
+    "status": "PASS",
+    "tridesclous2_available": true
+  },
+  "status": "PASS"
+}

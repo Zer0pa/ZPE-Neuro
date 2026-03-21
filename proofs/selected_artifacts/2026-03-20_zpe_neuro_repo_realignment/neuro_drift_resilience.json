@@ -1,0 +1,43 @@
+{
+  "claim_id": "NEU-C008",
+  "evidence": [
+    "neuro_drift_resilience.json"
+  ],
+  "gate": "D",
+  "generated_at_utc": "2026-03-20T15:32:34.699004+00:00",
+  "measurements": {
+    "accuracy_by_drift_um": {
+      "0": 1.0,
+      "10": 1.0,
+      "15": 1.0,
+      "20": 0.751,
+      "25": 0.091,
+      "5": 1.0
+    },
+    "cliff_detected_um": 20,
+    "drop_at_15um": 0.0,
+    "evaluated_event_count": 2000,
+    "spikesift_comparator_note": "Methodology-level drift simulation; not code-equivalent to SpikeSift.",
+    "status": "PASS",
+    "threshold_drop_max": 0.05,
+    "total_event_count": 3990
+  },
+  "notes": [
+    "Drift sweep executed beyond 15um for cliff detection."
+  ],
+  "schema_version": "wave1-2026-02-20",
+  "seed_policy": {
+    "global_seed": 20260220,
+    "replay_seeds": [
+      20260220,
+      20260221,
+      20260222,
+      20260223,
+      20260224
+    ]
+  },
+  "status": "PASS",
+  "thresholds": {
+    "drop_at_15um_max": 0.05
+  }
+}

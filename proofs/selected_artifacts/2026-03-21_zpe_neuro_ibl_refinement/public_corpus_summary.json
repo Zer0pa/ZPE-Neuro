@@ -1,0 +1,60 @@
+{
+  "breadth_counts": {
+    "counted_passes": 1,
+    "counted_targets": 1,
+    "executed_waveform_targets": 3
+  },
+  "breadth_verdict": "PASS",
+  "counting_policy": {
+    "counted_target_labels": [
+      "ibl_ks014_2019_12_03_probe00_ap"
+    ],
+    "excluded_target_labels": [
+      "dandi_000034_mouse412804_ecephys",
+      "ajile12_sub01_ses7_ecephys"
+    ],
+    "summary": "Only real waveform targets count for breadth, and out-of-family controls do not count as breadth passes or misses."
+  },
+  "family_boundary_artifact": "ajile12_family_boundary_decision.md",
+  "family_boundary_decision": "OUT_OF_FAMILY",
+  "generated_at_utc": "2026-03-21T13:10:08.269815+00:00",
+  "next_step": "Move to Phase 4 and make the Lane 1 wedge explicit: a narrower extracellular product with stronger authority, while keeping IBL downstream improvement as optional refinement rather than a hidden closure requirement.",
+  "schema_version": "breadth-adjudication-2026-03-21",
+  "status": "PASS",
+  "targets": [
+    {
+      "artifact": "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_eval_dandi_000034_mouse412804_ecephys.json",
+      "counted_in_breadth": false,
+      "evaluation_status": "PASS",
+      "role": "tier1_authority_anchor",
+      "target_label": "dandi_000034_mouse412804_ecephys",
+      "tier": "tier1_authority",
+      "waveform_executed": true
+    },
+    {
+      "artifact": "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_eval_ajile12_sub01_ses7_ecephys.json",
+      "counted_in_breadth": false,
+      "evaluation_status": "FAIL",
+      "role": "out_of_family_control",
+      "target_label": "ajile12_sub01_ses7_ecephys",
+      "tier": "tier2_breadth",
+      "waveform_executed": true
+    },
+    {
+      "artifact": "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_ibl_waveform_eval.json",
+      "counted_in_breadth": true,
+      "evaluation_status": "PASS",
+      "role": "second_extracellular_target",
+      "target_label": "ibl_ks014_2019_12_03_probe00_ap",
+      "tier": "tier2_breadth",
+      "waveform_executed": true
+    }
+  ],
+  "tier1_anchor": {
+    "reason": "Preserved positive authority anchor; not counted as breadth closure.",
+    "status": "PASS",
+    "target_label": "dandi_000034_mouse412804_ecephys"
+  },
+  "window_policy": "scan",
+  "window_selection_artifact": "public_corpus_window_selection_summary.json"
+}

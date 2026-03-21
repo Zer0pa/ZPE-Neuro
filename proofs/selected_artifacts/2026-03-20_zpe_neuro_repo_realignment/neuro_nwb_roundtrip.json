@@ -1,0 +1,33 @@
+{
+  "claim_id": "NEU-C006",
+  "evidence": [
+    "neuro_nwb_roundtrip.json"
+  ],
+  "gate": "C",
+  "generated_at_utc": "2026-03-20T15:32:51.993652+00:00",
+  "measurements": {
+    "bit_consistent": true,
+    "nwb_path": "proofs/selected_artifacts/2026-03-20_zpe_neuro_repo_realignment/gate_c_roundtrip.nwb",
+    "original_sha256": "d8003f9f2823286202ed2233412cc7bfa14208afa418e0562b700fc8eb2922e5",
+    "roundtrip_sha256": "d8003f9f2823286202ed2233412cc7bfa14208afa418e0562b700fc8eb2922e5",
+    "status": "PASS"
+  },
+  "notes": [
+    "Roundtrip performed using PyNWB and ElectricalSeries."
+  ],
+  "schema_version": "wave1-2026-02-20",
+  "seed_policy": {
+    "global_seed": 20260220,
+    "replay_seeds": [
+      20260220,
+      20260221,
+      20260222,
+      20260223,
+      20260224
+    ]
+  },
+  "status": "PASS",
+  "thresholds": {
+    "bit_consistent": true
+  }
+}

@@ -5,6 +5,7 @@ import json
 import math
 import os
 import subprocess
+import sys
 import time
 import traceback
 from dataclasses import asdict, dataclass
@@ -763,18 +764,26 @@ def _nwb_roundtrip(recording: Recording) -> dict[str, Any]:
 def _spikeinterface_e2e(recording: Recording) -> dict[str, Any]:
     try:
         import spikeinterface.core as sicore
-        import spikeinterface.preprocessing as sipre
         import spikeinterface.sorters as sisort
+        from spikeinterface.sortingcomponents.peak_detection import detect_peaks
     except Exception as exc:  # pragma: no cover - dependency branch
         return {
             "status": "INCONCLUSIVE",
             "error": f"DEPENDENCY_UNAVAILABLE:{exc}",
         }
 
-    traces = recording.samples[:8, :6000].astype(np.float32).T
-    rec = sicore.NumpyRecording(traces_list=[traces], sampling_frequency=recording.sampling_rate_hz)
-    band = sipre.bandpass_filter(rec, freq_min=300.0, freq_max=6000.0)
-    snippet = band.get_traces(start_frame=0, end_frame=2048)
+    peak_probe = _spikeinterface_peak_probe(recording)
+    if peak_probe["status"] != "PASS":
+        return peak_probe
+
+    band = peak_probe.pop("band", None)
+    if band is None:
+        return {
+            **peak_probe,
+            "status": "INCONCLUSIVE",
+            "error": "SPIKEINTERFACE_BAND_MISSING",
+        }
+
     serializable_folder = ARTIFACT_ROOT / "spikeinterface_serialized_recording"
     if serializable_folder.exists():
         import shutil
@@ -782,51 +791,156 @@ def _spikeinterface_e2e(recording: Recording) -> dict[str, Any]:
         shutil.rmtree(serializable_folder)
     serializable = band.save(folder=serializable_folder)
 
-    from spikeinterface.sortingcomponents.peak_detection import detect_peaks
+    sorter_output = ARTIFACT_ROOT / "spikeinterface_sorter_probe"
+    sorter_probe_error = None
+    sorter_probe_status = "INCONCLUSIVE"
+    sorter_probe_method = "serialized_by_channel_kmeans"
+    sorter_peak_count = None
+    sorter_unit_count = None
+    sorter_output_path = None
+    try:
+        from sklearn.cluster import MiniBatchKMeans
+
+        peaks = detect_peaks(
+            serializable,
+            method="by_channel",
+            method_kwargs={"peak_sign": "neg", "detect_threshold": 5.0},
+            job_kwargs={"n_jobs": 1},
+        )
+        sample_count = int(serializable.get_num_samples())
+        traces = np.asarray(serializable.get_traces(segment_index=0), dtype=np.float32)
+
+        ms_before = 1.0
+        ms_after = 1.5
+        nbefore = max(1, int(ms_before * recording.sampling_rate_hz / 1000.0))
+        nafter = max(1, int(ms_after * recording.sampling_rate_hz / 1000.0))
+
+        snippets: list[np.ndarray] = []
+        peak_samples: list[int] = []
+        for peak in peaks:
+            sample_index = int(peak["sample_index"])
+            channel_index = int(peak["channel_index"])
+            if sample_index - nbefore < 0 or sample_index + nafter > sample_count:
+                continue
+            snippet = traces[sample_index - nbefore : sample_index + nafter, channel_index]
+            snippets.append(np.asarray(snippet, dtype=np.float32))
+            peak_samples.append(sample_index)
+
+        sorter_peak_count = int(len(snippets))
+        if sorter_peak_count == 0:
+            raise RuntimeError("NO_SORTER_SNIPPETS_EXTRACTED")
+
+        snippet_matrix = np.stack(snippets, axis=0)
+        target_units = min(4, max(1, sorter_peak_count // 64))
+        if target_units == 1:
+            labels = np.zeros(sorter_peak_count, dtype=np.int64)
+        else:
+            clusterer = MiniBatchKMeans(
+                n_clusters=target_units,
+                random_state=GLOBAL_SEED,
+                n_init="auto",
+                batch_size=min(256, sorter_peak_count),
+            )
+            labels = np.asarray(clusterer.fit_predict(snippet_matrix), dtype=np.int64)
+
+        sorting = sicore.NumpySorting.from_samples_and_labels(
+            [np.asarray(peak_samples, dtype=np.int64)],
+            [labels],
+            sampling_frequency=recording.sampling_rate_hz,
+        )
+        if sorter_output.exists():
+            import shutil
+
+            shutil.rmtree(sorter_output)
+        sorting.save(folder=sorter_output)
+        sorter_unit_count = int(np.unique(labels).size)
+        sorter_output_path = str(sorter_output.relative_to(REPO_ROOT))
+        sorter_probe_status = "PASS"
+    except Exception as exc:
+        sorter_probe_status = "FAIL"
+        sorter_probe_error = traceback.format_exc().strip()
+
+    tridesclous2_available = "tridesclous2" in sisort.installed_sorters()
+    kilosort4_installed = bool(getattr(sisort.Kilosort4Sorter, "is_installed", lambda: False)())
+    status = "PASS" if peak_probe["peak_error"] is None and sorter_probe_status == "PASS" else "FAIL"
+    return {
+        "status": status,
+        "peak_detection_method": peak_probe["peak_detection_method"],
+        "peak_count": peak_probe["peak_count"],
+        "peak_error": peak_probe["peak_error"],
+        "sorter_probe_status": sorter_probe_status,
+        "sorter_probe_error": sorter_probe_error,
+        "channel_locations_shape": peak_probe["channel_locations_shape"],
+        "bandpass_hz": peak_probe["bandpass_hz"],
+        "snippet_shape": peak_probe["snippet_shape"],
+        "tridesclous2_available": tridesclous2_available,
+        "kilosort4_installed": kilosort4_installed,
+        "serialized_recording_path": str(serializable_folder.relative_to(REPO_ROOT)),
+        "sorter_probe_method": sorter_probe_method,
+        "sorter_peak_count": sorter_peak_count,
+        "sorter_unit_count": sorter_unit_count,
+        "sorter_output_path": sorter_output_path,
+    }
+
+
+def _spikeinterface_peak_probe(
+    recording: Recording,
+    detect_threshold: float = 5.0,
+) -> dict[str, Any]:
+    try:
+        import spikeinterface.core as sicore
+        import spikeinterface.preprocessing as sipre
+        from spikeinterface.sortingcomponents.peak_detection import detect_peaks
+    except Exception as exc:  # pragma: no cover - dependency branch
+        return {
+            "status": "INCONCLUSIVE",
+            "error": f"DEPENDENCY_UNAVAILABLE:{exc}",
+        }
+
+    traces = recording.samples[:8, :6000].astype(np.float32).T
+    rec = sicore.NumpyRecording(
+        traces_list=[traces],
+        sampling_frequency=recording.sampling_rate_hz,
+    )
+    channel_locations = np.column_stack(
+        (
+            np.arange(traces.shape[1], dtype=np.float32) * np.float32(20.0),
+            np.zeros(traces.shape[1], dtype=np.float32),
+        )
+    )
+    rec.set_dummy_probe_from_locations(channel_locations)
+
+    nyquist_hz = float(recording.sampling_rate_hz) / 2.0
+    freq_max = min(6000.0, nyquist_hz * 0.9)
+    freq_min = min(300.0, freq_max * 0.5)
+    freq_min = max(1.0, min(freq_min, freq_max - 1.0))
+    band = sipre.bandpass_filter(rec, freq_min=freq_min, freq_max=freq_max)
+    snippet_end = min(2048, int(traces.shape[0]))
+    snippet = band.get_traces(start_frame=0, end_frame=snippet_end)
 
     peak_error = None
     peak_count = None
     try:
         peaks = detect_peaks(
-            serializable,
+            band,
             method="by_channel",
-            method_kwargs={"peak_sign": "neg", "detect_threshold": 5},
+            method_kwargs={"peak_sign": "neg", "detect_threshold": float(detect_threshold)},
             job_kwargs={"n_jobs": 1},
         )
         peak_count = int(peaks.size)
     except Exception as exc:
         peak_error = str(exc)
 
-    sorter_output = ARTIFACT_ROOT / "spikeinterface_simple_sorter"
-    sorter_probe_error = None
-    sorter_probe_status = "INCONCLUSIVE"
-    try:
-        sisort.run_sorter(
-            "simple",
-            recording=serializable,
-            folder=sorter_output,
-            remove_existing_folder=True,
-            verbose=False,
-            raise_error=True,
-        )
-        sorter_probe_status = "PASS"
-    except Exception as exc:
-        sorter_probe_error = str(exc)
-
-    tridesclous2_available = "tridesclous2" in sisort.installed_sorters()
-    kilosort4_installed = bool(getattr(sisort.Kilosort4Sorter, "is_installed", lambda: False)())
-    status = "PASS" if peak_error is None else "FAIL"
     return {
-        "status": status,
+        "status": "PASS" if peak_error is None else "FAIL",
         "peak_detection_method": "by_channel",
+        "peak_threshold": float(detect_threshold),
         "peak_count": peak_count,
         "peak_error": peak_error,
-        "sorter_probe_status": sorter_probe_status,
-        "sorter_probe_error": sorter_probe_error,
+        "channel_locations_shape": list(channel_locations.shape),
+        "bandpass_hz": {"freq_min": freq_min, "freq_max": freq_max},
         "snippet_shape": list(snippet.shape),
-        "tridesclous2_available": tridesclous2_available,
-        "kilosort4_installed": kilosort4_installed,
-        "serialized_recording_path": str(serializable_folder.relative_to(REPO_ROOT)),
+        "band": band,
     }
 
 
@@ -858,7 +972,7 @@ def run_gate_c(seed: int = GLOBAL_SEED) -> dict[str, Any]:
         thresholds={"pipeline_pass": True},
         measurements=si_result,
         notes=[
-            "Pipeline includes NumpyRecording, bandpass preprocessing, and simple sorter run.",
+            "Pipeline includes NumpyRecording, bandpass preprocessing, serialized by-channel peak detection, snippet clustering, and sorting materialization.",
             "Kilosort4 availability recorded separately for traceability.",
         ],
     )
@@ -1091,17 +1205,26 @@ def _falsification_suite() -> dict[str, Any]:
         if result["status"] != "PASS":
             return {"pass": True, "details": f"Skipped corruption due status={result['status']}"}
         nwb_path = REPO_ROOT / result["nwb_path"]
-        with nwb_path.open("r+b") as handle:
-            handle.seek(256)
-            handle.write(b"CORRUPT")
+        corrupted_path = nwb_path.with_name(f"{nwb_path.stem}_corrupted{nwb_path.suffix}")
+        corrupted_path.write_bytes(nwb_path.read_bytes())
+        with corrupted_path.open("r+b") as handle:
+            handle.truncate(max(1, corrupted_path.stat().st_size // 2))
         try:
             from pynwb import NWBHDF5IO
 
-            with NWBHDF5IO(str(nwb_path), mode="r", load_namespaces=True) as io:
+            with NWBHDF5IO(str(corrupted_path), mode="r", load_namespaces=True) as io:
                 io.read()
         except Exception as exc:
-            return {"pass": True, "details": f"Caught corruption exception: {exc}"}
-        return {"pass": False, "details": "Corrupted file read without error."}
+            return {
+                "pass": True,
+                "details": f"Caught corruption exception after truncation: {exc}",
+                "corruption_mode": "truncate_half_copy",
+            }
+        return {
+            "pass": False,
+            "details": "Truncated corrupted NWB copy read without error.",
+            "corruption_mode": "truncate_half_copy",
+        }
 
     def spikeinterface_contract_corruption_case() -> dict[str, Any]:
         try:
@@ -1138,7 +1261,7 @@ def _falsification_suite() -> dict[str, Any]:
 
 def _run_regression_tests() -> dict[str, Any]:
     cmd = [
-        "python3.11",
+        sys.executable,
         "-m",
         "unittest",
         "discover",
@@ -1237,6 +1360,7 @@ def run_gate_d(replay_seeds: list[int] | None = None) -> dict[str, Any]:
         latency["status"] != "PASS"
         or drift["status"] != "PASS"
         or determinism["status"] != "PASS"
+        or falsification["fail_count"] > 0
         or falsification["uncaught_crash_count"] > 0
         or regression["exit_code"] != 0
     ):
@@ -1250,6 +1374,7 @@ def run_gate_d(replay_seeds: list[int] | None = None) -> dict[str, Any]:
         "latency_status": latency["status"],
         "drift_status": drift["status"],
         "determinism_status": determinism["status"],
+        "falsification_fail_count": falsification["fail_count"],
         "uncaught_crash_rate": falsification["uncaught_crash_rate"],
         "regression_exit_code": regression["exit_code"],
     }

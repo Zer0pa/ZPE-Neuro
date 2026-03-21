@@ -1,0 +1,56 @@
+{
+  "schema_version": "lane1-wedge-2026-03-21",
+  "generated_at_utc": "2026-03-21T02:26:13Z",
+  "current_gate": "AM-NEU-01",
+  "gate_status": "OPEN_FAIL_FORWARD",
+  "recommended_wedge": {
+    "decision": "LOCK_TO_EXTRACELLULAR_AUTHORITY_WEDGE",
+    "summary": "Treat Lane 1 as a narrower extracellular research-infrastructure wedge anchored on the DANDI Tier 1 public pass.",
+    "scope_in": [
+      "Extracellular waveform insertion and preservation claims backed by the DANDI 000034 rerun",
+      "NWB-first authority framing",
+      "Evidence-bound SpikeInterface support where the current proof packet is positive"
+    ],
+    "scope_out": [
+      "General public-corpus breadth closure",
+      "Human intracranial coverage on the current spike-oriented codec",
+      "Release readiness or commercialization clearance"
+    ],
+    "authority_basis": [
+      "DANDI 000034 selected-window rerun is PASS and remains the singular public authority anchor.",
+      "AJILE12 is explicitly OUT_OF_FAMILY for the current Lane 1 codec.",
+      "IBL waveform execution is real, but the counted extracellular breadth target still fails downstream."
+    ]
+  },
+  "open_breadth_blocker": {
+    "status": "OPEN",
+    "target_label": "ibl_ks014_2019_12_03_probe00_ap",
+    "reason": "The bounded IBL slice executed locally but still produced 0 detected peaks and SPIKEINTERFACE_FAIL, so counted breadth remains FAIL.",
+    "evidence_artifact": "proofs/selected_artifacts/2026-03-21_zpe_neuro_breadth_adjudication/public_corpus_ibl_waveform_eval.json"
+  },
+  "optional_ibl_refinement": {
+    "status": "OPTIONAL_STRENGTHENING_WORK",
+    "decision": "Allowed as a bounded local follow-on, but not required to justify the current Lane 1 scope lock.",
+    "promotion_trigger": "Promote from optional to required only if the team decides AM-NEU-01 still demands a second extracellular public pass before any downstream wedge work continues.",
+    "constraints": [
+      "Stay local unless a measured resource block exists.",
+      "Do not convert a refinement attempt into a hidden breadth-pass narrative."
+    ]
+  },
+  "second_mode_trigger": {
+    "status": "EXPLICIT",
+    "decision": "Broader human or intracranial neural coverage requires a second representation mode or a separate lane.",
+    "trigger_condition": "Any attempt to include AJILE-like or broader human neural coverage in Lane 1 without new positive evidence on the current codec.",
+    "why_now": "Phase 4 evidence shows the current spike-oriented extracellular codec does not honestly support that broader family."
+  },
+  "commercialization_boundary": {
+    "status": "HARD_BLOCK",
+    "decision": "Do not use the Phase 4 wedge decision as release-readiness or commercialization clearance.",
+    "open_risks": [
+      "AM-NEU-01 remains open because counted breadth is still FAIL.",
+      "Gate E, blind-clone verification, and release-boundary work remain open.",
+      "Allen commercialization risk remains unresolved."
+    ]
+  },
+  "next_task": "Choose Phase 4.5 follow-up: bounded local IBL downstream refinement or explicit second-mode lane framing."
+}

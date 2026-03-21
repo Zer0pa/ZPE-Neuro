@@ -1,0 +1,34 @@
+{
+    "sorter_name": "simple",
+    "sorter_params": {
+        "apply_preprocessing": false,
+        "waveforms": {
+            "ms_before": 1.0,
+            "ms_after": 1.5
+        },
+        "filtering": {
+            "freq_min": 300,
+            "freq_max": 8000.0
+        },
+        "detection": {
+            "peak_sign": "neg",
+            "detect_threshold": 5.0,
+            "exclude_sweep_ms": 1.5,
+            "radius_um": 150.0
+        },
+        "features": {
+            "n_components": 3
+        },
+        "clustering": {
+            "method": "hdbscan",
+            "min_cluster_size": 25,
+            "allow_single_cluster": true,
+            "core_dist_n_jobs": -1,
+            "cluster_selection_method": "leaf"
+        },
+        "job_kwargs": {
+            "n_jobs": -1,
+            "chunk_duration": "1s"
+        }
+    }
+}
