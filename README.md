@@ -33,6 +33,32 @@
   </tr>
 </table>
 
+---
+
+<a id="commercial-front-door"></a>
+
+## What This Is
+
+ZPE-Neuro applies the ZPE deterministic 8-primitive encoding architecture to extracellular neural recordings. It is the neuro-signal lane of the Zer0pa family — scoped strictly to extracellular data, not broad neural generality.
+
+The strongest current evidence: **DANDI 000034 extracellular validation** with deterministic round-trip fidelity, plus an **IBL second-target PASS** under bounded refinement conditions. Both are real public datasets with auditable lineage tracked in `proofs/manifests/CURRENT_AUTHORITY_PACKET.md`. AJILE12 out-of-family handling is explicitly documented rather than silently excluded.
+
+For neurotech research-infrastructure teams evaluating deterministic encoding for reproducible signal pipelines, this is the only codec in the family validated against public neuroscience archives. The proof corpus under `proofs/` carries full manifest lineage.
+
+**Readiness: private-stage.** No blind-clone verification completed, no commercialization-safe closure gate passed, no tagged release. Extracellular lane only.
+
+**Not claimed:** broad neural generality, intracellular support, public release readiness.
+
+| Proof anchor | Location |
+|---|---|
+| DANDI 000034 validation | `proofs/` corpus |
+| IBL second-target PASS | bounded refinement conditions |
+| Authority routing | `proofs/manifests/CURRENT_AUTHORITY_PACKET.md` |
+
+Part of the [Zer0pa](https://github.com/zer0-point-energy) family. Platform layer: [ZPE-IMC](https://github.com/zer0-point-energy/ZPE-IMC).
+
+---
+
 <p>
   <img src=".github/assets/readme/section-bars/what-this-is.svg" alt="WHAT THIS IS" width="100%">
 </p>
