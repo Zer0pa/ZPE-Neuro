@@ -1,0 +1,24 @@
+{
+  "repo_name": "ZPE-Neuro",
+  "repo_role": "staged_validation_lane",
+  "status": "STAGED_PROOF_SURFACE",
+  "plain_english_summary": "Deterministic neural-signal encoding and retrieval system for bounded extracellular recording lanes.",
+  "commercial_wedge": "For neurotech research-infrastructure teams needing deterministic, reproducible encoding of extracellular neural recordings with auditable proof lineage. Business value: reproducibility and auditability for neural signal pipelines.",
+  "technical_wedge": "Deterministic 8-primitive encoding applied to extracellular neural signals, evidenced by DANDI 000034 validation and a counted IBL second-target PASS under bounded refinement.",
+  "ideal_first_buyer": "Neurotech research-infrastructure team or academic neuroscience platform needing deterministic signal encoding with proof lineage.",
+  "deployment_model": "Python package (pip install -e .), private staged. Not currently distributed as a public package.",
+  "proof_anchors": [
+    "DANDI 000034 extracellular recording validation",
+    "IBL second-target PASS (bounded refinement)",
+    "Proof corpus under proofs/ with manifest lineage"
+  ],
+  "not_claimed": [
+    "No broad neural generality — extracellular lane only",
+    "No blind-clone verification completed",
+    "No commercialization-safe closure gate passed",
+    "No public release readiness"
+  ],
+  "family_position": "Validates ZPE encoding generality to neural signal domains. Staged/validation tier alongside Mocap, Prosody, and Bio.",
+  "license": "LicenseRef-Zer0pa-SAL-6.0",
+  "contact": "hello@zer0pa.com"
+}

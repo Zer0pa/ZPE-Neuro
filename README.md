@@ -33,6 +33,64 @@
   </tr>
 </table>
 
+---
+
+<a id="commercial-front-door"></a>
+<h2 align="center">What This Is</h2>
+
+> ZPE-Neuro is a deterministic neural-signal encoding and retrieval system for bounded extracellular recording lanes.
+
+**This repo is a staged proof surface, not the primary Zer0pa commercial front door.** It demonstrates family generality across neural signal domains and serves as a future strategic asset for neurotech and research infrastructure buyers.
+
+<h3>Commercial Wedge</h3>
+
+This is for neurotech research-infrastructure teams who need deterministic, reproducible encoding of extracellular neural recordings with auditable proof lineage. The business value is reproducibility and auditability for neural signal pipelines, with a bounded evidence surface anchored on real public datasets.
+
+<h3>Technical Wedge</h3>
+
+The technical edge is deterministic 8-primitive encoding applied to extracellular neural signals, currently evidenced by DANDI 000034 validation and a counted IBL second-target PASS under bounded refinement. Scope is extracellular lane only — not broad neural generality.
+
+<h3>Current Readiness</h3>
+
+**STAGED_PROOF_SURFACE** — Private staged repository. Not a public release surface. Not the lead commercial entry.
+
+<h3>What Is Proved</h3>
+
+- DANDI 000034 extracellular validation with deterministic round-trip fidelity
+- IBL second-target PASS under bounded refinement conditions
+- Runnable Python package surface with maintained test suite
+- Curated proof corpus with documented authority lineage
+- AJILE12 out-of-family handling explicitly documented
+
+<h3>What Is Not Being Claimed</h3>
+
+- No broad neural generality — extracellular lane only
+- No blind-clone verification has been completed
+- No commercialization-safe closure gate has been passed
+- No public release readiness
+- No tagged release surface
+
+<h3>Ideal First Buyer</h3>
+
+Neurotech research-infrastructure team or academic neuroscience platform needing deterministic signal encoding with proof lineage.
+
+<h3>Deployment Model</h3>
+
+Python package (`pip install -e .`), private staged. Not currently distributed as a public package.
+
+<h3>Authority / Proof Anchors</h3>
+
+- DANDI 000034 extracellular recording validation
+- IBL second-target PASS (bounded refinement)
+- Proof corpus under `proofs/` with manifest lineage
+- `proofs/manifests/CURRENT_AUTHORITY_PACKET.md` as canonical authority routing
+
+<h3>Role In The Zer0pa Family</h3>
+
+ZPE-Neuro validates that the ZPE encoding architecture generalizes to neural signal domains. It sits in the staged/validation tier alongside Mocap, Prosody, and Bio, demonstrating family breadth while the primary commercial wedges (IoT, XR, Robotics, Geo) lead market entry. The platform layer is ZPE-IMC.
+
+---
+
 <p>
   <img src=".github/assets/readme/section-bars/what-this-is.svg" alt="WHAT THIS IS" width="100%">
 </p>
