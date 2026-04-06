@@ -1,0 +1,10 @@
+{
+  "command": "dandi download https://dandiarchive.org/dandiset/000034/draft --output-dir data/dandi000034/",
+  "download_root": "/workspace/zpe-neuro-action-brief-codex-20260406/data/dandi000034",
+  "download_root_exists": true,
+  "download_root_size_bytes": 10867900855,
+  "observed_assets": [
+    "000034/sub-mouse412804/sub-mouse412804_ses-20200824T155542.nwb",
+    "000034/sub-mouse412804/sub-mouse412804_ses-20200824T155543.nwb"
+  ]
+}

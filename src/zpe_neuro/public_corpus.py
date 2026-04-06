@@ -1,6 +1,9 @@
 from __future__ import annotations
 
+from datetime import datetime, timezone
 from dataclasses import dataclass
+from pathlib import Path
+from time import perf_counter
 from typing import TYPE_CHECKING, Any
 
 import numpy as np
@@ -41,6 +44,7 @@ class PublicCorpusTarget:
 DEFAULT_WINDOW_POLICY = "scan"
 DEFAULT_CANDIDATE_WINDOWS = 9
 WINDOW_POLICY_CHOICES = ("first", "scan")
+DEFAULT_BENCHMARK_REPETITIONS = 5
 
 
 PUBLIC_CORPUS_TARGETS = [
@@ -57,6 +61,150 @@ PUBLIC_CORPUS_TARGETS = [
         asset_path="sub-01/sub-01_ses-7_behavior+ecephys.nwb",
     ),
 ]
+
+
+def get_public_corpus_target(*, label: str | None = None, dandiset_id: str | None = None) -> PublicCorpusTarget:
+    for target in PUBLIC_CORPUS_TARGETS:
+        if label is not None and target.label == label:
+            return target
+        if dandiset_id is not None and target.dandiset_id == dandiset_id:
+            return target
+    if label is not None:
+        raise ValueError(f"UNKNOWN_PUBLIC_CORPUS_TARGET:{label}")
+    raise ValueError(f"UNKNOWN_PUBLIC_CORPUS_DANDISET:{dandiset_id}")
+
+
+def _series_selection_artifacts(
+    *,
+    series: ElectricalSeries,
+    target: PublicCorpusTarget,
+    sample_limit: int,
+    channel_limit: int,
+    window_policy: str,
+    candidate_windows: int,
+) -> tuple[Recording, dict[str, Any], dict[str, Any], list[dict[str, Any]]]:
+    series_shape = list(int(part) for part in series.data.shape)
+    total_series_samples = int(series_shape[0] if series_shape[0] >= series_shape[1] else series_shape[1])
+    if window_policy == "first":
+        starts = [0]
+    else:
+        starts = _candidate_window_starts(
+            total_samples=total_series_samples,
+            sample_limit=sample_limit,
+            candidate_windows=candidate_windows,
+        )
+
+    candidates: list[dict[str, Any]] = []
+    candidate_artifacts: list[tuple[Recording, dict[str, Any], dict[str, Any]]] = []
+    sampling_rate_hz = float(getattr(series, "rate", 0.0) or 0.0)
+    for start_sample in starts:
+        samples_uv_t_by_c = _extract_time_by_channel_slice(
+            series=series,
+            sample_limit=sample_limit,
+            channel_limit=channel_limit,
+            start_sample=start_sample,
+        )
+        recording, slice_meta = _recording_from_trace_slice(
+            name=target.label,
+            dataset_id=target.dandiset_id,
+            asset_path=target.asset_path,
+            sampling_rate_hz=sampling_rate_hz,
+            samples_uv_t_by_c=samples_uv_t_by_c,
+        )
+        candidate = _window_candidate_payload(recording=recording, start_sample=start_sample)
+        candidates.append(candidate)
+        candidate_artifacts.append((recording, slice_meta, candidate))
+
+    selected = _select_window_candidate(candidates)
+    for recording, slice_meta, candidate in candidate_artifacts:
+        if int(candidate["start_sample"]) != int(selected["start_sample"]):
+            continue
+        return recording, slice_meta, selected, candidates
+    raise ValueError("SELECTED_WINDOW_RECORDING_NOT_FOUND")
+
+
+def _find_downloaded_asset_path(download_root: Path, target: PublicCorpusTarget) -> Path:
+    root = Path(download_root)
+    exact = root / target.asset_path
+    if exact.exists():
+        return exact
+
+    matches = [
+        path
+        for path in root.rglob(Path(target.asset_path).name)
+        if str(path.as_posix()).endswith(target.asset_path)
+    ]
+    if not matches:
+        raise FileNotFoundError(f"DOWNLOADED_ASSET_NOT_FOUND:{target.asset_path}")
+    matches.sort(key=lambda item: (len(item.parts), str(item)))
+    return matches[0]
+
+
+def _write_fixture_nwb(
+    *,
+    recording: Recording,
+    fixture_path: Path,
+    source_meta: dict[str, Any],
+    selection_payload: dict[str, Any],
+) -> dict[str, Any]:
+    from pynwb import NWBFile, NWBHDF5IO
+    from pynwb.ecephys import ElectricalSeries
+
+    path = Path(fixture_path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+
+    nwbfile = NWBFile(
+        session_description=(
+            f"{source_meta['target_label']} extracted window for offline benchmark regression testing"
+        ),
+        identifier=f"{source_meta['target_label']}-{selection_payload['selected_start_sample']}",
+        session_start_time=datetime.now(timezone.utc),
+    )
+    device = nwbfile.create_device("fixture_device")
+    group = nwbfile.create_electrode_group(
+        name="fixture_electrodes",
+        description="Offline public corpus fixture electrodes",
+        location="unknown",
+        device=device,
+    )
+    for channel in range(recording.channels):
+        nwbfile.add_electrode(
+            id=int(channel),
+            x=float(channel),
+            y=0.0,
+            z=0.0,
+            imp=float("nan"),
+            location="unknown",
+            filtering="none",
+            group=group,
+        )
+    electrodes = nwbfile.create_electrode_table_region(
+        region=list(range(recording.channels)),
+        description="All extracted fixture electrodes",
+    )
+    series = ElectricalSeries(
+        name="ElectricalSeries",
+        data=recording.samples.T.astype(np.int16),
+        electrodes=electrodes,
+        rate=float(recording.sampling_rate_hz),
+        conversion=1.0,
+        description=(
+            f"Selected start sample {selection_payload['selected_start_sample']} from "
+            f"{source_meta['dandiset_id']}::{source_meta['asset_path']}"
+        ),
+    )
+    nwbfile.add_acquisition(series)
+
+    with NWBHDF5IO(path, "w") as io:
+        io.write(nwbfile)
+
+    return {
+        "fixture_path": str(path),
+        "fixture_size_bytes": path.stat().st_size,
+        "selected_start_sample": int(selection_payload["selected_start_sample"]),
+        "channels": int(recording.channels),
+        "total_samples": int(recording.samples.shape[1]),
+    }
 
 
 def _first_electrical_series(nwbfile: Any) -> tuple[str, ElectricalSeries]:
@@ -348,7 +496,7 @@ def _stream_target_recording(
     with DandiAPIClient.for_dandi_instance("dandi") as client:
         dandiset = client.get_dandiset(target.dandiset_id, "draft")
         dataset_name = str(dandiset.get_raw_metadata().get("name", ""))
-        asset = next(item for item in dandiset.get_assets() if item.path == target.asset_path)
+        asset = dandiset.get_asset_by_path(target.asset_path)
         asset_meta = asset.get_raw_metadata()
         content_url = asset.get_content_url()
 
@@ -360,55 +508,18 @@ def _stream_target_recording(
             nwbfile = io.read()
             series_name, series = _first_electrical_series(nwbfile)
             series_shape = list(int(part) for part in series.data.shape)
-            total_series_samples = int(
-                series_shape[0] if series_shape[0] >= series_shape[1] else series_shape[1]
+            selected_recording, selected_slice_meta, selected, candidates = _series_selection_artifacts(
+                series=series,
+                target=target,
+                sample_limit=sample_limit,
+                channel_limit=channel_limit,
+                window_policy=window_policy,
+                candidate_windows=candidate_windows,
             )
-            if window_policy == "first":
-                starts = [0]
-            else:
-                starts = _candidate_window_starts(
-                    total_samples=total_series_samples,
-                    sample_limit=sample_limit,
-                    candidate_windows=candidate_windows,
-                )
-
-            candidates: list[dict[str, Any]] = []
-            candidate_artifacts: list[tuple[Recording, dict[str, Any], dict[str, Any]]] = []
-            sampling_rate_hz = float(getattr(series, "rate", 0.0) or 0.0)
-            for start_sample in starts:
-                samples_uv_t_by_c = _extract_time_by_channel_slice(
-                    series=series,
-                    sample_limit=sample_limit,
-                    channel_limit=channel_limit,
-                    start_sample=start_sample,
-                )
-                recording, slice_meta = _recording_from_trace_slice(
-                    name=target.label,
-                    dataset_id=target.dandiset_id,
-                    asset_path=target.asset_path,
-                    sampling_rate_hz=sampling_rate_hz,
-                    samples_uv_t_by_c=samples_uv_t_by_c,
-                )
-                candidate = _window_candidate_payload(recording=recording, start_sample=start_sample)
-                candidates.append(candidate)
-                candidate_artifacts.append((recording, slice_meta, candidate))
-
-            selected = _select_window_candidate(candidates)
-            selected_recording = None
-            selected_slice_meta = None
-            for recording, slice_meta, candidate in candidate_artifacts:
-                if int(candidate["start_sample"]) != int(selected["start_sample"]):
-                    continue
-                selected_recording = recording
-                selected_slice_meta = slice_meta
-                break
         finally:
             io.close()
     finally:
         h5_file.close()
-
-    if selected_recording is None or selected_slice_meta is None:
-        raise ValueError("SELECTED_WINDOW_RECORDING_NOT_FOUND")
 
     source_meta = {
         "target_label": target.label,
@@ -418,6 +529,57 @@ def _stream_target_recording(
         "asset_path": target.asset_path,
         "content_size_bytes": asset_meta.get("contentSize"),
         "content_url": content_url,
+        "series_name": series_name,
+        "series_shape": series_shape,
+        "sampling_rate_hz": selected_recording.sampling_rate_hz,
+        "selected_start_sample": int(selected["start_sample"]),
+        "window_policy": window_policy,
+        **selected_slice_meta,
+    }
+    selection_payload = _selection_summary(
+        target=target,
+        window_policy=window_policy,
+        candidate_windows=candidate_windows,
+        source_meta=source_meta,
+        candidates=candidates,
+        selected=selected,
+    )
+    return selected_recording, source_meta, selection_payload
+
+
+def _load_local_target_recording(
+    *,
+    target: PublicCorpusTarget,
+    download_root: Path,
+    sample_limit: int,
+    channel_limit: int,
+    window_policy: str,
+    candidate_windows: int,
+) -> tuple[Recording, dict[str, Any], dict[str, Any]]:
+    from pynwb import NWBHDF5IO
+
+    asset_path = _find_downloaded_asset_path(download_root, target)
+    with NWBHDF5IO(asset_path, "r", load_namespaces=True) as io:
+        nwbfile = io.read()
+        series_name, series = _first_electrical_series(nwbfile)
+        series_shape = list(int(part) for part in series.data.shape)
+        selected_recording, selected_slice_meta, selected, candidates = _series_selection_artifacts(
+            series=series,
+            target=target,
+            sample_limit=sample_limit,
+            channel_limit=channel_limit,
+            window_policy=window_policy,
+            candidate_windows=candidate_windows,
+        )
+
+    source_meta = {
+        "target_label": target.label,
+        "tier": target.tier,
+        "dandiset_id": target.dandiset_id,
+        "dataset_name": asset_path.parent.name,
+        "asset_path": target.asset_path,
+        "download_root": str(download_root),
+        "local_asset_path": str(asset_path),
         "series_name": series_name,
         "series_shape": series_shape,
         "sampling_rate_hz": selected_recording.sampling_rate_hz,
@@ -448,6 +610,133 @@ def _evaluate_recording(recording: Recording) -> dict[str, Any]:
         "rmse_uv": rmse_uv(recording.samples, decoded),
         "dropped_overlap_events": int(packet["dropped_overlap_events"]),
     }
+
+
+def _timed_codec_metrics(
+    recording: Recording,
+    repetitions: int = DEFAULT_BENCHMARK_REPETITIONS,
+) -> dict[str, Any]:
+    packets: list[dict[str, Any]] = []
+    encode_timings_ms: list[float] = []
+    for _ in range(max(1, repetitions)):
+        start = perf_counter()
+        packet = encode_recording(recording)
+        encode_timings_ms.append((perf_counter() - start) * 1000.0)
+        packets.append(packet)
+
+    packet = packets[-1]
+    decode_timings_ms: list[float] = []
+    decoded = recording.samples
+    for _ in range(max(1, repetitions)):
+        start = perf_counter()
+        decoded = decode_recording(packet, recording.templates)
+        decode_timings_ms.append((perf_counter() - start) * 1000.0)
+
+    error = recording.samples.astype(np.float64) - decoded.astype(np.float64)
+    signal_rms = float(np.sqrt(np.mean(np.square(recording.samples.astype(np.float64)))))
+    noise_rms = float(np.sqrt(np.mean(np.square(error))))
+    snr_db = float("inf") if noise_rms == 0.0 else float(20.0 * np.log10(signal_rms / noise_rms))
+    exact_match_ratio = float(np.mean(recording.samples == decoded))
+
+    return {
+        "event_count": int(len(recording.events)),
+        "raw_bits": int(recording.samples.size * 16),
+        "encoded_bits": int(packet["encoded_bits"]),
+        "compression_ratio": compression_ratio(int(recording.samples.size * 16), int(packet["encoded_bits"])),
+        "rmse_uv": rmse_uv(recording.samples, decoded),
+        "snr_db": snr_db,
+        "roundtrip_exact": bool(np.array_equal(recording.samples, decoded)),
+        "roundtrip_fidelity": exact_match_ratio,
+        "encode_latency_ms": {
+            "mean": float(np.mean(encode_timings_ms)),
+            "min": float(np.min(encode_timings_ms)),
+            "max": float(np.max(encode_timings_ms)),
+            "runs": len(encode_timings_ms),
+        },
+        "decode_latency_ms": {
+            "mean": float(np.mean(decode_timings_ms)),
+            "min": float(np.min(decode_timings_ms)),
+            "max": float(np.max(decode_timings_ms)),
+            "runs": len(decode_timings_ms),
+        },
+        "dropped_overlap_events": int(packet["dropped_overlap_events"]),
+    }
+
+
+class PublicCorpusRunner:
+    def __init__(
+        self,
+        *,
+        dandiset_id: str,
+        label: str | None = None,
+        data_root: str | None = None,
+        artifact_root: str | None = None,
+        sample_limit: int = 6000,
+        channel_limit: int = 8,
+        window_policy: str = DEFAULT_WINDOW_POLICY,
+        candidate_windows: int = DEFAULT_CANDIDATE_WINDOWS,
+        benchmark_repetitions: int = DEFAULT_BENCHMARK_REPETITIONS,
+    ) -> None:
+        self.target = get_public_corpus_target(label=label, dandiset_id=dandiset_id)
+        self.data_root = None if data_root is None else Path(data_root)
+        self.artifact_root = None if artifact_root is None else Path(artifact_root)
+        self.sample_limit = int(sample_limit)
+        self.channel_limit = int(channel_limit)
+        self.window_policy = window_policy
+        self.candidate_windows = int(candidate_windows)
+        self.benchmark_repetitions = int(benchmark_repetitions)
+
+    def _load_recording(self) -> tuple[Recording, dict[str, Any], dict[str, Any]]:
+        if self.data_root is not None:
+            return _load_local_target_recording(
+                target=self.target,
+                download_root=self.data_root,
+                sample_limit=self.sample_limit,
+                channel_limit=self.channel_limit,
+                window_policy=self.window_policy,
+                candidate_windows=self.candidate_windows,
+            )
+        return _stream_target_recording(
+            target=self.target,
+            sample_limit=self.sample_limit,
+            channel_limit=self.channel_limit,
+            window_policy=self.window_policy,
+            candidate_windows=self.candidate_windows,
+        )
+
+    def run_benchmark(self, *, fixture_output: str | None = None) -> dict[str, Any]:
+        recording, source_meta, selection_payload = self._load_recording()
+        codec_metrics = _timed_codec_metrics(
+            recording=recording,
+            repetitions=self.benchmark_repetitions,
+        )
+        payload = {
+            "schema_version": "wave1-benchmark-2026-04-06",
+            "generated_at_utc": utc_now_iso(),
+            "target_label": self.target.label,
+            "dandiset_id": self.target.dandiset_id,
+            "source": source_meta,
+            "window_selection": selection_payload,
+            "codec_metrics": codec_metrics,
+        }
+        fixture_manifest = None
+        if fixture_output is not None:
+            fixture_manifest = _write_fixture_nwb(
+                recording=recording,
+                fixture_path=Path(fixture_output),
+                source_meta=source_meta,
+                selection_payload=selection_payload,
+            )
+            payload["fixture"] = fixture_manifest
+
+        if self.artifact_root is not None:
+            self.artifact_root.mkdir(parents=True, exist_ok=True)
+            write_json(self.artifact_root / "benchmark_summary.json", payload)
+            write_json(self.artifact_root / "selection_summary.json", selection_payload)
+            write_json(self.artifact_root / "source_summary.json", source_meta)
+            if fixture_manifest is not None:
+                write_json(self.artifact_root / "fixture_manifest.json", fixture_manifest)
+        return payload
 
 
 def _run_target_insertion_evals(

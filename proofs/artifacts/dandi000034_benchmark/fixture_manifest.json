@@ -1,0 +1,7 @@
+{
+  "channels": 8,
+  "fixture_path": "/workspace/zpe-neuro-action-brief-codex-20260406/tests/fixtures/dandi000034_extract.nwb",
+  "fixture_size_bytes": 294600,
+  "selected_start_sample": 16871250,
+  "total_samples": 6000
+}
