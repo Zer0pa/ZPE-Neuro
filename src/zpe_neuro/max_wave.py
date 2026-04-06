@@ -984,6 +984,18 @@ def _to_pcm16(values: np.ndarray) -> np.ndarray:
     return np.clip(values_i32, -32768, 32767).astype(np.int16)
 
 
+def _safe_extract_zip(handle: zipfile.ZipFile, target_dir: Path) -> None:
+    root = target_dir.resolve()
+    for info in handle.infolist():
+        member = Path(info.filename.replace("\\", "/"))
+        if member.is_absolute():
+            raise RuntimeError(f"ZIP_PATH_TRAVERSAL:{info.filename}")
+        destination = (root / member).resolve()
+        if not destination.is_relative_to(root):
+            raise RuntimeError(f"ZIP_PATH_TRAVERSAL:{info.filename}")
+        handle.extract(info, root)
+
+
 def _run_neuralink_external_eval(repo_dir: Path) -> dict[str, Any]:
     wav_files = sorted(repo_dir.rglob("*.wav"))
     if len(wav_files) < 16:
@@ -994,7 +1006,7 @@ def _run_neuralink_external_eval(repo_dir: Path) -> dict[str, Any]:
                 shutil.rmtree(unpack_dir)
             unpack_dir.mkdir(parents=True, exist_ok=True)
             with zipfile.ZipFile(archive, "r") as handle:
-                handle.extractall(unpack_dir)
+                _safe_extract_zip(handle, unpack_dir)
             wav_files = sorted(unpack_dir.rglob("*.wav"))
     selected = wav_files[:64]
     if len(selected) < 16:
