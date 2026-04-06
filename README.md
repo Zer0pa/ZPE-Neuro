@@ -33,15 +33,6 @@
   </tr>
 </table>
 
-## Ecosystem Cross-Links
-
-| Surface | Link | Role |
-|---|---|---|
-| ZPE-IMC reference repo | `https://github.com/Zer0pa/ZPE-IMC` | Shared docs/readme reference line for structure and quality, not for inherited proof claims |
-| Reproducing guide | `REPRODUCING.md` | Offline verify, public DANDI download, and benchmark replay commands for this repo |
-| Open dataset surfaces | `docs/OPEN_DATASET_SURFACES.md` | Verified next-step public breadth targets without widening the current extracellular lane claim |
-| KiloSort4 operator note | `docs/KILOSORT4.md` | Benchmark-only comparator guidance and current operator install posture |
-
 <p>
   <img src=".github/assets/readme/section-bars/what-this-is.svg" alt="WHAT THIS IS" width="100%">
 </p>
@@ -392,3 +383,12 @@ commercial claim.
     </tr>
   </tbody>
 </table>
+
+## Ecosystem Cross-Links
+
+| Surface | Link | Role |
+|---|---|---|
+| ZPE-IMC reference repo | `https://github.com/Zer0pa/ZPE-IMC` | Shared docs/readme reference line for structure and quality, not for inherited proof claims |
+| Reproducing guide | `REPRODUCING.md` | Offline verify, public DANDI download, and benchmark replay commands for this repo |
+| Open dataset surfaces | `docs/OPEN_DATASET_SURFACES.md` | Verified next-step public breadth targets without widening the current extracellular lane claim |
+| KiloSort4 operator note | `docs/KILOSORT4.md` | Benchmark-only comparator guidance and current operator install posture |
