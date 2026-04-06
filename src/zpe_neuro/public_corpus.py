@@ -96,7 +96,10 @@ def _series_selection_artifacts(
 
     candidates: list[dict[str, Any]] = []
     candidate_artifacts: list[tuple[Recording, dict[str, Any], dict[str, Any]]] = []
-    sampling_rate_hz = float(getattr(series, "rate", 0.0) or 0.0)
+    sampling_rate_hz = _validated_sampling_rate_hz(
+        getattr(series, "rate", None),
+        context=f"{target.dandiset_id}:{target.asset_path}",
+    )
     for start_sample in starts:
         samples_uv_t_by_c = _extract_time_by_channel_slice(
             series=series,
@@ -224,6 +227,16 @@ def _series_scale_to_uv(series: ElectricalSeries) -> float:
     return scale
 
 
+def _validated_sampling_rate_hz(value: Any, *, context: str) -> float:
+    try:
+        sampling_rate_hz = float(value)
+    except (TypeError, ValueError) as exc:
+        raise ValueError(f"INVALID_SAMPLING_RATE_HZ:{context}") from exc
+    if not np.isfinite(sampling_rate_hz) or sampling_rate_hz <= 0.0:
+        raise ValueError(f"INVALID_SAMPLING_RATE_HZ:{context}")
+    return sampling_rate_hz
+
+
 def _extract_time_by_channel_slice(
     series: ElectricalSeries,
     sample_limit: int,
@@ -347,6 +360,10 @@ def _recording_from_trace_slice(
     samples_uv_t_by_c: np.ndarray,
 ) -> tuple[Recording, dict[str, Any]]:
     templates = build_templates()
+    validated_sampling_rate_hz = _validated_sampling_rate_hz(
+        sampling_rate_hz,
+        context=f"{dataset_id}:{asset_path}",
+    )
     pcm_t_by_c, normalization = _center_clip_to_int16(samples_uv_t_by_c)
     pcm_ch_by_t = pcm_t_by_c.T.copy()
     events_raw = _extract_template_events(pcm_ch_by_t, templates)
@@ -354,9 +371,9 @@ def _recording_from_trace_slice(
         name=name,
         profile=f"public-{dataset_id}",
         seed=0,
-        sampling_rate_hz=int(round(float(sampling_rate_hz))),
+        sampling_rate_hz=int(round(validated_sampling_rate_hz)),
         channels=int(pcm_ch_by_t.shape[0]),
-        duration_s=float(pcm_ch_by_t.shape[1]) / float(sampling_rate_hz),
+        duration_s=float(pcm_ch_by_t.shape[1]) / validated_sampling_rate_hz,
         samples=pcm_ch_by_t,
         templates=templates,
         events=[

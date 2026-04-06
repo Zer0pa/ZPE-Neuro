@@ -15,6 +15,7 @@ from zpe_neuro.public_corpus import (
     _candidate_window_starts,
     _probe_ibl_public_metadata,
     _select_window_candidate,
+    _validated_sampling_rate_hz,
 )
 
 
@@ -57,6 +58,12 @@ class PublicCorpusWindowSelectionTests(unittest.TestCase):
 
         self.assertEqual(payload["status"], "SKIPPED")
         self.assertFalse(payload["waveform_slice_executed"])
+
+    def test_validated_sampling_rate_rejects_zero_or_missing_values(self) -> None:
+        with self.assertRaisesRegex(ValueError, "INVALID_SAMPLING_RATE_HZ"):
+            _validated_sampling_rate_hz(0.0, context="000034:test.nwb")
+        with self.assertRaisesRegex(ValueError, "INVALID_SAMPLING_RATE_HZ"):
+            _validated_sampling_rate_hz(None, context="000034:test.nwb")
 
 
 if __name__ == "__main__":
