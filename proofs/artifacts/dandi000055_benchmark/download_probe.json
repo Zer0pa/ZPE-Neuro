@@ -1,0 +1,7 @@
+{
+  "command": "dandi download https://dandiarchive.org/dandiset/000055/draft --output-dir data/dandi000055/",
+  "download_root": "/workspace/zpe-neuro-action-brief-codex-20260406/data/dandi000055",
+  "download_root_exists": true,
+  "download_root_size_bytes": 486547318,
+  "observed_assets": []
+}
