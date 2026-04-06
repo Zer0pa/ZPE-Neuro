@@ -8,7 +8,7 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-SAL%20v6.0-e5e7eb?labelColor=111111" alt="License: SAL v6.0"></a>
   <a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/python-3.11-e5e7eb?labelColor=111111" alt="Python 3.11"></a>
   <a href="proofs/manifests/CURRENT_AUTHORITY_PACKET.md"><img src="https://img.shields.io/badge/authority-2026--03--21%20repo%20snapshot-e5e7eb?labelColor=111111" alt="Authority: 2026-03-21 repo snapshot"></a>
-  <a href="RELEASING.md"><img src="https://img.shields.io/badge/release-private%20staged-e5e7eb?labelColor=111111" alt="Release: private staged"></a>
+  <a href="proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_eval_dandi_000034_mouse412804_ecephys.json"><img src="https://img.shields.io/badge/compression-401x%20DANDI%20000034-e5e7eb?labelColor=111111" alt="Compression: 401x on DANDI 000034"></a>
   <a href="docs/LEGAL_BOUNDARIES.md"><img src="https://img.shields.io/badge/lane-extracellular%20recording-e5e7eb?labelColor=111111" alt="Lane: extracellular recording"></a>
 </p>
 <p align="center">
@@ -17,6 +17,11 @@
   <a href="PUBLIC_AUDIT_LIMITS.md"><img src="https://img.shields.io/badge/limits-honest%20reading-e5e7eb?labelColor=111111" alt="Honest reading limits"></a>
   <a href="docs/README.md"><img src="https://img.shields.io/badge/docs-canonical%20registry-e5e7eb?labelColor=111111" alt="Canonical docs registry"></a>
 </p>
+
+<p align="center"><strong>401× compression. Public DANDI replay. Deterministic 8-primitive codec.</strong></p>
+<p align="center"><strong>Buyer gets package surface. Retrieval harness. Offline proof packet.</strong></p>
+
+Free below $100M annual revenue. SAL v6.0 — see [LICENSE](LICENSE).
 
 <table align="center" width="100%" cellpadding="0" cellspacing="0">
   <tr>
@@ -66,15 +71,13 @@ Part of the [Zer0pa](https://github.com/zer0-point-energy) family. Platform laye
 <a id="what-this-is"></a>
 <h2 align="center">What This Is</h2>
 
-ZPE-Neuro is the inner repository for the Wave-1 neural signal package, the
-current curated proof corpus, and the release-surface documentation for the
-Neuro workstream. It is a private staged repo, not a tagged public release.
+Buyer gets deterministic neural compression. Retrieval harness. Offline replay fixture.
+Python install surface. Public DANDI `000034` anchor.
 
-The current scope lock is a narrower extracellular lane. The strongest honest
-repo claim is not broad neural generality; it is a truthful Python package
-surface plus a bounded evidence surface anchored on DANDI `000034`, a counted
-IBL second-target `PASS` under bounded refinement, explicit AJILE12
-out-of-family handling, and unresolved blind-clone/commercialization gates.
+Current evidence surface: 8-channel benchmark windows, committed offline
+fixture replay, bounded second-target breadth checks. AJILE12 stays
+`OUT_OF_FAMILY`. Broader human and intracranial claims stay outside this repo
+surface.
 
 <p>
   <img src=".github/assets/readme/section-bars/current-authority.svg" alt="CURRENT AUTHORITY" width="100%">
