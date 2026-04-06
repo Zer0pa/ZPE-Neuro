@@ -5,11 +5,12 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "zpe-neuro"
 version = "0.1.0"
-description = "Private staged repo for the ZPE Neuro Wave-1 package and curated proof surface."
+description = "Deterministic 8-primitive EEG/neuro codec, retrieval harness, and proof surface."
 requires-python = ">=3.11"
 readme = "README.md"
 license = "LicenseRef-Zer0pa-SAL-6.0"
 license-files = ["LICENSE"]
+authors = [{name = "Zer0pa"}]
 dependencies = [
     "numpy>=1.26",
     "scipy>=1.11",
