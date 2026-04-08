@@ -8,7 +8,7 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-SAL%20v6.0-e5e7eb?labelColor=111111" alt="License: SAL v6.0"></a>
   <a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/python-3.11-e5e7eb?labelColor=111111" alt="Python 3.11"></a>
   <a href="proofs/manifests/CURRENT_AUTHORITY_PACKET.md"><img src="https://img.shields.io/badge/authority-2026--03--21%20repo%20snapshot-e5e7eb?labelColor=111111" alt="Authority: 2026-03-21 repo snapshot"></a>
-  <a href="RELEASING.md"><img src="https://img.shields.io/badge/release-private%20staged-e5e7eb?labelColor=111111" alt="Release: private staged"></a>
+  <a href="RELEASING.md"><img src="https://img.shields.io/badge/release-no%20public%20tag-e5e7eb?labelColor=111111" alt="Release: no public tag"></a>
   <a href="docs/LEGAL_BOUNDARIES.md"><img src="https://img.shields.io/badge/lane-extracellular%20recording-e5e7eb?labelColor=111111" alt="Lane: extracellular recording"></a>
 </p>
 <p align="center">
@@ -16,6 +16,11 @@
   <a href="docs/ARCHITECTURE.md"><img src="https://img.shields.io/badge/architecture-runtime%20map-e5e7eb?labelColor=111111" alt="Architecture runtime map"></a>
   <a href="PUBLIC_AUDIT_LIMITS.md"><img src="https://img.shields.io/badge/limits-honest%20reading-e5e7eb?labelColor=111111" alt="Honest reading limits"></a>
   <a href="docs/README.md"><img src="https://img.shields.io/badge/docs-canonical%20registry-e5e7eb?labelColor=111111" alt="Canonical docs registry"></a>
+</p>
+<p align="center">
+  <a href="proofs/selected_artifacts/2026-03-21_zpe_neuro_release_alignment/README.md"><img src="https://img.shields.io/badge/DANDI%20000034-validated-e5e7eb?labelColor=111111" alt="DANDI 000034 validated"></a>
+  <a href="proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/README.md"><img src="https://img.shields.io/badge/IBL-validated-e5e7eb?labelColor=111111" alt="IBL validated"></a>
+  <a href="docs/OPEN_DATASET_SURFACES.md"><img src="https://img.shields.io/badge/Allen%20Observatory-next%20target-e5e7eb?labelColor=111111" alt="Allen Observatory next target"></a>
 </p>
 
 <table align="center" width="100%" cellpadding="0" cellspacing="0">
@@ -45,7 +50,9 @@ The strongest current evidence: **DANDI 000034 extracellular validation** with d
 
 For neurotech research-infrastructure teams evaluating deterministic encoding for reproducible signal pipelines, this is the only codec in the family validated against public neuroscience archives. The proof corpus under `proofs/` carries full manifest lineage.
 
-**Readiness: private-stage.** No blind-clone verification completed, no commercialization-safe closure gate passed, no tagged release. Extracellular lane only.
+Deterministic replay. Bit-stable decode across runs. Audit trails for spike sorting and curation. Cross-lab comparisons without codec drift.
+
+**Readiness: no public release.** No blind-clone verification completed, no commercialization-safe closure gate passed, no tagged release. Extracellular lane only.
 
 **Not claimed:** broad neural generality, intracellular support, public release readiness.
 
@@ -68,7 +75,7 @@ Part of the [Zer0pa](https://github.com/zer0-point-energy) family. Platform laye
 
 ZPE-Neuro is the inner repository for the Wave-1 neural signal package, the
 current curated proof corpus, and the release-surface documentation for the
-Neuro workstream. It is a private staged repo, not a tagged public release.
+Neuro workstream. It is a non-public repo, not a tagged public release.
 
 The current scope lock is a narrower extracellular lane. The strongest honest
 repo claim is not broad neural generality; it is a truthful Python package
@@ -106,7 +113,7 @@ Use this table as the single canonical authority block for the repo front door.
     </tr>
     <tr>
       <td valign="top">Repo posture</td>
-      <td valign="top"><code>PRIVATE_STAGED</code>. Package, install, docs, and proof surfaces are aligned for the current repo state, but this is not a public release and not a clean-clone-closed authority packet.</td>
+      <td valign="top"><code>NON_PUBLIC</code>. Package, install, docs, and proof surfaces are aligned for the current repo state, but this is not a public release and not a clean-clone-closed authority packet.</td>
       <td valign="top"><code>RELEASING.md</code>, <code>PUBLIC_AUDIT_LIMITS.md</code></td>
     </tr>
     <tr>
@@ -232,7 +239,7 @@ Use this table as the single canonical authority block for the repo front door.
 <a id="quickstart-and-license"></a>
 <h2 align="center">Quickstart And License</h2>
 
-Acquire from the private GitHub repo if you have authorized access, then verify
+Acquire from the non-public GitHub repo if you have authorized access, then verify
 the shipped package surface from a checkout.
 
 ```bash
@@ -414,6 +421,10 @@ commercial claim.
 
 | Surface | Link | Role |
 |---|---|---|
+| SpikeInterface | `https://github.com/SpikeInterface/spikeinterface` | Spike sorting interop ecosystem |
+| PyNWB | `https://github.com/NeurodataWithoutBorders/pynwb` | NWB IO layer and metadata surface |
+| Neo | `https://github.com/NeuralEnsemble/python-neo` | Common neuro data model |
+| Phy | `https://github.com/cortex-lab/phy` | Spike sorting curation UI |
 | ZPE-IMC reference repo | `https://github.com/Zer0pa/ZPE-IMC` | Shared docs/readme reference line for structure and quality, not for inherited proof claims |
 | Reproducing guide | `REPRODUCING.md` | Offline verify, public DANDI download, and benchmark replay commands for this repo |
 | Open dataset surfaces | `docs/OPEN_DATASET_SURFACES.md` | Verified next-step public breadth targets without widening the current extracellular lane claim |
