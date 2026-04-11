@@ -84,7 +84,7 @@ The current scope lock remains a narrower extracellular lane. The strongest hone
 </p>
 
 <a id="current-authority"></a>
-## Current Authority
+## Commercial Readiness
 
 | Field | Value |
 |-------|-------|
@@ -122,7 +122,7 @@ The current scope lock remains a narrower extracellular lane. The strongest hone
 </p>
 
 <a id="runtime-proof-wave-1"></a>
-## Verification Status
+## Tests and Verification
 
 | Code | Check | Verdict |
 |------|-------|---------|
