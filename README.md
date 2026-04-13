@@ -58,12 +58,14 @@ The current scope lock remains a narrower extracellular lane. The strongest hone
 
 ## Key Metrics
 
-| Metric | Value | Tag |
-|--------|-------|-----|
-| Best Evidence | DANDI 000034 | EXTRACELLULAR |
-| IBL Target | PASS | BOUNDED_REFINE |
-| Signal Lane | extracellular | SINGLE_LANE |
-| Readiness | private-stage | NOT_RELEASED |
+| Metric | Value | Baseline |
+|--------|-------|----------|
+| DANDI_CR | 401.044× | — |
+| IBL_CR | 224.299× | — |
+| WAVEFORM_PASS | 1/1 | 3 executed targets |
+| ROBUSTNESS | 0 falsification failures | 0.0 crash rate |
+
+> Source: [`proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_eval_dandi_000034_mouse412804_ecephys.json`](proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_eval_dandi_000034_mouse412804_ecephys.json), [`proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_ibl_waveform_eval.json`](proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_ibl_waveform_eval.json), [`proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_summary.json`](proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_summary.json), [`proofs/selected_artifacts/2026-03-21_zpe_neuro_release_alignment/gate_d_summary.json`](proofs/selected_artifacts/2026-03-21_zpe_neuro_release_alignment/gate_d_summary.json)
 
 ## What We Prove
 
@@ -89,7 +91,7 @@ The current scope lock remains a narrower extracellular lane. The strongest hone
 | Field | Value |
 |-------|-------|
 | Verdict | PRIVATE_STAGED |
-| Commit SHA | da657d0e12a2 |
+| Commit SHA | 534fe74592a2 |
 | Confidence | 100% |
 | Source | proofs/manifests/CURRENT_AUTHORITY_PACKET.md |
 
@@ -143,7 +145,7 @@ The current scope lock remains a narrower extracellular lane. The strongest hone
 | Synthetic gate baseline | `PASS` for sequential Gate C and Gate D replay in the current clean packaged gate stack | This is the strongest current shipped replay baseline in the repo. |
 | Public replay import surface | `PASS` for the declared `.[proof]` import stack | This keeps the docs honest about what the packaged replay stack actually installs cleanly. |
 | IBL and Allen operator paths | `OPERATOR_ONLY` | Those paths currently require manual dependency or toolchain work around `ONE-api`, `ibl-neuropixel`, `llvmlite` or `numba`, or `allensdk` conflicts and are intentionally not shipped as clean extras. |
-| Release automation | `PASS` for static verification coverage | The repo now has a verification workflow that checks package, build, and install truth without implying a live publish pipeline or automated publish step. |
+| Release automation | `PASS` for trusted-publish workflow presence | The repo now has both package-verification coverage and a tag-triggered OIDC publish workflow. Live PyPI publication remains unexercised from this repo state. |
 
 <p>
   <img src=".github/assets/readme/section-bars/proof-corpus.svg" alt="PROOF CORPUS" width="100%">

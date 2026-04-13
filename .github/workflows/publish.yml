@@ -1,0 +1,27 @@
+name: Publish to PyPI
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/zpe-neuro
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Build distribution artifacts
+        run: |
+          python -m pip install --upgrade pip build
+          python -m build
+      - uses: pypa/gh-action-pypi-publish@release/v1
