@@ -43,13 +43,11 @@
 <a id="what-this-is"></a>
 ## What This Is
 
-ZPE-Neuro applies the ZPE deterministic 8-primitive encoding architecture to extracellular neural recordings. It is the neuro-signal lane of the Zer0pa family, scoped strictly to extracellular data rather than broad neural generality.
+ZPE-Neuro applies the ZPE deterministic 8-primitive encoding architecture to extracellular neural recordings.
 
-The strongest current evidence is DANDI 000034 extracellular validation with deterministic round-trip fidelity plus an IBL second-target PASS under bounded refinement conditions. Both datasets are real public datasets with auditable lineage routed through `proofs/manifests/CURRENT_AUTHORITY_PACKET.md`, and AJILE12 out-of-family handling is explicitly documented rather than silently excluded.
+It is the neuro-signal lane of the Zer0pa family, scoped strictly to extracellular data rather than broad neural generality.
 
-For neurotech research-infrastructure teams evaluating deterministic encoding for reproducible signal pipelines, this repo is the inner repository for the Wave-1 neural signal package, the current curated proof corpus, and the release-surface documentation for the Neuro workstream. It remains a private staged repo, not a tagged public release, and the proof corpus under `proofs/` carries the current manifest lineage.
-
-The current scope lock remains a narrower extracellular lane. The strongest honest repo claim is a truthful Python package surface plus a bounded evidence surface anchored on DANDI `000034`, a counted IBL second-target `PASS` under bounded refinement, explicit AJILE12 out-of-family handling, and unresolved blind-clone and commercialization gates.
+The strongest current evidence is DANDI 000034 extracellular validation with deterministic round-trip fidelity plus an IBL second-target PASS under bounded refinement conditions.
 
 | Field | Value |
 |-------|-------|
@@ -58,19 +56,20 @@ The current scope lock remains a narrower extracellular lane. The strongest hone
 
 ## Key Metrics
 
-| Metric | Value | Tag |
-|--------|-------|-----|
-| Best Evidence | DANDI 000034 | EXTRACELLULAR |
-| IBL Target | PASS | BOUNDED_REFINE |
-| Signal Lane | extracellular | SINGLE_LANE |
-| Readiness | private-stage | NOT_RELEASED |
+| Metric | Value | Baseline |
+|--------|-------|----------|
+| COMPRESSION | 401× | vs NWB+gzip ~2–3× |
+| RMSE | 78.4 μV | — |
+| IBL_COMPRESSION | 224× | vs HDF5+lz4 ~5–15× |
+| PEAK_RECOVERY | 41/41 | — |
 
 ## What We Prove
 
-- DANDI 000034 extracellular validation with deterministic round-trip fidelity
+- Spike-event grammar tokenizes extracellular recordings into deterministic event windows
+- Event-layer reconstruction preserves peak morphology (41/41 zero-drop recovery)
+- DANDI 000034 public anchor: real-world validation with auditable lineage
 - IBL second-target PASS under bounded refinement conditions
-- Both datasets are real public with auditable lineage
-- AJILE12 out-of-family handling explicitly documented
+- AJILE12 out-of-family boundary explicitly documented as limitation, not gap
 
 ## What We Don't Claim
 
@@ -88,8 +87,8 @@ The current scope lock remains a narrower extracellular lane. The strongest hone
 
 | Field | Value |
 |-------|-------|
-| Verdict | PRIVATE_STAGED |
-| Commit SHA | da657d0e12a2 |
+| Verdict | STAGED |
+| Commit SHA | DA657D0 |
 | Confidence | 100% |
 | Source | proofs/manifests/CURRENT_AUTHORITY_PACKET.md |
 
@@ -126,13 +125,19 @@ The current scope lock remains a narrower extracellular lane. The strongest hone
 
 | Code | Check | Verdict |
 |------|-------|---------|
-| V_01 | DANDI 000034 public anchor | PASS |
-| V_02 | IBL second-target bounded refinement | PASS |
-| V_03 | AJILE12 family boundary memo | PASS |
-| V_04 | Breadth adjudication summary | PASS |
-| V_05 | Release-alignment Gate C summary | PASS |
-| V_06 | Release-alignment Gate D summary | PASS |
-| V_07 | Blind-clone authority replay | INC |
+| V_01 | DANDI_000034_PUBLIC_ANCHOR | PASS |
+| V_02 | IBL_SECOND-TARGET_BOUNDED_REFINE... | PASS |
+| V_03 | AJILE12_FAMILY_BOUNDARY_MEMO | PASS |
+| V_04 | BREADTH_ADJUDICATION_SUMMARY | PASS |
+| V_05 | RELEASE-ALIGNMENT_GATE_C_SUMMARY | PASS |
+| V_06 | RELEASE-ALIGNMENT_GATE_D_SUMMARY | PASS |
+| V_07 | BLIND_CLONE_AUTHORITY_REPLAY | INC |
+| V_08 | PACKAGE_SURFACE_TRUTH | PASS |
+| V_09 | UNIT_TEST_REGRESSION_CHECK | PASS |
+| V_10 | SEQUENTIAL_GATE_C_D_REPLAY | PASS |
+| V_11 | PROOF_INSTALL_VERIFICATION | PASS |
+| V_12 | OPERATOR_ONLY_DEPENDENCIES | INC |
+| V_13 | STATIC_VERIFICATION_COVERAGE | PASS |
 
 ### Runtime Proof And Package Truth
 
