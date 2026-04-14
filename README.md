@@ -56,12 +56,14 @@ AJILE12 out-of-family handling is explicitly documented rather than silently exc
 
 ## Key Metrics
 
-| Metric | Value | Tag |
-|--------|-------|-----|
-| Best Evidence | DANDI 000034 | EXTRACELLULAR |
-| IBL Target | PASS | BOUNDED_REFINE |
-| Signal Lane | extracellular | SINGLE_LANE |
-| Readiness | private-stage | NOT_RELEASED |
+| Metric | Value | Baseline |
+|--------|-------|----------|
+| DANDI_CR | 401.04× | DANDI 000034 extracellular |
+| IBL_CR | 224.30× | IBL KS014 second-target |
+| FIDELITY | 38.16 | µV RMSE (IBL KS014) |
+| DETERMINISM | 2/2 | public dataset bit-consistent |
+
+> Source: [`public_corpus_eval_dandi_000034_mouse412804_ecephys.json`](proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_eval_dandi_000034_mouse412804_ecephys.json) | [`public_corpus_ibl_waveform_eval.json`](proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_ibl_waveform_eval.json)
 
 ## What We Prove
 
