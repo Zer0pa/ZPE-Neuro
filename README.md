@@ -104,7 +104,7 @@ AJILE12 out-of-family handling is explicitly documented rather than silently exc
 | Compression scope | WINDOW_ONLY -- headline ratios measured on 0.2 s peak-density windows, not full recordings |
 | Source | proofs/manifests/CURRENT_AUTHORITY_PACKET.md |
 
-> **Evaluators:** Available for qualified evaluation. `pip install -e .` in a clean venv. Contact hello@zer0pa.com.
+> **Evaluators:** Available for qualified evaluation. `pip install zpe-neuro` (available on PyPI). Contact hello@zer0pa.com.
 
 ### Authority Detail
 
@@ -216,7 +216,12 @@ AJILE12 out-of-family handling is explicitly documented rather than silently exc
 <a id="quickstart-and-license"></a>
 ## Quick Start
 
-Acquire from the private GitHub repo if you have authorized access, then verify the shipped package surface from a checkout.
+```bash
+# Install from PyPI
+pip install zpe-neuro
+```
+
+Or install from source (development):
 
 ```bash
 git clone https://github.com/Zer0pa/ZPE-Neuro.git
@@ -279,7 +284,7 @@ The `tools/` runners are repo-local scripts, not installed console entry points.
 |---|---|
 | **Ideal first buyer** | Neurotech research-infrastructure team or academic neuroscience platform needing deterministic spike-event encoding with proof lineage |
 | **Pain** | Neural recording pipelines lack reproducibility guarantees -- re-analyses produce different spike-sorting outputs across environments, eroding audit trust |
-| **Deployment** | Python package (`pip install -e .`), private staged. Not currently distributed as a public package |
+| **Deployment** | Python package (`pip install zpe-neuro`), available on PyPI. Private staged |
 | **Family position** | Validates ZPE encoding generality to neural signal domains. Staged/validation tier alongside Mocap, Prosody, and Bio |
 
 <a id="go-next"></a>
