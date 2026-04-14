@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-SAL%20v6.0-e5e7eb?labelColor=111111" alt="License: SAL v6.0"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-SAL%20v6.2-e5e7eb?labelColor=111111" alt="License: SAL v6.2"></a>
   <a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/python-3.11-e5e7eb?labelColor=111111" alt="Python 3.11"></a>
   <a href="proofs/manifests/CURRENT_AUTHORITY_PACKET.md"><img src="https://img.shields.io/badge/authority-2026--03--21%20repo%20snapshot-e5e7eb?labelColor=111111" alt="Authority: 2026-03-21 repo snapshot"></a>
   <a href="RELEASING.md"><img src="https://img.shields.io/badge/release-private%20staged-e5e7eb?labelColor=111111" alt="Release: private staged"></a>
@@ -58,10 +58,10 @@ AJILE12 out-of-family handling is explicitly documented rather than silently exc
 
 | Metric | Value | Baseline |
 |--------|-------|----------|
-| DANDI_CR | 401.04× | DANDI 000034 extracellular |
-| IBL_CR | 224.30× | IBL KS014 second-target |
-| FIDELITY | 38.16 | µV RMSE (IBL KS014) |
-| DETERMINISM | 2/2 | public dataset bit-consistent |
+| DANDI_CR | 401.04× | — |
+| IBL_CR | 224.30× | — |
+| FIDELITY | 38.16 | µV |
+| DETERMINISM | 2/2 | — |
 
 > Source: [`public_corpus_eval_dandi_000034_mouse412804_ecephys.json`](proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_eval_dandi_000034_mouse412804_ecephys.json) | [`public_corpus_ibl_waveform_eval.json`](proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_ibl_waveform_eval.json)
 
