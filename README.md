@@ -43,7 +43,7 @@
 <a id="what-this-is"></a>
 ## What This Is
 
-Deterministic encoding for extracellular neural recordings. Every replay identical. Anchored on DANDI 000034 with IBL second-target PASS.
+401× compression on extracellular neural recordings; every replay bit-identical. Anchored on DANDI 000034 with IBL second-target PASS.
 
 ZPE-Neuro targets neurotech research-infrastructure teams and academic neuroscience platforms where non-deterministic compression pipelines make spike sorting, population decoding, and cross-session comparison irreproducible. This repo carries the Wave-1 neural signal package, curated proof corpus, and release-surface documentation. Scoped strictly to extracellular data — not broad neural generality.
 
