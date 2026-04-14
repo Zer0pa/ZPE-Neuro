@@ -43,13 +43,11 @@
 <a id="what-this-is"></a>
 ## What This Is
 
-ZPE-Neuro applies the ZPE deterministic 8-primitive encoding architecture to extracellular neural recordings. It is the neuro-signal lane of the Zer0pa family, scoped strictly to extracellular data rather than broad neural generality.
+Deterministic encoding for extracellular neural recordings. Every replay identical. Anchored on DANDI 000034 with IBL second-target PASS.
 
-The strongest current evidence is DANDI 000034 extracellular validation with deterministic round-trip fidelity plus an IBL second-target PASS under bounded refinement conditions. Both datasets are real public datasets with auditable lineage routed through `proofs/manifests/CURRENT_AUTHORITY_PACKET.md`, and AJILE12 out-of-family handling is explicitly documented rather than silently excluded.
+ZPE-Neuro targets neurotech research-infrastructure teams and academic neuroscience platforms where non-deterministic compression pipelines make spike sorting, population decoding, and cross-session comparison irreproducible. This repo carries the Wave-1 neural signal package, curated proof corpus, and release-surface documentation. Scoped strictly to extracellular data — not broad neural generality.
 
-For neurotech research-infrastructure teams evaluating deterministic encoding for reproducible signal pipelines, this repo is the inner repository for the Wave-1 neural signal package, the current curated proof corpus, and the release-surface documentation for the Neuro workstream. It remains a private staged repo, not a tagged public release, and the proof corpus under `proofs/` carries the current manifest lineage.
-
-The current scope lock remains a narrower extracellular lane. The strongest honest repo claim is a truthful Python package surface plus a bounded evidence surface anchored on DANDI `000034`, a counted IBL second-target `PASS` under bounded refinement, explicit AJILE12 out-of-family handling, and unresolved blind-clone and commercialization gates.
+AJILE12 out-of-family handling is explicitly documented rather than silently excluded. Unresolved blind-clone and commercialization gates remain open.
 
 | Field | Value |
 |-------|-------|
@@ -66,6 +64,8 @@ The current scope lock remains a narrower extracellular lane. The strongest hone
 | Readiness | private-stage | NOT_RELEASED |
 
 ## What We Prove
+
+> Auditable guarantees backed by committed proof artifacts. Start at `AUDITOR_PLAYBOOK.md`.
 
 - DANDI 000034 extracellular validation with deterministic round-trip fidelity
 - IBL second-target PASS under bounded refinement conditions
@@ -92,6 +92,8 @@ The current scope lock remains a narrower extracellular lane. The strongest hone
 | Commit SHA | da657d0e12a2 |
 | Confidence | 100% |
 | Source | proofs/manifests/CURRENT_AUTHORITY_PACKET.md |
+
+> **Evaluators:** Available for qualified evaluation. `pip install -e .` in a clean venv. Contact hello@zer0pa.com.
 
 ### Authority Detail
 
@@ -256,6 +258,15 @@ The `tools/` runners are repo-local scripts, not installed console entry points.
 | Reproducing guide | [REPRODUCING.md](REPRODUCING.md) | Offline verify, public DANDI download, and benchmark replay commands for this repo |
 | Open dataset surfaces | [docs/OPEN_DATASET_SURFACES.md](docs/OPEN_DATASET_SURFACES.md) | Verified next-step public breadth targets without widening the current extracellular lane claim |
 | KiloSort4 operator note | [docs/KILOSORT4.md](docs/KILOSORT4.md) | Benchmark-only comparator guidance and current operator install posture |
+
+## Who This Is For
+
+| | |
+|---|---|
+| **Ideal first buyer** | Neurotech research-infrastructure team or academic neuroscience platform needing deterministic signal encoding with proof lineage |
+| **Pain** | Neural recording pipelines lack reproducibility guarantees — re-analyses produce different outputs across environments, eroding audit trust |
+| **Deployment** | Python package (`pip install -e .`), private staged. Not currently distributed as a public package |
+| **Family position** | Validates ZPE encoding generality to neural signal domains. Staged/validation tier alongside Mocap, Prosody, and Bio |
 
 <a id="go-next"></a>
 ### Where To Go
