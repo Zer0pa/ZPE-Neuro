@@ -72,10 +72,11 @@ python3.11 tools/run_public_corpus_benchmark.py \
   --fixture-output tests/fixtures/dandi000034_extract.nwb
 ```
 
-Current `000034` benchmark anchor:
+Current `000034` benchmark anchor (0.2 s peak-density window, 8 channels, rank 1 of 9 candidates):
 - selected start sample: `16871250`
 - codec events: `41`
-- compression ratio: `401.0443864229765`
+- compression ratio: `401.0443864229765` (window-scoped, not full-recording)
+- RMSE: `78.44 µV` (reconstruction error vs. original signal)
 - fixture size: `294600` bytes
 
 ## Offline Fixture Expectations
