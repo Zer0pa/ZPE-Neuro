@@ -261,6 +261,8 @@ The `tools/` runners are repo-local scripts, not installed console entry points.
 | Open dataset surfaces | [docs/OPEN_DATASET_SURFACES.md](docs/OPEN_DATASET_SURFACES.md) | Verified next-step public breadth targets without widening the current extracellular lane claim |
 | KiloSort4 operator note | [docs/KILOSORT4.md](docs/KILOSORT4.md) | Benchmark-only comparator guidance and current operator install posture |
 
+**Observability:** [Comet dashboard](https://www.comet.com/zer0pa/zpe-neuro/view/new/panels) (public)
+
 ## Who This Is For
 
 | | |
