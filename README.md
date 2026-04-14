@@ -43,9 +43,9 @@
 <a id="what-this-is"></a>
 ## What This Is
 
-401× compression on extracellular neural recordings; every replay bit-identical. Anchored on DANDI 000034 with IBL second-target PASS.
+Deterministic spike-event encoding for extracellular neural recordings. Anchored on DANDI 000034 with IBL second-target PASS. Compression ratios are window-dependent (see Key Metrics).
 
-ZPE-Neuro targets neurotech research-infrastructure teams and academic neuroscience platforms where non-deterministic compression pipelines make spike sorting, population decoding, and cross-session comparison irreproducible. This repo carries the Wave-1 neural signal package, curated proof corpus, and release-surface documentation. Scoped strictly to extracellular data — not broad neural generality.
+ZPE-Neuro targets neurotech research-infrastructure teams and academic neuroscience platforms where non-deterministic encoding pipelines make spike sorting, population decoding, and cross-session comparison irreproducible. The codec is a lossy spike-event extractor — it preserves detected spike events with deterministic replay, not full-signal content. This repo carries the Wave-1 neural signal package, curated proof corpus, and release-surface documentation. Scoped strictly to extracellular data — not broad neural generality.
 
 AJILE12 out-of-family handling is explicitly documented rather than silently excluded. Unresolved blind-clone and commercialization gates remain open.
 
@@ -56,26 +56,34 @@ AJILE12 out-of-family handling is explicitly documented rather than silently exc
 
 ## Key Metrics
 
-| Metric | Value | Baseline |
-|--------|-------|----------|
-| DANDI_CR | 401.04× | — |
-| IBL_CR | 224.30× | — |
-| FIDELITY | 38.16 | µV |
-| DETERMINISM | 2/2 | — |
+| Metric | Value | Scope / Baseline |
+|--------|-------|------------------|
+| DANDI_CR | 401.04× | 0.2 s peak-density window, 8 ch, rank 1 of 9 candidates |
+| IBL_CR | 224.30× | 0.2 s peak-density window, 8 ch, rank 1 coarse search |
+| RMSE (DANDI) | 78.44 µV | Full-window reconstruction error vs. original signal |
+| RMSE (IBL) | 38.16 µV | Full-window reconstruction error vs. original signal |
+| DETERMINISM | 2/2 | Gate C + Gate D synthetic replay |
 
+> **Reading note:** Compression ratios are event-encoding ratios measured on the highest-event-density 0.2 s window selected from each recording. They reflect spike-event compactness, not full-signal lossless compression. Whole-recording ratios would be substantially different. RMSE is root-mean-square reconstruction error in microvolts against the original signal.
+>
 > Source: [`public_corpus_eval_dandi_000034_mouse412804_ecephys.json`](proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_eval_dandi_000034_mouse412804_ecephys.json) | [`public_corpus_ibl_waveform_eval.json`](proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_ibl_waveform_eval.json)
 
 ## What We Prove
 
 > Auditable guarantees backed by committed proof artifacts. Start at `AUDITOR_PLAYBOOK.md`.
 
-- DANDI 000034 extracellular validation with deterministic round-trip fidelity
-- IBL second-target PASS under bounded refinement conditions
-- Both datasets are real public with auditable lineage
+- Deterministic spike-event extraction and encoding on DANDI 000034 extracellular data
+- IBL second-target PASS under bounded refinement conditions (0.2 s window scope)
+- NWB container round-trip: original samples survive HDF5 write/read with bit-consistent SHA-256 (this tests container fidelity, not codec reconstruction)
+- DANDI compatibility: the codec output can be packaged in standard NWB containers
+- Both datasets are real public archives with auditable lineage
 - AJILE12 out-of-family handling explicitly documented
 
 ## What We Don't Claim
 
+- Lossless reconstruction -- this is a lossy spike-event extractor. Signal-level RMSE (78 uV on DANDI, 38 uV on IBL) reflects intentional trade-off for spike-event preservation, not full-signal fidelity
+- Full-signal compression parity -- the 401x headline applies to a 0.2 s peak-density window (rank 1 of 9 candidates by event count); whole-recording ratios are substantially lower and have not been published
+- Bit-identical signal reconstruction -- the NWB round-trip test verifies that original samples survive HDF5 container serialization, not that the codec reconstructs the original signal
 - No claim of blind-clone verification
 - No claim of commercialization-safe closure
 - No claim of tagged release
@@ -92,7 +100,8 @@ AJILE12 out-of-family handling is explicitly documented rather than silently exc
 |-------|-------|
 | Verdict | PRIVATE_STAGED |
 | Commit SHA | da657d0e12a2 |
-| Confidence | 100% |
+| Signal fidelity | NOT_CLAIMED -- codec is a lossy spike extractor; full-signal reconstruction fidelity is not a design goal |
+| Compression scope | WINDOW_ONLY -- headline ratios measured on 0.2 s peak-density windows, not full recordings |
 | Source | proofs/manifests/CURRENT_AUTHORITY_PACKET.md |
 
 > **Evaluators:** Available for qualified evaluation. `pip install -e .` in a clean venv. Contact hello@zer0pa.com.
@@ -198,6 +207,7 @@ AJILE12 out-of-family handling is explicitly documented rather than silently exc
 | Commercialization closure | `OPEN` | Allen parity and commercialization-safe closure remain unresolved. |
 | Broader neural scope | `PARKED_BY_SCOPE` | Broader human or intracranial coverage is outside the current lane. |
 | Historical path residue | `KNOWN_RESIDUE` | Some tracked runtime artifacts still contain machine-absolute paths inside captured traces. They are evidence lineage, not current filesystem instructions. |
+| Pickle files in proof tree | `KNOWN_RESIDUE` | Eight `.pkl` files (pca_model.pkl, provenance.pkl) ship in the proof artifact tree under `proofs/selected_artifacts/`. These are SpikeInterface sorter outputs retained as evidence lineage. Loading untrusted pickle files carries arbitrary code execution risk. Future proof surfaces should migrate to safer serialization (JSON, safetensors). |
 
 <p>
   <img src=".github/assets/readme/section-bars/quickstart-and-license.svg" alt="QUICKSTART AND LICENSE" width="100%">
@@ -267,8 +277,8 @@ The `tools/` runners are repo-local scripts, not installed console entry points.
 
 | | |
 |---|---|
-| **Ideal first buyer** | Neurotech research-infrastructure team or academic neuroscience platform needing deterministic signal encoding with proof lineage |
-| **Pain** | Neural recording pipelines lack reproducibility guarantees — re-analyses produce different outputs across environments, eroding audit trust |
+| **Ideal first buyer** | Neurotech research-infrastructure team or academic neuroscience platform needing deterministic spike-event encoding with proof lineage |
+| **Pain** | Neural recording pipelines lack reproducibility guarantees -- re-analyses produce different spike-sorting outputs across environments, eroding audit trust |
 | **Deployment** | Python package (`pip install -e .`), private staged. Not currently distributed as a public package |
 | **Family position** | Validates ZPE encoding generality to neural signal domains. Staged/validation tier alongside Mocap, Prosody, and Bio |
 

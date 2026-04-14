@@ -3,9 +3,9 @@
   "repo_role": "staged_validation_lane",
   "status": "STAGED_PROOF_SURFACE",
   "plain_english_summary": "Deterministic neural-signal encoding and retrieval system for bounded extracellular recording lanes.",
-  "commercial_wedge": "For neurotech research-infrastructure teams needing deterministic, reproducible encoding of extracellular neural recordings with auditable proof lineage. Business value: reproducibility and auditability for neural signal pipelines.",
-  "technical_wedge": "Deterministic 8-primitive encoding applied to extracellular neural signals, evidenced by DANDI 000034 validation and a counted IBL second-target PASS under bounded refinement.",
-  "ideal_first_buyer": "Neurotech research-infrastructure team or academic neuroscience platform needing deterministic signal encoding with proof lineage.",
+  "commercial_wedge": "For neurotech research-infrastructure teams needing deterministic, reproducible spike-event encoding of extracellular neural recordings with auditable proof lineage. Business value: reproducibility and auditability for spike-event pipelines. Note: this is a lossy spike extractor, not a lossless signal compressor.",
+  "technical_wedge": "Deterministic spike-event encoding applied to extracellular neural signals, evidenced by DANDI 000034 validation and a counted IBL second-target PASS under bounded refinement. Codec is a lossy spike extractor; headline compression ratios are window-scoped.",
+  "ideal_first_buyer": "Neurotech research-infrastructure team or academic neuroscience platform needing deterministic spike-event encoding with proof lineage.",
   "deployment_model": "Python package (pip install -e .), private staged. Not currently distributed as a public package.",
   "proof_anchors": [
     "DANDI 000034 extracellular recording validation",
