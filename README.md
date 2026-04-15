@@ -43,9 +43,9 @@
 <a id="what-this-is"></a>
 ## What This Is
 
-Deterministic spike-event encoding for extracellular neural recordings. Anchored on DANDI 000034 with IBL second-target PASS. Compression ratios are window-dependent (see Key Metrics).
+Deterministic spike-event extraction for neuroscience data pipelines. Anchored on DANDI 000034 with IBL second-target PASS.
 
-ZPE-Neuro targets neurotech research-infrastructure teams and academic neuroscience platforms where non-deterministic encoding pipelines make spike sorting, population decoding, and cross-session comparison irreproducible. The codec is a lossy spike-event extractor — it preserves detected spike events with deterministic replay, not full-signal content. This repo carries the Wave-1 neural signal package, curated proof corpus, and release-surface documentation. Scoped strictly to extracellular data — not broad neural generality.
+ZPE-Neuro targets neurotech research-infrastructure teams and academic neuroscience platforms where non-deterministic encoding pipelines make spike sorting, population decoding, and cross-session comparison irreproducible. ZPE-Neuro is a lossy spike-event extractor — it preserves detected spike events with deterministic replay, not full-signal content. This repo carries the Wave-1 neural signal package, curated proof corpus, and release-surface documentation. Scoped strictly to extracellular data — not broad neural generality.
 
 AJILE12 out-of-family handling is explicitly documented rather than silently excluded. Unresolved blind-clone and commercialization gates remain open.
 
@@ -58,13 +58,14 @@ AJILE12 out-of-family handling is explicitly documented rather than silently exc
 
 | Metric | Value | Scope / Baseline |
 |--------|-------|------------------|
-| DANDI_CR | 401.04× | 0.2 s peak-density window, 8 ch, rank 1 of 9 candidates |
-| IBL_CR | 224.30× | 0.2 s peak-density window, 8 ch, rank 1 coarse search |
-| RMSE (DANDI) | 78.44 µV | Full-window reconstruction error vs. original signal |
-| RMSE (IBL) | 38.16 µV | Full-window reconstruction error vs. original signal |
+| Spike events extracted (DANDI) | See proof artifact | 0.2 s peak-density window, 8 ch, DANDI 000034 |
+| Spike events extracted (IBL) | See proof artifact | 0.2 s peak-density window, 8 ch, IBL second-target |
 | DETERMINISM | 2/2 | Gate C + Gate D synthetic replay |
+| DANDI compatibility | PASS | NWB container round-trip with bit-consistent SHA-256 |
+| Reconstruction error (DANDI) | 78.44 µV RMSE | Full-window reconstruction error vs. original signal |
+| Reconstruction error (IBL) | 38.16 µV RMSE | Full-window reconstruction error vs. original signal |
 
-> **Reading note:** Compression ratios are event-encoding ratios measured on the highest-event-density 0.2 s window selected from each recording. They reflect spike-event compactness, not full-signal lossless compression. Whole-recording ratios would be substantially different. RMSE is root-mean-square reconstruction error in microvolts against the original signal.
+> **Reading note:** This is a spike-event extractor, not a lossless signal compressor. RMSE measures reconstruction error -- the distance between the original signal and the event-extracted reconstruction. High RMSE is expected and by design; the goal is spike-event preservation, not signal-level fidelity. Event-encoding bandwidth-reduction ratios are documented in Proof Anchors below.
 >
 > Source: [`public_corpus_eval_dandi_000034_mouse412804_ecephys.json`](proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_eval_dandi_000034_mouse412804_ecephys.json) | [`public_corpus_ibl_waveform_eval.json`](proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_ibl_waveform_eval.json)
 
@@ -74,16 +75,16 @@ AJILE12 out-of-family handling is explicitly documented rather than silently exc
 
 - Deterministic spike-event extraction and encoding on DANDI 000034 extracellular data
 - IBL second-target PASS under bounded refinement conditions (0.2 s window scope)
-- NWB container round-trip: original samples survive HDF5 write/read with bit-consistent SHA-256 (this tests container fidelity, not codec reconstruction)
-- DANDI compatibility: the codec output can be packaged in standard NWB containers
+- NWB container round-trip: original samples survive HDF5 write/read with bit-consistent SHA-256 (this tests container fidelity, not extractor reconstruction)
+- DANDI compatibility: the extractor output can be packaged in standard NWB containers
 - Both datasets are real public archives with auditable lineage
 - AJILE12 out-of-family handling explicitly documented
 
 ## What We Don't Claim
 
 - Lossless reconstruction -- this is a lossy spike-event extractor. Signal-level RMSE (78 uV on DANDI, 38 uV on IBL) reflects intentional trade-off for spike-event preservation, not full-signal fidelity
-- Full-signal compression parity -- the 401x headline applies to a 0.2 s peak-density window (rank 1 of 9 candidates by event count); whole-recording ratios are substantially lower and have not been published
-- Bit-identical signal reconstruction -- the NWB round-trip test verifies that original samples survive HDF5 container serialization, not that the codec reconstructs the original signal
+- Full-signal bandwidth-reduction parity -- event-encoding ratios (e.g. 401x on DANDI, 224x on IBL) apply to 0.2 s peak-density windows only; whole-recording ratios are substantially lower and have not been published
+- Bit-identical signal reconstruction -- the NWB round-trip test verifies that original samples survive HDF5 container serialization, not that the extractor reconstructs the original signal
 - No claim of blind-clone verification
 - No claim of commercialization-safe closure
 - No claim of tagged release
@@ -100,8 +101,8 @@ AJILE12 out-of-family handling is explicitly documented rather than silently exc
 |-------|-------|
 | Verdict | PRIVATE_STAGED |
 | Commit SHA | da657d0e12a2 |
-| Signal fidelity | NOT_CLAIMED -- codec is a lossy spike extractor; full-signal reconstruction fidelity is not a design goal |
-| Compression scope | WINDOW_ONLY -- headline ratios measured on 0.2 s peak-density windows, not full recordings |
+| Signal fidelity | NOT_CLAIMED -- this is a lossy spike-event extractor; full-signal reconstruction fidelity is not a design goal |
+| Bandwidth-reduction scope | WINDOW_ONLY -- event-encoding ratios measured on 0.2 s peak-density windows, not full recordings |
 | Source | proofs/manifests/CURRENT_AUTHORITY_PACKET.md |
 
 > **Evaluators:** Available for qualified evaluation. `pip install zpe-neuro` (available on PyPI). Contact hello@zer0pa.com.
@@ -115,7 +116,7 @@ AJILE12 out-of-family handling is explicitly documented rather than silently exc
 | Repo posture | `PRIVATE_STAGED`. Package, install, docs, and proof surfaces are aligned for the current repo state, but this is not a public release and not a clean-clone-closed authority packet. | `RELEASING.md`, `PUBLIC_AUDIT_LIMITS.md` |
 | Top unresolved gate | A fresh clean-clone replay of the authority packet remains the top unresolved acceptance gate. | `RELEASING.md` |
 | Gate status | `OPEN` for blind-clone and public-release gates. `PASS` for the current clean packaged baseline and the tracked release-alignment gate slice. | [proofs/selected_artifacts/2026-03-21_zpe_neuro_release_alignment/](proofs/selected_artifacts/2026-03-21_zpe_neuro_release_alignment/README.md) |
-| Current lane / scope lock | Lane 1 is a narrow extracellular recording lane. AJILE12 is explicitly `OUT_OF_FAMILY` for the current codec; broader human or intracranial coverage is not claimed here. | `proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_summary.json` |
+| Current lane / scope lock | Lane 1 is a narrow extracellular recording lane. AJILE12 is explicitly `OUT_OF_FAMILY` for the current spike-event extractor; broader human or intracranial coverage is not claimed here. | `proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_summary.json` |
 | Primary positive public anchor | DANDI `000034` remains the strongest positive public waveform anchor in the current repo surface. | `proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_summary.json` |
 | Counted breadth verdict | `PASS` in the current bounded local evidence packet after the March 21 IBL refinement. This does not upgrade blind-clone status or broader release claims. | `proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_summary.json` |
 | Family-boundary decision | `OUT_OF_FAMILY` for AJILE12 in the current lane. | `proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_summary.json` |
