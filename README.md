@@ -61,6 +61,7 @@ No promoted incumbent-comparator table is live on the current authority surface.
 | Field | Value |
 |-------|-------|
 | Verdict | PRIVATE_STAGED |
+| Release posture | Live work in progress; not a final official release |
 | Primary Wedge | Deterministic extracellular spike-event reproducibility |
 | Primary Blocker | Blind-clone authority replay plus commercialization closure |
 | Source | `proofs/manifests/CURRENT_AUTHORITY_PACKET.md`, `RELEASING.md` |
