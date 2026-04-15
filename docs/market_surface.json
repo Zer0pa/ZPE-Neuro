@@ -6,11 +6,11 @@
   "commercial_wedge": "For neurotech research-infrastructure teams needing deterministic, reproducible spike-event encoding of extracellular neural recordings with auditable proof lineage. Business value: reproducibility and auditability for spike-event pipelines. Note: this is a lossy spike extractor, not a lossless signal compressor.",
   "technical_wedge": "Deterministic spike-event encoding applied to extracellular neural signals, evidenced by DANDI 000034 validation and a counted IBL second-target PASS under bounded refinement. Codec is a lossy spike extractor; headline compression ratios are window-scoped.",
   "ideal_first_buyer": "Neurotech research-infrastructure team or academic neuroscience platform needing deterministic spike-event encoding with proof lineage.",
-  "deployment_model": "Python package (pip install -e .), private staged. Not currently distributed as a public package.",
+  "deployment_model": "Python package on PyPI (`zpe-neuro`), private-staged proof surface.",
   "proof_anchors": [
-    "DANDI 000034 extracellular recording validation",
-    "IBL second-target PASS (bounded refinement)",
-    "Proof corpus under proofs/ with manifest lineage"
+    "proofs/manifests/CURRENT_AUTHORITY_PACKET.md",
+    "proofs/selected_artifacts/2026-03-21_zpe_neuro_release_alignment/verification_summary.md",
+    "proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_summary.json"
   ],
   "not_claimed": [
     "No broad neural generality — extracellular lane only",
