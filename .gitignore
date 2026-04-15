@@ -16,3 +16,14 @@ htmlcov/
 node_modules/
 target/
 *.so
+
+# RTR strip-down additions
+.gpd/
+.github/assets/readme/
+.github/ISSUE_TEMPLATE/
+.github/PULL_REQUEST_TEMPLATE.md
+runbooks/
+**/codex_receipt*.md
+**/codex-receipt*.md
+**/*_codex_receipt.md
+**/*codex_receipt*.md
