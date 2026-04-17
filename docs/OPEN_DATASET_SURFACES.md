@@ -28,7 +28,8 @@ current extracellular lane.
 - Allen docs also keep a direct download route through `api.brain-map.org` for
   users who cannot rely on AllenSDK-managed transfers.
 - Current repo posture: operator-only, because `allensdk` still conflicts with
-  the package floor noted in `docs/FAQ.md` and `docs/ARCHITECTURE.md`.
+  the package floor declared in `pyproject.toml` and documented in
+  `docs/ARCHITECTURE.md`.
 - Sources:
   - https://allensdk.readthedocs.io/en/stable/visual_coding_neuropixels.html
   - https://allensdk.readthedocs.io/en/latest/_static/examples/nb/ecephys_data_access.html

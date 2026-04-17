@@ -21,8 +21,9 @@ tracked repo surface.
 
 - the package metadata was aligned to the clean install surface that is
   actually declared in `pyproject.toml`
-- the repo-local technical alignment receipt is
-  [runbooks/20260321T205155Z_codex_receipt.md](../../../runbooks/20260321T205155Z_codex_receipt.md)
+- the repo-local technical alignment surface retained in this repo is the
+  combination of the tracked summaries in this packet and the chronology in
+  [CHANGELOG.md](../../../CHANGELOG.md)
 - the verification workflow is [verify-package.yml](../../../.github/workflows/verify-package.yml)
 
 ## Important Boundary

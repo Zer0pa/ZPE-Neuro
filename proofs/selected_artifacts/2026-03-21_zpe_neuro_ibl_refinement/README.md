@@ -31,4 +31,5 @@ This is the current bounded lane-evidence packet for ZPE-Neuro.
 
 - This packet is self-contained inside the current repo surface.
 - It supports a bounded extracellular breadth claim only.
-- It does not close blind-clone, public-release, or commercialization gates.
+- Blind-clone replay, public release, and commercialization closure remain
+  separate open gates.

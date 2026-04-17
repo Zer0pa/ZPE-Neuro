@@ -10,7 +10,7 @@ This note is a repo-surface summary only. `LICENSE` at the repository root is
 the legal source of truth.
 
 Canonical anchors:
-- Repository: private GitHub repo `https://github.com/Zer0pa/ZPE-Neuro` for authorized readers
+- Repository: GitHub repo `https://github.com/Zer0pa/ZPE-Neuro`
 - Contact: `architects@zer0pa.ai`
 
 <p>
@@ -20,7 +20,7 @@ Canonical anchors:
 Package boundary:
 - `pyproject.toml` defines the shipped install surfaces
 - `src/zpe_neuro/` is the installed package code
-- `tests/`, `tools/`, `runbooks/`, and `proofs/` are repo materials, not
+- `tests/`, `tools/`, `artifacts/`, and `proofs/` are repo materials, not
   installed runtime packages
 - the repo does not claim installed console scripts
 
@@ -53,6 +53,7 @@ Historical evidence boundary:
   <img src="../.github/assets/readme/section-bars/release-posture.svg" alt="RELEASE POSTURE" width="100%">
 </p>
 
-This is a private staged repo. No public-release legal conclusion is implied by
-the existence of this repo boundary, and no commercialization clearance is
-implied by the current evidence packet.
+ZPE-Neuro follows an always-in-beta posture: the repo is useful now for bounded
+extracellular replay and audit work, and it may improve materially as the codec
+and proof surface advance. Blind-clone authority replay and commercialization
+clearance remain separate open gates.

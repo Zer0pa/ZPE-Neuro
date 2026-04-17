@@ -8,7 +8,7 @@
 
 # Release Alignment Packet
 
-This packet is the tracked March 21, 2026 technical release-alignment summary
+This packet is the tracked March 21, 2026 release-surface verification summary
 for ZPE-Neuro.
 
 ## What It Contains
@@ -27,3 +27,7 @@ for ZPE-Neuro.
 - blind-clone authority-pack evidence
 
 Those remain outside the shipped proof packet or remain open.
+
+This packet supports the current useful-now repo surface for bounded
+extracellular replay and falsification truth. Blind-clone authority replay
+remains a separate gate.

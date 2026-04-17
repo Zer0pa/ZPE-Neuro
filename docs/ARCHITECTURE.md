@@ -6,16 +6,21 @@
   <img src="../.github/assets/readme/section-bars/what-this-is.svg" alt="WHAT THIS IS" width="100%">
 </p>
 
-This document is the canonical architecture index for the current ZPE-Neuro
-repo surface. It defines where package truth, proof truth, and release truth
-live.
+This document is the product-specific architecture index for the current
+ZPE-Neuro repo surface. It defines where package truth, proof truth, and
+release truth live.
 
 Canonical anchors:
-- Repository: private GitHub repo `https://github.com/Zer0pa/ZPE-Neuro` for authorized readers
+- Repository: GitHub repo `https://github.com/Zer0pa/ZPE-Neuro`
 - Contact: `architects@zer0pa.ai`
 - Current authority routing: `proofs/manifests/CURRENT_AUTHORITY_PACKET.md`
 - Current technical proof packet: `proofs/selected_artifacts/2026-03-21_zpe_neuro_release_alignment/`
 - Current lane evidence packet: `proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/`
+
+Current codec mechanic:
+- per-channel spike-event token streams with skip (`S`) and pulse (`P`) tokens,
+  fixed 40-sample windows, template IDs, and 8-bit amplitude quantization
+- implemented in `src/zpe_neuro/wave1.py:321-405`
 
 <p>
   <img src="../.github/assets/readme/section-bars/repo-shape.svg" alt="REPO SHAPE" width="100%">
@@ -28,7 +33,7 @@ Canonical anchors:
 | Tests | shipped regression slice | `tests/` |
 | Repo-local runners | gate, replay, and validation scripts | `tools/` |
 | Docs | front door, release, governance, support | `README.md`, `docs/` |
-| Runbooks | operational lane/run receipts and instructions | `runbooks/` |
+| Artifacts | retained local runtime receipts and historical rerun outputs | `artifacts/` |
 | Proof corpus | current authority packets and proof manifests | `proofs/` |
 
 <p>
@@ -55,7 +60,7 @@ is claimed.
 | `proofs/manifests/CURRENT_AUTHORITY_PACKET.md` | current routing anchor | current versus historical packet ownership |
 | `proofs/selected_artifacts/2026-03-21_zpe_neuro_release_alignment/` | current technical authority | package/install/gate alignment summaries |
 | `proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/` | current lane evidence authority | bounded local extracellular breadth and current machine-readable lane verdict |
-| `CHANGELOG.md` and `runbooks/` | chronology only | how the current surface was reached |
+| `CHANGELOG.md` and `artifacts/` | chronology and local receipts only | how the current surface was reached without widening the current proof claim |
 
 <p>
   <img src="../.github/assets/readme/section-bars/optional-dependency-groups.svg" alt="OPERATOR-ONLY SURFACES" width="100%">
@@ -78,5 +83,5 @@ Known lagging defaults:
   install surface
 
 The docs resolve this by keeping the live proof surface small and routing
-chronology through `CHANGELOG.md` and `runbooks/` instead of through shipped
-bridge packets.
+chronology through `CHANGELOG.md` and the retained local `artifacts/` tree
+instead of through shipped bridge packets.

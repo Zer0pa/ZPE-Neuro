@@ -32,7 +32,7 @@ Left outside the repo:
 
 ## Reason
 
-This keeps the private repo inspectable while preserving the decision-critical proof trail.
+This keeps the repo inspectable while preserving the decision-critical proof trail.
 
 ## Known Historical Residue
 

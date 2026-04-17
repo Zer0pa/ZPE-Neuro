@@ -7,7 +7,7 @@
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-SAL%20v6.2-e5e7eb?labelColor=111111" alt="License: SAL v6.2"></a>
   <a href="proofs/manifests/CURRENT_AUTHORITY_PACKET.md"><img src="https://img.shields.io/badge/authority-2026--03--21%20repo%20snapshot-e5e7eb?labelColor=111111" alt="Authority: 2026-03-21 repo snapshot"></a>
-  <a href="RELEASING.md"><img src="https://img.shields.io/badge/release-private%20staged-e5e7eb?labelColor=111111" alt="Release: private staged"></a>
+  <a href="docs/LEGAL_BOUNDARIES.md"><img src="https://img.shields.io/badge/posture-always%20in%20beta-e5e7eb?labelColor=111111" alt="Posture: always in beta"></a>
   <a href="docs/LEGAL_BOUNDARIES.md"><img src="https://img.shields.io/badge/lane-extracellular%20recording-e5e7eb?labelColor=111111" alt="Lane: extracellular recording"></a>
 </p>
 
@@ -15,7 +15,7 @@
 
 Deterministic spike-event extraction for extracellular neuroscience pipelines. The honest wedge is reproducibility for bounded public datasets, not broad neural compression and not full-signal reconstruction.
 
-ZPE-Neuro is aimed at neurotech research-infrastructure teams and academic neuroscience platforms that need stable spike-event encoding, replay, and audit lineage across runs. The current authority packet is real and narrow: DANDI `000034` plus a bounded IBL second-target pass. It does not close blind-clone replay, commercialization-safe closure, or broader neural scope.
+ZPE-Neuro is for neurotech research-infrastructure teams and academic neuroscience groups that need stable spike-event encoding, replay, and audit lineage across runs. The current authority packet is real and narrow: DANDI `000034` plus a bounded IBL second-target pass. It is useful now for bounded extracellular replay and audit work, while blind-clone replay, commercialization closure, and broader neural scope remain open.
 
 | Field | Value |
 |-------|-------|
@@ -33,14 +33,6 @@ ZPE-Neuro is aimed at neurotech research-infrastructure teams and academic neuro
 
 Source: [`public_corpus_eval_dandi_000034_mouse412804_ecephys.json`](proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_eval_dandi_000034_mouse412804_ecephys.json), [`public_corpus_ibl_waveform_eval.json`](proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_ibl_waveform_eval.json)
 
-## Competitive Benchmarks
-
-No promoted incumbent-comparator table is live on the current authority surface. The honest reading is narrower: this repo proves a reproducible spike-event extractor on bounded extracellular slices, not a general neural-codec displacement story.
-
-| Comparator Surface | Current Reading | Notes |
-|--------------------|-----------------|-------|
-| Public incumbent benchmark | Not promoted | The current packet is about bounded reproducibility and lineage, not market-wide comparator closure |
-
 ## What We Prove
 
 - Deterministic spike-event extraction and encoding on DANDI `000034` extracellular data.
@@ -50,23 +42,23 @@ No promoted incumbent-comparator table is live on the current authority surface.
 
 ## What We Don't Claim
 
-- No claim of lossless signal reconstruction.
-- No claim that the window-scoped event-encoding ratios are whole-recording compression results.
-- No claim of blind-clone authority replay.
-- No claim of commercialization-safe closure or tagged public release.
-- No claim beyond the extracellular lane.
+- Lossless full-signal reconstruction.
+- Whole-recording compression from window-scoped event ratios.
+- Blind-clone authority replay.
+- Commercialization closure or tagged public release.
+- Broader neural support beyond the extracellular lane.
 
 ## Commercial Readiness
 
 | Field | Value |
 |-------|-------|
-| Verdict | PRIVATE_STAGED |
-| Release posture | Live work in progress; not a final official release |
+| Verdict | ALWAYS_IN_BETA |
+| Release posture | Useful now, improving continuously |
 | Primary Wedge | Deterministic extracellular spike-event reproducibility |
 | Primary Blocker | Blind-clone authority replay plus commercialization closure |
-| Source | `proofs/manifests/CURRENT_AUTHORITY_PACKET.md`, `RELEASING.md` |
+| Source | `proofs/manifests/CURRENT_AUTHORITY_PACKET.md`, `docs/LEGAL_BOUNDARIES.md` |
 
-The repo is coherent and auditable, but it is still a private-staged proof surface rather than a public commercial lane. The top acceptance gate is a fresh clean-clone authority replay.
+The repo is useful now for bounded extracellular replay, audit, and evaluation work. The governing open gates are a fresh clean-clone authority replay and commercialization closure.
 
 ## Tests and Verification
 
@@ -106,12 +98,7 @@ The repo is coherent and auditable, but it is still a private-staged proof surfa
 
 ## Quick Start
 
-```bash
-# Install from PyPI
-pip install zpe-neuro
-```
-
-Or install from source for the repo-local verification path:
+Install from source for the current repo-truth verification path:
 
 ```bash
 git clone https://github.com/Zer0pa/ZPE-Neuro.git
