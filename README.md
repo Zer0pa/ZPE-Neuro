@@ -28,10 +28,10 @@ ZPE-Neuro is for neurotech research-infrastructure teams and academic neuroscien
 |--------|-------|----------|
 | DANDI_EVENT_BR | 401× | — |
 | IBL_EVENT_BR | 224× | — |
-| DANDI_RMSE | 78.44 µV | — |
-| IBL_RMSE | 38.16 µV | — |
+| DANDI_RMSE | 78.44 | µV |
+| IBL_RMSE | 38.16 | µV |
 
-Source: [`public_corpus_eval_dandi_000034_mouse412804_ecephys.json`](proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_eval_dandi_000034_mouse412804_ecephys.json), [`public_corpus_ibl_waveform_eval.json`](proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_ibl_waveform_eval.json)
+> Source: [`public_corpus_eval_dandi_000034_mouse412804_ecephys.json`](proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_eval_dandi_000034_mouse412804_ecephys.json), [`public_corpus_ibl_waveform_eval.json`](proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_ibl_waveform_eval.json)
 
 ## What We Prove
 
@@ -52,11 +52,10 @@ Source: [`public_corpus_eval_dandi_000034_mouse412804_ecephys.json`](proofs/sele
 
 | Field | Value |
 |-------|-------|
-| Verdict | ALWAYS_IN_BETA |
-| Release posture | Useful now, improving continuously |
-| Primary Wedge | Deterministic extracellular spike-event reproducibility |
-| Primary Blocker | Blind-clone authority replay plus commercialization closure |
-| Source | `proofs/manifests/CURRENT_AUTHORITY_PACKET.md`, `docs/LEGAL_BOUNDARIES.md` |
+| Verdict | STAGED |
+| Commit SHA | 7d30d52d704e |
+| Confidence | 100% |
+| Source | `proofs/manifests/CURRENT_AUTHORITY_PACKET.md` |
 
 The repo is useful now for bounded extracellular replay, audit, and evaluation work. The governing open gates are a fresh clean-clone authority replay and commercialization closure.
 
