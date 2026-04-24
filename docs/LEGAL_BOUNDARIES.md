@@ -20,8 +20,8 @@ Canonical anchors:
 Package boundary:
 - `pyproject.toml` defines the shipped install surfaces
 - `src/zpe_neuro/` is the installed package code
-- `tests/`, `tools/`, `runbooks/`, and `proofs/` are repo materials, not
-  installed runtime packages
+- `tests/`, `tools/`, and `proofs/` are repo materials, not installed runtime
+  packages
 - the repo does not claim installed console scripts
 
 <p>

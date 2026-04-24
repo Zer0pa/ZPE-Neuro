@@ -20,7 +20,7 @@ current authority.
 | Current positive Tier 1 anchor | [DANDI anchor eval](../selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_eval_dandi_000034_mouse412804_ecephys.json) | DANDI `000034` remains the strongest positive public anchor |
 | Current counted second-target authority | [IBL waveform eval](../selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_ibl_waveform_eval.json) | bounded IBL second-target `PASS` within scope |
 | Current lane boundary | [public_corpus_summary.json](../selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_summary.json) | AJILE12 is out-of-family and the lane remains extracellular |
-| Current release boundary | [RELEASING.md](../../RELEASING.md) | blind-clone and public release remain open |
+| Current release boundary | [CHANGELOG.md](../../CHANGELOG.md) | release chronology only; blind-clone and public release remain open |
 | Current legal/commercial boundary | [docs/LEGAL_BOUNDARIES.md](../../docs/LEGAL_BOUNDARIES.md) | commercialization remains open |
 
 ## Retired Legacy Surfaces
@@ -28,7 +28,7 @@ current authority.
 | Surface | Current reading |
 |---|---|
 | February 21 and March 20/21 bridge packets | removed from the live proof surface on `2026-03-22` after the current March 21 packets were made self-contained |
-| `docs/team_packet/` | removed from the current documentation surface; chronology now routes through `CHANGELOG.md` and [runbooks/README.md](../../runbooks/README.md) |
+| `docs/team_packet/` | removed from the current documentation surface; chronology now routes through `CHANGELOG.md` |
 
 ## Drift Closed In The Current Surface
 
@@ -42,8 +42,7 @@ current authority.
 ## Reading Order
 
 1. [README.md](../../README.md)
-2. [RELEASING.md](../../RELEASING.md)
-3. [docs/ARCHITECTURE.md](../../docs/ARCHITECTURE.md)
+2. [docs/ARCHITECTURE.md](../../docs/ARCHITECTURE.md)
+3. [CHANGELOG.md](../../CHANGELOG.md)
 4. [proofs/selected_artifacts/2026-03-21_zpe_neuro_release_alignment/](../selected_artifacts/2026-03-21_zpe_neuro_release_alignment/README.md)
 5. [proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/](../selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/README.md)
-6. [PUBLIC_AUDIT_LIMITS.md](../../PUBLIC_AUDIT_LIMITS.md)
