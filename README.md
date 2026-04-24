@@ -7,7 +7,7 @@
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-SAL%20v7.0-e5e7eb?labelColor=111111" alt="License: SAL v7.0"></a>
   <a href="proofs/manifests/CURRENT_AUTHORITY_PACKET.md"><img src="https://img.shields.io/badge/authority-2026--03--21%20repo%20snapshot-e5e7eb?labelColor=111111" alt="Authority: 2026-03-21 repo snapshot"></a>
-  <a href="RELEASING.md"><img src="https://img.shields.io/badge/release-private%20staged-e5e7eb?labelColor=111111" alt="Release: private staged"></a>
+  <a href="docs/LEGAL_BOUNDARIES.md"><img src="https://img.shields.io/badge/release-private%20staged-e5e7eb?labelColor=111111" alt="Release: private staged"></a>
   <a href="docs/LEGAL_BOUNDARIES.md"><img src="https://img.shields.io/badge/lane-extracellular%20recording-e5e7eb?labelColor=111111" alt="Lane: extracellular recording"></a>
 </p>
 
@@ -61,7 +61,7 @@ No promoted incumbent-comparator table is live on the current authority surface.
 | Field | Value |
 |-------|-------|
 | Verdict | STAGED |
-| Commit SHA | 7d30d52d704e |
+| Commit SHA | 950f03706237 |
 | Confidence | 100% |
 | Source | proofs/manifests/CURRENT_AUTHORITY_PACKET.md |
 

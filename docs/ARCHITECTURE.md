@@ -28,7 +28,6 @@ Canonical anchors:
 | Tests | shipped regression slice | `tests/` |
 | Repo-local runners | gate, replay, and validation scripts | `tools/` |
 | Docs | front door, release, governance, support | `README.md`, `docs/` |
-| Runbooks | operational lane/run receipts and instructions | `runbooks/` |
 | Proof corpus | current authority packets and proof manifests | `proofs/` |
 
 <p>
@@ -55,7 +54,7 @@ is claimed.
 | `proofs/manifests/CURRENT_AUTHORITY_PACKET.md` | current routing anchor | current versus historical packet ownership |
 | `proofs/selected_artifacts/2026-03-21_zpe_neuro_release_alignment/` | current technical authority | package/install/gate alignment summaries |
 | `proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/` | current lane evidence authority | bounded local extracellular breadth and current machine-readable lane verdict |
-| `CHANGELOG.md` and `runbooks/` | chronology only | how the current surface was reached |
+| `CHANGELOG.md` | chronology only | how the current surface was reached |
 
 <p>
   <img src="../.github/assets/readme/section-bars/optional-dependency-groups.svg" alt="OPERATOR-ONLY SURFACES" width="100%">
@@ -78,5 +77,5 @@ Known lagging defaults:
   install surface
 
 The docs resolve this by keeping the live proof surface small and routing
-chronology through `CHANGELOG.md` and `runbooks/` instead of through shipped
+chronology through `CHANGELOG.md` instead of through shipped
 bridge packets.

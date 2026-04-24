@@ -1,0 +1,27 @@
+{
+  "title": "ZPE-Neuro: Zero-Point Encoding Neuro Codec",
+  "description": "Deterministic spike-event extraction for extracellular neuroscience pipelines. The honest wedge is reproducibility for bounded public datasets, not broad neural compression and not full-signal reconstruction.",
+  "creators": [
+    {
+      "name": "Zer0pa (Pty) Ltd",
+      "affiliation": "Zer0pa (Pty) Ltd"
+    }
+  ],
+  "keywords": [
+    "neuroscience",
+    "electrophysiology",
+    "extracellular recording",
+    "spike-event encoding",
+    "NWB",
+    "DANDI"
+  ],
+  "license": "LicenseRef-Zer0pa-SAL-7.0",
+  "upload_type": "software",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/Zer0pa/ZPE-Neuro",
+      "relation": "isSupplementTo",
+      "resource_type": "software"
+    }
+  ]
+}

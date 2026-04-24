@@ -8,8 +8,25 @@ version = "0.1.0"
 description = "Private staged repo for the ZPE Neuro Wave-1 package and curated proof surface."
 requires-python = ">=3.11"
 readme = "README.md"
+authors = [
+    { name = "Zer0pa (Pty) Ltd", email = "architects@zer0pa.ai" },
+]
 license = "LicenseRef-Zer0pa-SAL-7.0"
 license-files = ["LICENSE"]
+classifiers = [
+    "License :: Other/Proprietary License",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering",
+    "Development Status :: 4 - Beta",
+]
+keywords = [
+    "neuroscience",
+    "electrophysiology",
+    "extracellular recording",
+    "spike-event encoding",
+    "nwb",
+    "dandi",
+]
 dependencies = [
     "numpy>=1.26",
     "scipy>=1.11",
@@ -46,8 +63,10 @@ dev = [
 
 [project.urls]
 Homepage = "https://github.com/Zer0pa/ZPE-Neuro"
+Documentation = "https://github.com/Zer0pa/ZPE-Neuro#readme"
 Repository = "https://github.com/Zer0pa/ZPE-Neuro"
 Issues = "https://github.com/Zer0pa/ZPE-Neuro/issues"
+Changelog = "https://github.com/Zer0pa/ZPE-Neuro/blob/main/CHANGELOG.md"
 
 [tool.setuptools.packages.find]
 where = ["src"]

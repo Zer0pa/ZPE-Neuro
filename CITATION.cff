@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: >-
+  If you use ZPE-Neuro, cite this repository record.
+type: software
+title: "ZPE-Neuro: Zero-Point Encoding Neuro Codec"
+authors:
+  - name: Zer0pa (Pty) Ltd
+    email: architects@zer0pa.ai
+repository-code: https://github.com/Zer0pa/ZPE-Neuro
+url: https://github.com/Zer0pa/ZPE-Neuro
+license: LicenseRef-Zer0pa-SAL-7.0
+abstract: >-
+  ZPE-Neuro packages deterministic extracellular spike-event extraction for
+  bounded public datasets, with committed proof artifacts for the current
+  DANDI and IBL authority slice.
+keywords:
+  - neuroscience
+  - electrophysiology
+  - extracellular recording
+  - spike-event encoding
+  - NWB
+  - DANDI
