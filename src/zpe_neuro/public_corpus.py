@@ -39,6 +39,9 @@ class PublicCorpusTarget:
     tier: str
     dandiset_id: str
     asset_path: str
+    role: str
+    counted_in_breadth: bool
+    alternate_asset_paths: tuple[str, ...] = ()
 
 
 DEFAULT_WINDOW_POLICY = "scan"
@@ -53,12 +56,27 @@ PUBLIC_CORPUS_TARGETS = [
         tier="tier1_authority",
         dandiset_id="000034",
         asset_path="sub-mouse412804/sub-mouse412804_ecephys.nwb",
+        role="tier1_authority_anchor",
+        counted_in_breadth=False,
     ),
     PublicCorpusTarget(
         label="ajile12_sub01_ses7_ecephys",
         tier="tier2_breadth",
         dandiset_id="000055",
         asset_path="sub-01/sub-01_ses-7_behavior+ecephys.nwb",
+        role="out_of_family_control",
+        counted_in_breadth=False,
+    ),
+    PublicCorpusTarget(
+        label="dandi_000003_yutamouse20_ecephys",
+        tier="tier2_breadth",
+        dandiset_id="000003",
+        asset_path="sub-YutaMouse20/sub-YutaMouse20_ses-YutaMouse20-140327_behavior+ecephys.nwb",
+        role="next_extracellular_target",
+        counted_in_breadth=True,
+        alternate_asset_paths=(
+            "sub-YutaMouse20/sub-YutaMouse20_ses-YutaMouse20-140321_behavior+ecephys.nwb",
+        ),
     ),
 ]
 
@@ -72,6 +90,10 @@ def get_public_corpus_target(*, label: str | None = None, dandiset_id: str | Non
     if label is not None:
         raise ValueError(f"UNKNOWN_PUBLIC_CORPUS_TARGET:{label}")
     raise ValueError(f"UNKNOWN_PUBLIC_CORPUS_DANDISET:{dandiset_id}")
+
+
+def _target_asset_paths(target: PublicCorpusTarget) -> tuple[str, ...]:
+    return (target.asset_path, *tuple(target.alternate_asset_paths))
 
 
 def _series_selection_artifacts(
@@ -125,17 +147,18 @@ def _series_selection_artifacts(
 
 def _find_downloaded_asset_path(download_root: Path, target: PublicCorpusTarget) -> Path:
     root = Path(download_root)
-    exact = root / target.asset_path
-    if exact.exists():
-        return exact
+    for asset_path in _target_asset_paths(target):
+        exact = root / asset_path
+        if exact.exists():
+            return exact
 
     matches = [
         path
         for path in root.rglob(Path(target.asset_path).name)
-        if str(path.as_posix()).endswith(target.asset_path)
+        if any(str(path.as_posix()).endswith(asset_path) for asset_path in _target_asset_paths(target))
     ]
     if not matches:
-        raise FileNotFoundError(f"DOWNLOADED_ASSET_NOT_FOUND:{target.asset_path}")
+        raise FileNotFoundError(f"DOWNLOADED_ASSET_NOT_FOUND:{_target_asset_paths(target)}")
     matches.sort(key=lambda item: (len(item.parts), str(item)))
     return matches[0]
 
@@ -481,8 +504,13 @@ def _selection_summary(
     }
 
 
-def _stream_target_recording(
+def _selection_rank_tuple(selection_payload: dict[str, Any]) -> tuple[int, int, int, int, int]:
+    return tuple(int(value) for value in selection_payload.get("selected_rank_key", [0, 0, 0, 0, 0]))
+
+
+def _stream_target_recording_for_asset_path(
     target: PublicCorpusTarget,
+    asset_path: str,
     sample_limit: int,
     channel_limit: int,
     window_policy: str,
@@ -496,7 +524,7 @@ def _stream_target_recording(
     with DandiAPIClient.for_dandi_instance("dandi") as client:
         dandiset = client.get_dandiset(target.dandiset_id, "draft")
         dataset_name = str(dandiset.get_raw_metadata().get("name", ""))
-        asset = dandiset.get_asset_by_path(target.asset_path)
+        asset = dandiset.get_asset_by_path(asset_path)
         asset_meta = asset.get_raw_metadata()
         content_url = asset.get_content_url()
 
@@ -524,9 +552,11 @@ def _stream_target_recording(
     source_meta = {
         "target_label": target.label,
         "tier": target.tier,
+        "role": target.role,
+        "counted_in_breadth": bool(target.counted_in_breadth),
         "dandiset_id": target.dandiset_id,
         "dataset_name": dataset_name,
-        "asset_path": target.asset_path,
+        "asset_path": asset_path,
         "content_size_bytes": asset_meta.get("contentSize"),
         "content_url": content_url,
         "series_name": series_name,
@@ -575,9 +605,11 @@ def _load_local_target_recording(
     source_meta = {
         "target_label": target.label,
         "tier": target.tier,
+        "role": target.role,
+        "counted_in_breadth": bool(target.counted_in_breadth),
         "dandiset_id": target.dandiset_id,
         "dataset_name": asset_path.parent.name,
-        "asset_path": target.asset_path,
+        "asset_path": str(asset_path.relative_to(download_root)).replace("\\", "/"),
         "download_root": str(download_root),
         "local_asset_path": str(asset_path),
         "series_name": series_name,
@@ -596,6 +628,123 @@ def _load_local_target_recording(
         selected=selected,
     )
     return selected_recording, source_meta, selection_payload
+
+
+def _stream_target_recording(
+    target: PublicCorpusTarget,
+    sample_limit: int,
+    channel_limit: int,
+    window_policy: str,
+    candidate_windows: int,
+) -> tuple[Recording, dict[str, Any], dict[str, Any]]:
+    best_payload: tuple[Recording, dict[str, Any], dict[str, Any]] | None = None
+    errors: list[str] = []
+    for asset_path in _target_asset_paths(target):
+        try:
+            candidate_payload = _stream_target_recording_for_asset_path(
+                target=target,
+                asset_path=asset_path,
+                sample_limit=sample_limit,
+                channel_limit=channel_limit,
+                window_policy=window_policy,
+                candidate_windows=candidate_windows,
+            )
+        except Exception as exc:
+            errors.append(f"{asset_path}:{exc}")
+            continue
+        if best_payload is None:
+            best_payload = candidate_payload
+            continue
+        _, _, best_selection = best_payload
+        _, _, candidate_selection = candidate_payload
+        if _selection_rank_tuple(candidate_selection) > _selection_rank_tuple(best_selection):
+            best_payload = candidate_payload
+    if best_payload is not None:
+        return best_payload
+    raise RuntimeError(f"PUBLIC_CORPUS_STREAM_TARGET_FAIL:{target.label}:{errors}")
+
+
+def _run_single_target_eval(
+    *,
+    target: PublicCorpusTarget,
+    sample_limit: int,
+    channel_limit: int,
+    window_policy: str,
+    candidate_windows: int,
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    artifact_name = f"public_corpus_eval_{target.label}.json"
+    selection_artifact_name = f"public_corpus_window_selection_{target.label}.json"
+    try:
+        recording, source_meta, selection_payload = _stream_target_recording(
+            target=target,
+            sample_limit=sample_limit,
+            channel_limit=channel_limit,
+            window_policy=window_policy,
+            candidate_windows=candidate_windows,
+        )
+        codec_metrics = _evaluate_recording(recording)
+        target_artifact_root, nwb_roundtrip, spikeinterface = _run_target_insertion_evals(
+            recording=recording,
+            target_label=target.label,
+        )
+        failure_reasons: list[str] = []
+        if codec_metrics["event_count"] <= 0:
+            failure_reasons.append("NO_CODEC_EVENTS_DETECTED")
+        if nwb_roundtrip["status"] != "PASS":
+            failure_reasons.append(f"NWB_ROUNDTRIP_{nwb_roundtrip['status']}")
+        if spikeinterface["status"] != "PASS":
+            failure_reasons.append(f"SPIKEINTERFACE_{spikeinterface['status']}")
+        target_status = "PASS" if not failure_reasons else "FAIL"
+        write_json(ARTIFACT_ROOT / selection_artifact_name, selection_payload)
+        selection_artifact = {
+            "target_label": target.label,
+            "artifact": selection_artifact_name,
+            "selected_start_sample": int(selection_payload["selected_start_sample"]),
+            "first_window_rank": selection_payload["first_window_rank"],
+            "all_candidates_quiet": selection_payload["all_candidates_quiet"],
+        }
+        payload = {
+            "schema_version": "wave1-2026-03-20",
+            "generated_at_utc": utc_now_iso(),
+            "status": target_status,
+            "source": source_meta,
+            "window_selection": {
+                "artifact": selection_artifact_name,
+                "selected_start_sample": int(selection_payload["selected_start_sample"]),
+                "first_window_rank": selection_payload["first_window_rank"],
+                "all_candidates_quiet": selection_payload["all_candidates_quiet"],
+            },
+            "codec_metrics": codec_metrics,
+            "nwb_roundtrip": nwb_roundtrip,
+            "spikeinterface": spikeinterface,
+            "artifacts_root": target_artifact_root,
+            "failure_reasons": failure_reasons,
+        }
+    except Exception as exc:
+        selection_artifact = {
+            "target_label": target.label,
+            "artifact": selection_artifact_name,
+            "selected_start_sample": None,
+            "first_window_rank": None,
+            "all_candidates_quiet": None,
+        }
+        payload = {
+            "schema_version": "wave1-2026-03-20",
+            "generated_at_utc": utc_now_iso(),
+            "status": "FAIL",
+            "source": {
+                "target_label": target.label,
+                "tier": target.tier,
+                "role": target.role,
+                "counted_in_breadth": bool(target.counted_in_breadth),
+                "dandiset_id": target.dandiset_id,
+                "asset_path": target.asset_path,
+                "alternate_asset_paths": list(target.alternate_asset_paths),
+            },
+            "error": f"PUBLIC_CORPUS_EVAL_FAIL:{exc}",
+        }
+    write_json(ARTIFACT_ROOT / artifact_name, payload)
+    return payload, selection_artifact
 
 
 def _evaluate_recording(recording: Recording) -> dict[str, Any]:
@@ -809,6 +958,8 @@ def run_public_corpus_eval(
     channel_limit: int = 8,
     window_policy: str = DEFAULT_WINDOW_POLICY,
     candidate_windows: int = DEFAULT_CANDIDATE_WINDOWS,
+    label: str | None = None,
+    dandiset_id: str | None = None,
 ) -> dict[str, Any]:
     if window_policy not in WINDOW_POLICY_CHOICES:
         raise ValueError(f"UNSUPPORTED_WINDOW_POLICY:{window_policy}")
@@ -817,82 +968,35 @@ def run_public_corpus_eval(
         "python3.11 tools/run_public_corpus_eval.py "
         f"--sample-limit {sample_limit} --channel-limit {channel_limit} "
         f"--window-policy {window_policy} --candidate-windows {candidate_windows}"
+        + (f" --label {label}" if label is not None else "")
+        + (f" --dandiset {dandiset_id}" if dandiset_id is not None else "")
     )
 
     target_results: list[dict[str, Any]] = []
     selection_artifacts: list[dict[str, Any]] = []
-    for target in PUBLIC_CORPUS_TARGETS:
-        artifact_name = f"public_corpus_eval_{target.label}.json"
-        selection_artifact_name = f"public_corpus_window_selection_{target.label}.json"
-        try:
-            recording, source_meta, selection_payload = _stream_target_recording(
-                target=target,
-                sample_limit=sample_limit,
-                channel_limit=channel_limit,
-                window_policy=window_policy,
-                candidate_windows=candidate_windows,
-            )
-            codec_metrics = _evaluate_recording(recording)
-            target_artifact_root, nwb_roundtrip, spikeinterface = _run_target_insertion_evals(
-                recording=recording,
-                target_label=target.label,
-            )
-            failure_reasons: list[str] = []
-            if codec_metrics["event_count"] <= 0:
-                failure_reasons.append("NO_CODEC_EVENTS_DETECTED")
-            if nwb_roundtrip["status"] != "PASS":
-                failure_reasons.append(f"NWB_ROUNDTRIP_{nwb_roundtrip['status']}")
-            if spikeinterface["status"] != "PASS":
-                failure_reasons.append(f"SPIKEINTERFACE_{spikeinterface['status']}")
-            target_status = "PASS" if not failure_reasons else "FAIL"
-            write_json(ARTIFACT_ROOT / selection_artifact_name, selection_payload)
-            selection_artifacts.append(
-                {
-                    "target_label": target.label,
-                    "artifact": selection_artifact_name,
-                    "selected_start_sample": int(selection_payload["selected_start_sample"]),
-                    "first_window_rank": selection_payload["first_window_rank"],
-                    "all_candidates_quiet": selection_payload["all_candidates_quiet"],
-                }
-            )
-            payload = {
-                "schema_version": "wave1-2026-03-20",
-                "generated_at_utc": utc_now_iso(),
-                "status": target_status,
-                "source": source_meta,
-                "window_selection": {
-                    "artifact": selection_artifact_name,
-                    "selected_start_sample": int(selection_payload["selected_start_sample"]),
-                    "first_window_rank": selection_payload["first_window_rank"],
-                    "all_candidates_quiet": selection_payload["all_candidates_quiet"],
-                },
-                "codec_metrics": codec_metrics,
-                "nwb_roundtrip": nwb_roundtrip,
-                "spikeinterface": spikeinterface,
-                "artifacts_root": target_artifact_root,
-                "failure_reasons": failure_reasons,
-            }
-        except Exception as exc:
-            payload = {
-                "schema_version": "wave1-2026-03-20",
-                "generated_at_utc": utc_now_iso(),
-                "status": "FAIL",
-                "source": {
-                    "target_label": target.label,
-                    "tier": target.tier,
-                    "dandiset_id": target.dandiset_id,
-                    "asset_path": target.asset_path,
-                },
-                "error": f"PUBLIC_CORPUS_EVAL_FAIL:{exc}",
-            }
-        write_json(ARTIFACT_ROOT / artifact_name, payload)
+    selected_targets = (
+        [get_public_corpus_target(label=label, dandiset_id=dandiset_id)]
+        if label is not None or dandiset_id is not None
+        else list(PUBLIC_CORPUS_TARGETS)
+    )
+    for target in selected_targets:
+        payload, selection_artifact = _run_single_target_eval(
+            target=target,
+            sample_limit=sample_limit,
+            channel_limit=channel_limit,
+            window_policy=window_policy,
+            candidate_windows=candidate_windows,
+        )
+        selection_artifacts.append(selection_artifact)
         target_results.append(
             {
                 "target_label": target.label,
                 "tier": target.tier,
+                "role": target.role,
+                "counted_in_breadth": bool(target.counted_in_breadth),
                 "status": payload["status"],
-                "artifact": artifact_name,
-                "selection_artifact": selection_artifact_name,
+                "artifact": f"public_corpus_eval_{target.label}.json",
+                "selection_artifact": f"public_corpus_window_selection_{target.label}.json",
             }
         )
 

@@ -29,6 +29,39 @@ def _utc_now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
+def _fallback_role(label: str) -> str:
+    if label == "dandi_000034_mouse412804_ecephys":
+        return "tier1_authority_anchor"
+    if label == "ajile12_sub01_ses7_ecephys":
+        return "out_of_family_control"
+    if label == "dandi_000003_yutamouse20_ecephys":
+        return "next_extracellular_target"
+    return "candidate_target"
+
+
+def _fallback_counted_in_breadth(label: str, tier: str) -> bool:
+    if label in {"dandi_000034_mouse412804_ecephys", "ajile12_sub01_ses7_ecephys"}:
+        return False
+    return tier == "tier2_breadth"
+
+
+def _normalize_public_eval(path: Path, payload: dict[str, Any], artifact_root: Path) -> dict[str, Any]:
+    source = payload.get("source", {})
+    label = str(source.get("target_label") or path.stem.removeprefix("public_corpus_eval_"))
+    tier = str(source.get("tier") or "tier2_breadth")
+    role = str(source.get("role") or _fallback_role(label))
+    counted_in_breadth = bool(source.get("counted_in_breadth", _fallback_counted_in_breadth(label, tier)))
+    return {
+        "target_label": label,
+        "tier": tier,
+        "waveform_executed": True,
+        "evaluation_status": payload.get("status", "FAIL"),
+        "counted_in_breadth": counted_in_breadth,
+        "role": role,
+        "artifact": _relative(artifact_root / path.name),
+    }
+
+
 def build_family_boundary_decision(
     dandi_eval: dict[str, Any],
     ajile_eval: dict[str, Any],
@@ -111,30 +144,14 @@ def build_family_boundary_decision(
 def build_public_summary(
     artifact_root: Path,
     family_boundary: dict[str, Any],
+    public_eval_targets: list[dict[str, Any]],
     dandi_eval: dict[str, Any],
     ajile_eval: dict[str, Any],
     ibl_eval: dict[str, Any],
     selection_summary: dict[str, Any],
 ) -> dict[str, Any]:
-    targets = [
-        {
-            "target_label": dandi_eval["source"]["target_label"],
-            "tier": dandi_eval["source"]["tier"],
-            "waveform_executed": True,
-            "evaluation_status": dandi_eval["status"],
-            "counted_in_breadth": False,
-            "role": "tier1_authority_anchor",
-            "artifact": _relative(artifact_root / "public_corpus_eval_dandi_000034_mouse412804_ecephys.json"),
-        },
-        {
-            "target_label": ajile_eval["source"]["target_label"],
-            "tier": ajile_eval["source"]["tier"],
-            "waveform_executed": True,
-            "evaluation_status": ajile_eval["status"],
-            "counted_in_breadth": False,
-            "role": "out_of_family_control",
-            "artifact": _relative(artifact_root / "public_corpus_eval_ajile12_sub01_ses7_ecephys.json"),
-        },
+    targets = list(public_eval_targets)
+    targets.append(
         {
             "target_label": ibl_eval["source"]["target_label"],
             "tier": ibl_eval["source"]["tier"],
@@ -143,8 +160,8 @@ def build_public_summary(
             "counted_in_breadth": True,
             "role": "second_extracellular_target",
             "artifact": _relative(artifact_root / "public_corpus_ibl_waveform_eval.json"),
-        },
-    ]
+        }
+    )
     counted_targets = [item for item in targets if item["counted_in_breadth"]]
     counted_passes = [
         item
@@ -152,6 +169,13 @@ def build_public_summary(
         if item["waveform_executed"] and item["evaluation_status"] == "PASS"
     ]
     breadth_status = "PASS" if counted_targets and len(counted_passes) == len(counted_targets) else "FAIL"
+    tier1_anchor = next(
+        (item for item in targets if item["role"] == "tier1_authority_anchor"),
+        {
+            "target_label": dandi_eval["source"]["target_label"],
+            "evaluation_status": dandi_eval["status"],
+        },
+    )
     return {
         "schema_version": "breadth-adjudication-2026-03-21",
         "generated_at_utc": _utc_now_iso(),
@@ -162,8 +186,8 @@ def build_public_summary(
         "window_policy": selection_summary.get("window_policy", "scan"),
         "window_selection_artifact": "public_corpus_window_selection_summary.json",
         "tier1_anchor": {
-            "target_label": dandi_eval["source"]["target_label"],
-            "status": dandi_eval["status"],
+            "target_label": tier1_anchor["target_label"],
+            "status": tier1_anchor["evaluation_status"],
             "reason": "Preserved positive authority anchor; not counted as breadth closure.",
         },
         "targets": targets,
@@ -238,6 +262,10 @@ def run_breadth_adjudication(
     selection_summary = _read_json(selection_summary_path)
     dandi_selection = _read_json(dandi_selection_path)
     ibl_eval = _read_json(ibl_eval_path)
+    public_eval_targets = [
+        _normalize_public_eval(path, _read_json(path), artifact_root)
+        for path in sorted(window_root.glob("public_corpus_eval_*.json"))
+    ]
 
     family_boundary = build_family_boundary_decision(
         dandi_eval=dandi_eval,
@@ -248,6 +276,7 @@ def run_breadth_adjudication(
     summary = build_public_summary(
         artifact_root=artifact_root,
         family_boundary=family_boundary,
+        public_eval_targets=public_eval_targets,
         dandi_eval=dandi_eval,
         ajile_eval=ajile_eval,
         ibl_eval=ibl_eval,
@@ -269,17 +298,22 @@ def run_breadth_adjudication(
     copied_selection_summary["generated_at_utc"] = _utc_now_iso()
     copied_selection_summary["source_artifact"] = _relative(selection_summary_path)
     copied_selection_summary["target_artifacts"] = {
-        "dandi": _relative(dandi_selection_path),
-        "ajile": _relative(ajile_selection_path),
+        item["target_label"]: _relative(window_root / item["artifact"])
+        for item in selection_summary.get("targets", [])
+        if item.get("artifact")
     }
 
-    for name, payload in [
+    payloads_to_copy: list[tuple[str, dict[str, Any]]] = [
         ("public_corpus_summary.json", summary),
         ("public_corpus_window_selection_summary.json", copied_selection_summary),
-        ("public_corpus_eval_dandi_000034_mouse412804_ecephys.json", dandi_eval),
-        ("public_corpus_eval_ajile12_sub01_ses7_ecephys.json", ajile_eval),
         ("public_corpus_ibl_waveform_eval.json", ibl_eval),
-    ]:
+    ]
+    for path in sorted(window_root.glob("public_corpus_eval_*.json")):
+        payloads_to_copy.append((path.name, _read_json(path)))
+    for path in sorted(window_root.glob("public_corpus_window_selection_*.json")):
+        payloads_to_copy.append((path.name, _read_json(path)))
+
+    for name, payload in payloads_to_copy:
         (artifact_root / name).write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
 
     return {

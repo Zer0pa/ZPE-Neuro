@@ -18,6 +18,8 @@ def main() -> int:
     parser.add_argument("--channel-limit", type=int, default=8)
     parser.add_argument("--window-policy", choices=["first", "scan"], default="scan")
     parser.add_argument("--candidate-windows", type=int, default=9)
+    parser.add_argument("--label", default=None, help="Optional public target label for a single-target run.")
+    parser.add_argument("--dandiset", default=None, help="Optional DANDI id for a single-target run.")
     args = parser.parse_args()
     configure_artifact_root(args.artifact_root)
     bootstrap()
@@ -28,6 +30,8 @@ def main() -> int:
         channel_limit=args.channel_limit,
         window_policy=args.window_policy,
         candidate_windows=args.candidate_windows,
+        label=args.label,
+        dandiset_id=args.dandiset,
     )
     print(json.dumps(result, indent=2, sort_keys=True))
     return 0 if result["status"] == "PASS" else 1

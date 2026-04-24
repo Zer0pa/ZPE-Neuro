@@ -1,0 +1,5 @@
+{
+  "blocked_reason": "ONE-api is not part of the clean packaged public replay surface. Provision it manually only when you are explicitly working the repo-local IBL metadata path.",
+  "status": "SKIPPED",
+  "waveform_slice_executed": false
+}

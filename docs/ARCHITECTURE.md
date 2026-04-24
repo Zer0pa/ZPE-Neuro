@@ -14,8 +14,8 @@ Canonical anchors:
 - Repository: private GitHub repo `https://github.com/Zer0pa/ZPE-Neuro` for authorized readers
 - Contact: `architects@zer0pa.ai`
 - Current authority routing: `proofs/manifests/CURRENT_AUTHORITY_PACKET.md`
-- Current technical proof packet: `proofs/selected_artifacts/2026-03-21_zpe_neuro_release_alignment/`
-- Current lane evidence packet: `proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/`
+- Current technical proof packet: `proofs/selected_artifacts/2026-04-24_zpe_neuro_blind_clone_replay/`
+- Current lane evidence packet: `proofs/selected_artifacts/2026-04-24_zpe_neuro_dandi000003_breadth/`
 
 <p>
   <img src="../.github/assets/readme/section-bars/repo-shape.svg" alt="REPO SHAPE" width="100%">
@@ -52,8 +52,8 @@ is claimed.
 | Packet | Class | What it owns |
 |---|---|---|
 | `proofs/manifests/CURRENT_AUTHORITY_PACKET.md` | current routing anchor | current versus historical packet ownership |
-| `proofs/selected_artifacts/2026-03-21_zpe_neuro_release_alignment/` | current technical authority | package/install/gate alignment summaries |
-| `proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/` | current lane evidence authority | bounded local extracellular breadth and current machine-readable lane verdict |
+| `proofs/selected_artifacts/2026-04-24_zpe_neuro_blind_clone_replay/` | current technical authority | clean blind-clone replay, tests, Gate C, Gate D, and DANDI `000034` replay receipts |
+| `proofs/selected_artifacts/2026-04-24_zpe_neuro_dandi000003_breadth/` | current lane evidence authority | bounded extracellular breadth verdict with the first DANDI `000003` attempt |
 | `CHANGELOG.md` | chronology only | how the current surface was reached |
 
 <p>
@@ -77,4 +77,5 @@ Known lagging defaults:
   install surface
 
 The docs resolve this by keeping the live proof surface small and routing
-chronology through `CHANGELOG.md` instead of through shipped bridge packets.
+chronology through `CHANGELOG.md` instead of through shipped
+bridge packets.

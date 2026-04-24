@@ -1,0 +1,70 @@
+{
+  "breadth_counts": {
+    "counted_passes": 1,
+    "counted_targets": 2,
+    "executed_waveform_targets": 4
+  },
+  "breadth_verdict": "FAIL",
+  "counting_policy": {
+    "counted_target_labels": [
+      "dandi_000003_yutamouse20_ecephys",
+      "ibl_ks014_2019_12_03_probe00_ap"
+    ],
+    "excluded_target_labels": [
+      "ajile12_sub01_ses7_ecephys",
+      "dandi_000034_mouse412804_ecephys"
+    ],
+    "summary": "Only real waveform targets count for breadth, and out-of-family controls do not count as breadth passes or misses."
+  },
+  "family_boundary_artifact": "ajile12_family_boundary_decision.md",
+  "family_boundary_decision": "OUT_OF_FAMILY",
+  "generated_at_utc": "2026-04-24T01:22:15.221448+00:00",
+  "next_step": "Keep the lane explicit as a bounded extracellular product, preserve the counted IBL pass, and keep blind-clone and commercialization gates separate from the current breadth verdict.",
+  "schema_version": "breadth-adjudication-2026-03-21",
+  "status": "FAIL",
+  "targets": [
+    {
+      "artifact": "proofs/selected_artifacts/2026-04-24_zpe_neuro_dandi000003_breadth/public_corpus_eval_ajile12_sub01_ses7_ecephys.json",
+      "counted_in_breadth": false,
+      "evaluation_status": "FAIL",
+      "role": "out_of_family_control",
+      "target_label": "ajile12_sub01_ses7_ecephys",
+      "tier": "tier2_breadth",
+      "waveform_executed": true
+    },
+    {
+      "artifact": "proofs/selected_artifacts/2026-04-24_zpe_neuro_dandi000003_breadth/public_corpus_eval_dandi_000003_yutamouse20_ecephys.json",
+      "counted_in_breadth": true,
+      "evaluation_status": "FAIL",
+      "role": "next_extracellular_target",
+      "target_label": "dandi_000003_yutamouse20_ecephys",
+      "tier": "tier2_breadth",
+      "waveform_executed": true
+    },
+    {
+      "artifact": "proofs/selected_artifacts/2026-04-24_zpe_neuro_dandi000003_breadth/public_corpus_eval_dandi_000034_mouse412804_ecephys.json",
+      "counted_in_breadth": false,
+      "evaluation_status": "PASS",
+      "role": "tier1_authority_anchor",
+      "target_label": "dandi_000034_mouse412804_ecephys",
+      "tier": "tier1_authority",
+      "waveform_executed": true
+    },
+    {
+      "artifact": "proofs/selected_artifacts/2026-04-24_zpe_neuro_dandi000003_breadth/public_corpus_ibl_waveform_eval.json",
+      "counted_in_breadth": true,
+      "evaluation_status": "PASS",
+      "role": "second_extracellular_target",
+      "target_label": "ibl_ks014_2019_12_03_probe00_ap",
+      "tier": "tier2_breadth",
+      "waveform_executed": true
+    }
+  ],
+  "tier1_anchor": {
+    "reason": "Preserved positive authority anchor; not counted as breadth closure.",
+    "status": "PASS",
+    "target_label": "dandi_000034_mouse412804_ecephys"
+  },
+  "window_policy": "scan",
+  "window_selection_artifact": "public_corpus_window_selection_summary.json"
+}

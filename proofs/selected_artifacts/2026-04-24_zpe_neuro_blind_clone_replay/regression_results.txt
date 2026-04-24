@@ -1,0 +1,6 @@
+$ /private/tmp/zpe-neuro-blindclone-f1OKIw/.venv-blindclone/bin/python -m unittest discover -s tests -q
+----------------------------------------------------------------------
+Ran 25 tests in 1.152s
+
+OK
+exit_code=0
