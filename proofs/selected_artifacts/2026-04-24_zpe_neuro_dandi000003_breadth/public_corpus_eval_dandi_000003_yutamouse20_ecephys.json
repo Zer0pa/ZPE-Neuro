@@ -1,0 +1,17 @@
+{
+  "error": "PUBLIC_CORPUS_EVAL_FAIL:PUBLIC_CORPUS_STREAM_TARGET_FAIL:dandi_000003_yutamouse20_ecephys:['sub-YutaMouse20/sub-YutaMouse20_ses-YutaMouse20-140327_behavior+ecephys.nwb:NO_ELECTRICAL_SERIES_FOUND', 'sub-YutaMouse20/sub-YutaMouse20_ses-YutaMouse20-140321_behavior+ecephys.nwb:NO_ELECTRICAL_SERIES_FOUND']",
+  "generated_at_utc": "2026-04-24T01:19:58.987093+00:00",
+  "schema_version": "wave1-2026-03-20",
+  "source": {
+    "alternate_asset_paths": [
+      "sub-YutaMouse20/sub-YutaMouse20_ses-YutaMouse20-140321_behavior+ecephys.nwb"
+    ],
+    "asset_path": "sub-YutaMouse20/sub-YutaMouse20_ses-YutaMouse20-140327_behavior+ecephys.nwb",
+    "counted_in_breadth": true,
+    "dandiset_id": "000003",
+    "role": "next_extracellular_target",
+    "target_label": "dandi_000003_yutamouse20_ecephys",
+    "tier": "tier2_breadth"
+  },
+  "status": "FAIL"
+}

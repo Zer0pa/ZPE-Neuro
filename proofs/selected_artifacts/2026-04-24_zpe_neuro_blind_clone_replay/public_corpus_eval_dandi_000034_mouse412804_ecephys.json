@@ -1,0 +1,77 @@
+{
+  "artifacts_root": "proofs/selected_artifacts/2026-04-24_zpe_neuro_blind_clone_replay/dandi_000034_mouse412804_ecephys",
+  "codec_metrics": {
+    "compression_ratio": 401.0443864229765,
+    "dropped_overlap_events": 0,
+    "encoded_bits": 1915,
+    "event_count": 41,
+    "raw_bits": 768000,
+    "rmse_uv": 78.4409949420582
+  },
+  "failure_reasons": [],
+  "generated_at_utc": "2026-04-24T01:14:58.845323+00:00",
+  "nwb_roundtrip": {
+    "bit_consistent": true,
+    "nwb_path": "proofs/selected_artifacts/2026-04-24_zpe_neuro_blind_clone_replay/dandi_000034_mouse412804_ecephys/gate_c_roundtrip.nwb",
+    "original_sha256": "bd78d7bc06d90e4e8d8adbca66f697efbffadd6c6a07e02e0cdf82507b35547d",
+    "roundtrip_sha256": "bd78d7bc06d90e4e8d8adbca66f697efbffadd6c6a07e02e0cdf82507b35547d",
+    "status": "PASS"
+  },
+  "schema_version": "wave1-2026-03-20",
+  "source": {
+    "asset_path": "sub-mouse412804/sub-mouse412804_ecephys.nwb",
+    "channels": 8,
+    "content_size_bytes": 13411878072,
+    "content_url": "https://api.dandiarchive.org/api/assets/3e0d4539-902e-46b4-9cfb-119e0f69fbd0/download/",
+    "dandiset_id": "000034",
+    "dataset_name": "SpikeInterface, a unified framework for spike sorting",
+    "duration_s": 0.2,
+    "event_count": 41,
+    "normalization_scale": 1.0,
+    "sampling_rate_hz": 30000,
+    "selected_start_sample": 16871250,
+    "series_name": "ElectricalSeries",
+    "series_shape": [
+      27000000,
+      248
+    ],
+    "target_label": "dandi_000034_mouse412804_ecephys",
+    "tier": "tier1_authority",
+    "total_samples": 6000,
+    "window_policy": "scan"
+  },
+  "spikeinterface": {
+    "bandpass_hz": {
+      "freq_max": 6000.0,
+      "freq_min": 300.0
+    },
+    "channel_locations_shape": [
+      8,
+      2
+    ],
+    "kilosort4_installed": false,
+    "peak_count": 33,
+    "peak_detection_method": "by_channel",
+    "peak_error": null,
+    "serialized_recording_path": "proofs/selected_artifacts/2026-04-24_zpe_neuro_blind_clone_replay/dandi_000034_mouse412804_ecephys/spikeinterface_serialized_recording",
+    "snippet_shape": [
+      2048,
+      8
+    ],
+    "sorter_output_path": "proofs/selected_artifacts/2026-04-24_zpe_neuro_blind_clone_replay/dandi_000034_mouse412804_ecephys/spikeinterface_sorter_probe",
+    "sorter_peak_count": 33,
+    "sorter_probe_error": null,
+    "sorter_probe_method": "serialized_by_channel_kmeans",
+    "sorter_probe_status": "PASS",
+    "sorter_unit_count": 1,
+    "status": "PASS",
+    "tridesclous2_available": true
+  },
+  "status": "PASS",
+  "window_selection": {
+    "all_candidates_quiet": false,
+    "artifact": "public_corpus_window_selection_dandi_000034_mouse412804_ecephys.json",
+    "first_window_rank": 5,
+    "selected_start_sample": 16871250
+  }
+}

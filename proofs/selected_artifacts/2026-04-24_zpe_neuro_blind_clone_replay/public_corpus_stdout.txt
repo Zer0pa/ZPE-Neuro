@@ -1,0 +1,62 @@
+/private/tmp/zpe-neuro-blindclone-f1OKIw/.venv-blindclone/lib/python3.11/site-packages/pynwb/ecephys.py:159: UserWarning: ElectricalSeries 'ElectricalSeries': The second dimension of data does not match the length of electrodes. Your data may be transposed.
+  warnings.warn("%s '%s': The second dimension of data does not match the length of electrodes. "
+/private/tmp/zpe-neuro-blindclone-f1OKIw/.venv-blindclone/lib/python3.11/site-packages/spikeinterface/core/recording_tools.py:521: UserWarning: chunk_size is greater than the number of samples for segment index 0. Using 5999.
+  warnings.warn(
+noise_level (no parallelization):   0%|          | 0/20 [00:00<?, ?it/s]noise_level (no parallelization):  95%|█████████▌| 19/20 [00:00<00:00, 189.55it/s]noise_level (no parallelization): 100%|██████████| 20/20 [00:00<00:00, 186.69it/s]
+detect peaks (by_channel) (no parallelization):   0%|          | 0/1 [00:00<?, ?it/s]detect peaks (by_channel) (no parallelization): 100%|██████████| 1/1 [00:00<00:00, 193.79it/s]
+/private/tmp/zpe-neuro-blindclone-f1OKIw/.venv-blindclone/lib/python3.11/site-packages/spikeinterface/core/base.py:991: UserWarning: The extractor is not serializable to file. The provenance will not be saved.
+  warnings.warn("The extractor is not serializable to file. The provenance will not be saved.")
+write_binary_recording 
+engine=process - n_jobs=1 - samples_per_chunk=30,000 - chunk_memory=937.50 KiB - total_memory=937.50 KiB - chunk_duration=1.00s
+write_binary_recording (no parallelization):   0%|          | 0/1 [00:00<?, ?it/s]write_binary_recording (no parallelization): 100%|██████████| 1/1 [00:00<00:00, 199.24it/s]
+detect peaks (by_channel) (no parallelization):   0%|          | 0/1 [00:00<?, ?it/s]detect peaks (by_channel) (no parallelization): 100%|██████████| 1/1 [00:00<00:00, 118.36it/s]
+noise_level (no parallelization):   0%|          | 0/20 [00:00<?, ?it/s]noise_level (no parallelization): 100%|██████████| 20/20 [00:00<00:00, 914.83it/s]
+detect peaks (by_channel) (no parallelization):   0%|          | 0/12 [00:00<?, ?it/s]detect peaks (by_channel) (no parallelization): 100%|██████████| 12/12 [00:00<00:00, 1099.81it/s]
+write_binary_recording 
+engine=process - n_jobs=1 - samples_per_chunk=500 - chunk_memory=15.62 KiB - total_memory=15.62 KiB - chunk_duration=1.00s
+write_binary_recording (no parallelization):   0%|          | 0/12 [00:00<?, ?it/s]write_binary_recording (no parallelization): 100%|██████████| 12/12 [00:00<00:00, 930.88it/s]
+detect peaks (by_channel) (no parallelization):   0%|          | 0/12 [00:00<?, ?it/s]detect peaks (by_channel) (no parallelization): 100%|██████████| 12/12 [00:00<00:00, 349.46it/s]
+{
+  "candidate_windows": 9,
+  "channel_limit": 8,
+  "generated_at_utc": "2026-04-24T01:16:14.796487+00:00",
+  "ibl_probe_artifact": "public_corpus_ibl_probe.json",
+  "ibl_probe_status": "SKIPPED",
+  "sample_limit": 6000,
+  "schema_version": "wave1-2026-03-20",
+  "status": "FAIL",
+  "targets": [
+    {
+      "artifact": "public_corpus_eval_dandi_000034_mouse412804_ecephys.json",
+      "selection_artifact": "public_corpus_window_selection_dandi_000034_mouse412804_ecephys.json",
+      "status": "PASS",
+      "target_label": "dandi_000034_mouse412804_ecephys",
+      "tier": "tier1_authority"
+    },
+    {
+      "artifact": "public_corpus_eval_ajile12_sub01_ses7_ecephys.json",
+      "selection_artifact": "public_corpus_window_selection_ajile12_sub01_ses7_ecephys.json",
+      "status": "FAIL",
+      "target_label": "ajile12_sub01_ses7_ecephys",
+      "tier": "tier2_breadth"
+    }
+  ],
+  "window_policy": "scan",
+  "window_selection_artifact": "public_corpus_window_selection_summary.json",
+  "window_selection_targets": [
+    {
+      "all_candidates_quiet": false,
+      "artifact": "public_corpus_window_selection_dandi_000034_mouse412804_ecephys.json",
+      "first_window_rank": 5,
+      "selected_start_sample": 16871250,
+      "target_label": "dandi_000034_mouse412804_ecephys"
+    },
+    {
+      "all_candidates_quiet": false,
+      "artifact": "public_corpus_window_selection_ajile12_sub01_ses7_ecephys.json",
+      "first_window_rank": 9,
+      "selected_start_sample": 20889595,
+      "target_label": "ajile12_sub01_ses7_ecephys"
+    }
+  ]
+}

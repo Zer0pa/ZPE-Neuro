@@ -1,0 +1,31 @@
+{
+  "candidate_windows": 9,
+  "channel_limit": 8,
+  "generated_at_utc": "2026-04-24T01:19:58.988045+00:00",
+  "sample_limit": 6000,
+  "schema_version": "window-policy-2026-03-20",
+  "targets": [
+    {
+      "all_candidates_quiet": false,
+      "artifact": "public_corpus_window_selection_dandi_000034_mouse412804_ecephys.json",
+      "first_window_rank": 5,
+      "selected_start_sample": 16871250,
+      "target_label": "dandi_000034_mouse412804_ecephys"
+    },
+    {
+      "all_candidates_quiet": false,
+      "artifact": "public_corpus_window_selection_ajile12_sub01_ses7_ecephys.json",
+      "first_window_rank": 9,
+      "selected_start_sample": 20889595,
+      "target_label": "ajile12_sub01_ses7_ecephys"
+    },
+    {
+      "all_candidates_quiet": null,
+      "artifact": "public_corpus_window_selection_dandi_000003_yutamouse20_ecephys.json",
+      "first_window_rank": null,
+      "selected_start_sample": null,
+      "target_label": "dandi_000003_yutamouse20_ecephys"
+    }
+  ],
+  "window_policy": "scan"
+}
