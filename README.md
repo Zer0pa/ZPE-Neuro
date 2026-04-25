@@ -33,8 +33,8 @@ ZPE-Neuro is a bounded extracellular spike-event extraction surface. The live RE
 |--------|-------|----------------|---------|
 | Event ratio (window-scoped) | 401x | [`benchmark_summary.json`](proofs/artifacts/dandi000034_benchmark/benchmark_summary.json) | `tests/test_dandi_offline.py::test_fixture_reproduces_benchmark_metrics` |
 | RMSE | 78.44 uV | [`benchmark_summary.json`](proofs/artifacts/dandi000034_benchmark/benchmark_summary.json) | `tests/test_dandi_offline.py::test_fixture_reproduces_benchmark_metrics` |
-| Encode latency (mean / max) | 0.089 ms / 0.208 ms | [`benchmark_summary.json`](proofs/artifacts/dandi000034_benchmark/benchmark_summary.json) | `tests/test_dandi_offline.py` |
-| Decode latency (mean / max) | 0.474 ms / 0.686 ms | [`benchmark_summary.json`](proofs/artifacts/dandi000034_benchmark/benchmark_summary.json) | `tests/test_dandi_offline.py` |
+| Encode latency (mean / max) | 0.089 ms / 0.208 ms | [`benchmark_summary.json`](proofs/artifacts/dandi000034_benchmark/benchmark_summary.json) | artifact only — no pytest bound asserted |
+| Decode latency (mean / max) | 0.474 ms / 0.686 ms | [`benchmark_summary.json`](proofs/artifacts/dandi000034_benchmark/benchmark_summary.json) | artifact only — no pytest bound asserted |
 
 These are window-scoped metrics (6000-sample, 8-channel window at 30 kHz). They are not whole-recording compression results.
 
@@ -42,8 +42,8 @@ These are window-scoped metrics (6000-sample, 8-channel window at 30 kHz). They 
 
 | Metric | Value | Proof artifact | CI test |
 |--------|-------|----------------|---------|
-| Event ratio (window-scoped) | 224x | [`public_corpus_ibl_waveform_eval.json`](proofs/selected_artifacts/2026-04-24_zpe_neuro_dandi000003_breadth/public_corpus_ibl_waveform_eval.json) | `tests/test_breadth_adjudication.py` |
-| RMSE | 38.16 uV | [`public_corpus_ibl_waveform_eval.json`](proofs/selected_artifacts/2026-04-24_zpe_neuro_dandi000003_breadth/public_corpus_ibl_waveform_eval.json) | `tests/test_breadth_adjudication.py` |
+| Event ratio (window-scoped) | 224x | [`public_corpus_ibl_waveform_eval.json`](proofs/selected_artifacts/2026-04-24_zpe_neuro_dandi000003_breadth/public_corpus_ibl_waveform_eval.json) | artifact only — `tests/test_breadth_adjudication.py` tests logic, not this metric value |
+| RMSE | 38.16 uV | [`public_corpus_ibl_waveform_eval.json`](proofs/selected_artifacts/2026-04-24_zpe_neuro_dandi000003_breadth/public_corpus_ibl_waveform_eval.json) | artifact only — `tests/test_breadth_adjudication.py` tests logic, not this metric value |
 
 ### Gate D: Embedded Latency and Drift Resilience
 
