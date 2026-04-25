@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=68", "wheel"]
+requires = ["setuptools>=68,<82", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -52,9 +52,6 @@ proof = [
     "remfile>=0.1.13",
     "scikit-learn>=1.6",
     "spikeinterface>=0.103.2",
-]
-ops = [
-    "comet-ml>=3.49",
 ]
 dev = [
     "pytest>=8",

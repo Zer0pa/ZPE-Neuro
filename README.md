@@ -13,40 +13,23 @@
 
 ## What This Is
 
-Deterministic spike-event extraction for extracellular neuroscience pipelines. The honest wedge is reproducibility for bounded public datasets, not broad neural compression and not full-signal reconstruction.
+ZPE-Neuro is a bounded extracellular spike-event extraction surface. The live README only promotes claims that are backed by a tracked proof artifact and exercised in CI. Treat [CURRENT_AUTHORITY_PACKET.md](proofs/manifests/CURRENT_AUTHORITY_PACKET.md) as the broader March 21 routing layer; this front door stays narrower on purpose.
 
-ZPE-Neuro is aimed at neurotech research-infrastructure teams and academic neuroscience platforms that need stable spike-event encoding, replay, and audit lineage across runs. The current authority packet is real and narrow: DANDI `000034` plus a bounded IBL second-target pass. It does not close blind-clone replay, commercialization-safe closure, or broader neural scope.
+## Current Verified Surface
 
-| Field | Value |
-|-------|-------|
-| Architecture | SPIKE_STREAM |
-| Encoding | NEURO_DELTA_V1 |
+| Claim | Proof artifact | CI coverage |
+|-------|----------------|-------------|
+| DANDI `000034` bounded slice reproduces `41` events, `401.04x` event ratio, and `78.44 uV` RMSE. | [`public_corpus_eval_dandi_000034_mouse412804_ecephys.json`](proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_eval_dandi_000034_mouse412804_ecephys.json) | `tests/test_dandi_offline.py` |
+| Gate C remains `PASS` for NWB and SpikeInterface compatibility on the tracked release-alignment packet. | [`gate_c_summary.json`](proofs/selected_artifacts/2026-03-21_zpe_neuro_release_alignment/gate_c_summary.json) | `Verify Package Surface / proof-import-smoke` and `gate-slice` |
+| Gate D remains `PASS` for determinism, drift, and latency on the tracked release-alignment packet. | [`gate_d_summary.json`](proofs/selected_artifacts/2026-03-21_zpe_neuro_release_alignment/gate_d_summary.json) | `tests/test_roundtrip.py`, `tests/test_wave1_determinism.py` |
+| AJILE12 remains explicitly out of family and is excluded from counted breadth. | [`public_corpus_summary.json`](proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_summary.json) | `tests/test_breadth_adjudication.py` |
 
-## Key Metrics
+## Current Metrics
 
-| Metric | Value | Baseline |
-|--------|-------|----------|
-| DANDI_EVENT_BR | 401× | — |
-| IBL_EVENT_BR | 224× | — |
-| DANDI_RMSE | 78.44 µV | — |
-| IBL_RMSE | 38.16 µV | — |
-
-Source: [`public_corpus_eval_dandi_000034_mouse412804_ecephys.json`](proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_eval_dandi_000034_mouse412804_ecephys.json), [`public_corpus_ibl_waveform_eval.json`](proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_ibl_waveform_eval.json)
-
-## Competitive Benchmarks
-
-No promoted incumbent-comparator table is live on the current authority surface. The honest reading is narrower: this repo proves a reproducible spike-event extractor on bounded extracellular slices, not a general neural-codec displacement story.
-
-| Comparator Surface | Current Reading | Notes |
-|--------------------|-----------------|-------|
-| Public incumbent benchmark | Not promoted | The current packet is about bounded reproducibility and lineage, not market-wide comparator closure |
-
-## What We Prove
-
-- Deterministic spike-event extraction and encoding on DANDI `000034` extracellular data.
-- A bounded IBL second-target pass under the March 21 refinement packet.
-- NWB-compatible packaging and auditable lineage for the current public dataset slice.
-- Explicit family-boundary handling: AJILE12 is documented as out of family for the current lane rather than quietly dropped.
+| Metric | Value |
+|--------|-------|
+| DANDI_EVENT_BR | 401x |
+| DANDI_RMSE | 78.44 uV |
 
 ## What We Don't Claim
 
@@ -54,44 +37,14 @@ No promoted incumbent-comparator table is live on the current authority surface.
 - No claim that the window-scoped event-encoding ratios are whole-recording compression results.
 - No claim of blind-clone authority replay.
 - No claim of commercialization-safe closure or tagged public release.
-- No claim beyond the extracellular lane.
-
-## Commercial Readiness
-
-| Field | Value |
-|-------|-------|
-| Verdict | STAGED |
-| Commit SHA | 950f03706237 |
-| Confidence | 100% |
-| Source | proofs/manifests/CURRENT_AUTHORITY_PACKET.md |
-
-## Tests and Verification
-
-| Code | Check | Verdict |
-|------|-------|---------|
-| V_01 | DANDI public anchor | PASS |
-| V_02 | IBL bounded refinement | PASS |
-| V_03 | NWB-compatible package surface | PASS |
-| V_04 | Family-boundary adjudication | PASS |
-| V_05 | Blind-clone authority replay | INC |
-
-## Proof Anchors
-
-| Path | State |
-|------|-------|
-| `proofs/manifests/CURRENT_AUTHORITY_PACKET.md` | VERIFIED |
-| `proofs/selected_artifacts/2026-03-21_zpe_neuro_release_alignment/verification_summary.md` | VERIFIED |
-| `proofs/selected_artifacts/2026-03-21_zpe_neuro_release_alignment/gate_c_summary.json` | VERIFIED |
-| `proofs/selected_artifacts/2026-03-21_zpe_neuro_release_alignment/gate_d_summary.json` | VERIFIED |
-| `proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_eval_dandi_000034_mouse412804_ecephys.json` | VERIFIED |
-| `proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_ibl_waveform_eval.json` | VERIFIED |
-| `proofs/selected_artifacts/2026-03-21_zpe_neuro_ibl_refinement/public_corpus_summary.json` | VERIFIED |
+- No promoted claim of second-target breadth closure from this README surface.
+- No claim beyond the bounded extracellular lane.
 
 ## Repo Shape
 
 | Field | Value |
 |-------|-------|
-| Proof Anchors | 7 |
+| Proof Anchors | 4 |
 | Modality Lanes | 1 |
 | Authority Source | `proofs/manifests/CURRENT_AUTHORITY_PACKET.md` |
 
@@ -102,13 +55,6 @@ No promoted incumbent-comparator table is live on the current authority surface.
 - `docs/`: architecture, legal boundaries, and dataset-scope notes.
 
 ## Quick Start
-
-```bash
-# Install from PyPI
-pip install zpe-neuro
-```
-
-Or install from source for the repo-local verification path:
 
 ```bash
 git clone https://github.com/Zer0pa/ZPE-Neuro.git
