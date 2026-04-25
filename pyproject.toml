@@ -14,7 +14,6 @@ authors = [
 license = "LicenseRef-Zer0pa-SAL-7.0"
 license-files = ["LICENSE"]
 classifiers = [
-    "License :: Other/Proprietary License",
     "Intended Audience :: Science/Research",
     "Topic :: Scientific/Engineering",
     "Development Status :: 4 - Beta",
