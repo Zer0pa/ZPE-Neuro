@@ -1,5 +1,13 @@
 # ZPE-Neuro Handover - 2026-04-25 Wave 1.5b
 
+> **STATUS UPDATE — 2026-04-25 archaeology+resolve pass:**
+> PR `#36` merged at `8a7da6f` (2026-04-25T17:20:39+02:00). Blind-clone replay artifacts are now on `origin/main`
+> under `proofs/selected_artifacts/2026-04-24_zpe_neuro_blind_clone_replay/`. The constraints in §2, §7, §13, and §15
+> that say "do not claim main already reflects April 24 authority replay" are NOW OBSOLETE. They were correct at the
+> time of writing; they no longer apply. PR `#39` is also merged. The governing state is `origin/main` at
+> `0f9cf7d` or later. HF recovery routes in §10 (`Architect-Prime/zpe-neuro-artifacts`,
+> `Architect-Prime/zpe-neuro-lane-archive`) remain valid anchors.
+
 This document is the current handoff for a successor agent. It is written from branch `chore/wave-1-5b-investor-readiness-2026-04-25` at commit `c51811a50e2c603d0d203fe6b72f0511558b6408`.
 
 ## 1. Executive State

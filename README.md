@@ -13,7 +13,11 @@
 
 ## What This Is
 
-ZPE-Neuro is a bounded extracellular spike-event extraction surface. The live README only promotes claims that are backed by a tracked proof artifact and exercised in CI. Treat [CURRENT_AUTHORITY_PACKET.md](proofs/manifests/CURRENT_AUTHORITY_PACKET.md) as the April 24 routing layer; this front door stays narrower than the full proof archive on purpose.
+ZPE-Neuro is the extracellular recording lane of the [Zer0pa](https://github.com/Zer0pa) 17-lane encoding portfolio — a bounded spike-event extraction codec for electrophysiology signals. It is independent of other portfolio lanes and speaks only for its own domain.
+
+The strongest CI-anchored result to date: deterministic encode-decode round-trip on DANDI `000034` with a **401x event ratio**, **78.44 µV RMSE**, and Gate C + Gate D both `PASS` on blind-clone replay from the current `origin/main` snapshot. No comparison baseline exists for this lane; the numbers stand on their own terms.
+
+This front door promotes only claims backed by a tracked proof artifact and exercised in CI. Treat [CURRENT_AUTHORITY_PACKET.md](proofs/manifests/CURRENT_AUTHORITY_PACKET.md) as the April 24 routing layer; the full proof archive goes deeper.
 
 ## Current Verified Surface
 
