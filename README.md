@@ -27,10 +27,41 @@ ZPE-Neuro is a bounded extracellular spike-event extraction surface. The live RE
 
 ## Current Metrics
 
-| Metric | Value |
-|--------|-------|
-| DANDI_EVENT_BR | 401x |
-| DANDI_RMSE | 78.44 uV |
+### DANDI `000034` Tier-1 Authority Anchor
+
+| Metric | Value | Proof artifact | CI test |
+|--------|-------|----------------|---------|
+| Event ratio (window-scoped) | 401x | [`benchmark_summary.json`](proofs/artifacts/dandi000034_benchmark/benchmark_summary.json) | `tests/test_dandi_offline.py::test_fixture_reproduces_benchmark_metrics` |
+| RMSE | 78.44 uV | [`benchmark_summary.json`](proofs/artifacts/dandi000034_benchmark/benchmark_summary.json) | `tests/test_dandi_offline.py::test_fixture_reproduces_benchmark_metrics` |
+| Encode latency (mean / max) | 0.089 ms / 0.208 ms | [`benchmark_summary.json`](proofs/artifacts/dandi000034_benchmark/benchmark_summary.json) | `tests/test_dandi_offline.py` |
+| Decode latency (mean / max) | 0.474 ms / 0.686 ms | [`benchmark_summary.json`](proofs/artifacts/dandi000034_benchmark/benchmark_summary.json) | `tests/test_dandi_offline.py` |
+
+These are window-scoped metrics (6000-sample, 8-channel window at 30 kHz). They are not whole-recording compression results.
+
+### IBL Second-Target (Tier-2 Breadth, Counted PASS)
+
+| Metric | Value | Proof artifact | CI test |
+|--------|-------|----------------|---------|
+| Event ratio (window-scoped) | 224x | [`public_corpus_ibl_waveform_eval.json`](proofs/selected_artifacts/2026-04-24_zpe_neuro_dandi000003_breadth/public_corpus_ibl_waveform_eval.json) | `tests/test_breadth_adjudication.py` |
+| RMSE | 38.16 uV | [`public_corpus_ibl_waveform_eval.json`](proofs/selected_artifacts/2026-04-24_zpe_neuro_dandi000003_breadth/public_corpus_ibl_waveform_eval.json) | `tests/test_breadth_adjudication.py` |
+
+### Gate D: Embedded Latency and Drift Resilience
+
+| Metric | Value | Proof artifact | CI test |
+|--------|-------|----------------|---------|
+| Modeled latency (mean / p99) | 612.5 ns / 850 ns | [`neuro_embedded_latency.json`](proofs/selected_artifacts/2026-04-24_zpe_neuro_blind_clone_replay/neuro_embedded_latency.json) | CI `gate-slice` |
+| Latency threshold | < 900 ns | [`neuro_embedded_latency.json`](proofs/selected_artifacts/2026-04-24_zpe_neuro_blind_clone_replay/neuro_embedded_latency.json) | CI `gate-slice` |
+| Drift accuracy at 0–15 µm | 100% | [`neuro_drift_resilience.json`](proofs/selected_artifacts/2026-04-24_zpe_neuro_blind_clone_replay/neuro_drift_resilience.json) | CI `gate-slice` |
+| Drift cliff | at 20 µm | [`neuro_drift_resilience.json`](proofs/selected_artifacts/2026-04-24_zpe_neuro_blind_clone_replay/neuro_drift_resilience.json) | CI `gate-slice` |
+
+Embedded latency uses a hardware-proxy cycle model at 80 MHz ARM-class clock plus Python reference timing. It is not a measured on-silicon result.
+
+### Determinism
+
+| Metric | Value | Proof artifact | CI test |
+|--------|-------|----------------|---------|
+| Identical-hash runs | 5 / 5 seeds | [`determinism_replay_results.json`](proofs/selected_artifacts/2026-04-24_zpe_neuro_blind_clone_replay/determinism_replay_results.json) | `tests/test_wave1_determinism.py`, `tests/test_roundtrip.py` |
+| NWB roundtrip SHA256 | bit-consistent | [`neuro_nwb_roundtrip.json`](proofs/selected_artifacts/2026-04-24_zpe_neuro_blind_clone_replay/neuro_nwb_roundtrip.json) | `tests/test_roundtrip.py` |
 
 ## What We Don't Claim
 
