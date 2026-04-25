@@ -5,22 +5,53 @@ on:
     tags: ["v*"]
 
 permissions:
-  id-token: write
   contents: read
 
 jobs:
-  publish:
-    runs-on: ubuntu-latest
-    environment:
-      name: pypi
-      url: https://pypi.org/p/zpe-neuro
+  build-distributions:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Check out repository
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version: "3.11"
-      - run: pip install build
-      - run: python -m build
-      - uses: pypa/gh-action-pypi-publish@release/v1
+      - name: Build distributions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip build
+          python -m build
+      - name: Upload distributions
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
-          password: ${{ secrets.PYPI_API_TOKEN }}
+          name: wheels
+          path: dist/
+          if-no-files-found: error
+
+  validate-zenodo:
+    permissions:
+      contents: read
+    uses: Zer0pa/workflows/.github/workflows/release-zenodo-validate.yml@d0188f05e8ff011723c7d5d8c3a766647aed762e
+
+  sbom:
+    permissions:
+      contents: read
+    uses: Zer0pa/workflows/.github/workflows/security-sbom.yml@d0188f05e8ff011723c7d5d8c3a766647aed762e
+    with:
+      upload-to-release: false
+
+  publish:
+    needs:
+      - build-distributions
+      - validate-zenodo
+    permissions:
+      contents: read
+      id-token: write
+    uses: Zer0pa/workflows/.github/workflows/release-pypi.yml@d0188f05e8ff011723c7d5d8c3a766647aed762e
+    with:
+      wheel-artifact-name: wheels
+      environment: pypi

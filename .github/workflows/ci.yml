@@ -8,17 +8,17 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   offline-verify:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-      - name: Install offline verify stack
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install -e '.[dev,public,proof]'
-      - name: Run offline verify
-        run: make offline-verify
+    permissions:
+      contents: read
+    uses: Zer0pa/workflows/.github/workflows/ci-python-pure.yml@d0188f05e8ff011723c7d5d8c3a766647aed762e
+    with:
+      python-versions: '["3.11"]'
+      runs-on: ubuntu-24.04
+      test-command: make offline-verify
+      lint: false
+      type-check: false
