@@ -1,0 +1,27 @@
+{
+  "title": "ZPE-Neuro: Deterministic Spike-Event Extraction for Extracellular Neuroscience Pipelines",
+  "description": "ZPE-Neuro provides deterministic spike-event extraction for extracellular neuroscience pipelines. It is scoped to bounded public-dataset reproducibility, replay, and audit lineage for the current DANDI and IBL proof surface.",
+  "creators": [
+    {
+      "name": "Zer0pa (Pty) Ltd"
+    }
+  ],
+  "keywords": [
+    "neuroscience",
+    "extracellular recording",
+    "spike-event encoding",
+    "nwb",
+    "dandi",
+    "ibl"
+  ],
+  "license": "LicenseRef-Zer0pa-SAL-7.0",
+  "upload_type": "software",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/Zer0pa/ZPE-Neuro",
+      "relation": "isSupplementTo",
+      "resource_type": "software",
+      "scheme": "url"
+    }
+  ]
+}
