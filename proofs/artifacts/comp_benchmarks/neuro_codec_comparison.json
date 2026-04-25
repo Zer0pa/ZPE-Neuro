@@ -1,0 +1,32 @@
+{
+  "wave": "Wave-CB",
+  "date": "2026-04-25",
+  "lane": "ZPE-Neuro",
+  "data_source": "tests/fixtures/dandi_000034_mouse412804_ecephys_scan_6000x8.npz",
+  "framing_note": "ZPE-Neuro's 401x event-extraction ratio is LOSSY (drops non-event samples). The lossless gzip/lz4/zstd CRs are 1.5-5x on raw int16. These are non-commensurable operations and must not be compared directly.",
+  "lossless_raw_int16": {
+    "raw_bytes": 96000,
+    "gzip": {
+      "compressed_bytes": 43565,
+      "cr": 2.2036
+    },
+    "lz4": {
+      "compressed_bytes": 67436,
+      "cr": 1.4236
+    },
+    "zstd": {
+      "compressed_bytes": 44184,
+      "cr": 2.1727
+    }
+  },
+  "zpe_event_extraction": {
+    "input_samples": 48000,
+    "events_kept": 41,
+    "raw_bits": 768000,
+    "encoded_bits": 1915,
+    "event_extraction_ratio": 401.0444,
+    "operation_type": "lossy event extraction (drops non-event samples)",
+    "fidelity_contract": "window-scoped on 8x6000 int16 @ 30 kHz; RMSE 78.44 uV; roundtrip_fidelity 0.0792; roundtrip_exact=False; snr_db 0.2076; reference: proofs/artifacts/dandi000034_benchmark/benchmark_summary.json"
+  },
+  "honest_verdict": "ZPE-Neuro is not a lossless general-purpose compressor and should not be compared to gzip/lz4/zstd as if it were. The 401x number is the event-extraction ratio - a different operation. For lossless raw-channel storage, gzip/lz4/zstd remain the appropriate baselines."
+}

@@ -110,3 +110,23 @@ python tools/run_gate_d.py --artifact-root artifacts/manual_gate_d --replay-seed
 ```
 
 Read [docs/LEGAL_BOUNDARIES.md](docs/LEGAL_BOUNDARIES.md) before widening any claim from this repo state.
+
+## Comp Benchmarks
+
+Two non-commensurable metrics, reported in two separate sections so they cannot be conflated. Reproduce with `python scripts/comp_benchmark/run_neuro_comparison.py`. Full numbers in [`proofs/artifacts/comp_benchmarks/neuro_codec_comparison.json`](proofs/artifacts/comp_benchmarks/neuro_codec_comparison.json).
+
+### Lossless raw-channel comparison
+
+Operating on the raw int16 samples in `tests/fixtures/dandi_000034_mouse412804_ecephys_scan_6000x8.npz` (8 channels x 6000 samples = 96000 bytes), with no information loss.
+
+| Codec | CR on int16 fixture | Notes |
+|-------|---------------------|-------|
+| gzip (level 6) | 2.20x | stdlib `gzip.compress` |
+| lz4 (frame, default) | 1.42x | `lz4.frame.compress` |
+| zstd (level 3) | 2.17x | `zstandard.ZstdCompressor(level=3)` |
+
+ZPE-Neuro is not in this table. It is not a lossless general-purpose compressor and is not commensurable with these baselines.
+
+### ZPE event-extraction ratio (lossy by design)
+
+ZPE-Neuro's 401x ratio is a LOSSY event-extraction operation: it drops non-event samples and retains spike events (41 events kept from 48000 input samples; 768000 raw bits -> 1915 encoded bits on the same window). Window-scoped fidelity at this operating point is RMSE 78.44 uV with `roundtrip_exact=False` and `roundtrip_fidelity=0.0792` per [`benchmark_summary.json`](proofs/artifacts/dandi000034_benchmark/benchmark_summary.json). This is not comparable to the lossless CRs above; reading "401x vs gzip 2.2x" as "ZPE is ~180x better than gzip" is a category error - they are different operations on different outputs. For lossless raw-channel storage, gzip/lz4/zstd remain the appropriate baselines.
