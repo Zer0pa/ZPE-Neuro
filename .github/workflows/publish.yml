@@ -6,6 +6,7 @@ on:
 
 permissions:
   contents: read
+  id-token: write
 
 jobs:
   build-distributions:
@@ -33,25 +34,60 @@ jobs:
           if-no-files-found: error
 
   validate-zenodo:
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
-    uses: Zer0pa/workflows/.github/workflows/release-zenodo-validate.yml@d0188f05e8ff011723c7d5d8c3a766647aed762e
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
+      - name: Validate Zenodo metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          import pathlib
+          import re
 
-  sbom:
-    permissions:
-      contents: read
-    uses: Zer0pa/workflows/.github/workflows/security-sbom.yml@d0188f05e8ff011723c7d5d8c3a766647aed762e
-    with:
-      upload-to-release: false
+          target = pathlib.Path(".zenodo.json")
+          if not target.exists():
+              raise SystemExit("Missing .zenodo.json")
+          payload = json.loads(target.read_text(encoding="utf-8"))
+          required = ["title","creators","upload_type","description","keywords","license","related_identifiers"]
+          missing = [f for f in required if not payload.get(f)]
+          if missing:
+              raise SystemExit("Missing required Zenodo fields: " + ", ".join(missing))
+
+          license_text = pathlib.Path("LICENSE").read_text(encoding="utf-8")
+          match = re.search(r"\*\*SPDX Identifier:\*\*\s+(.+)", license_text)
+          if not match:
+              raise SystemExit("Unable to read SPDX identifier from LICENSE")
+          if payload["license"] != match.group(1):
+              raise SystemExit(
+                  f"Zenodo license {payload['license']} does not match LICENSE SPDX {match.group(1)}"
+              )
+          print(f"Validated {target}")
+          PY
 
   publish:
     needs:
       - build-distributions
       - validate-zenodo
+    runs-on: ubuntu-24.04
+    environment:
+      name: pypi
+      url: https://pypi.org/p/zpe-neuro
     permissions:
       contents: read
       id-token: write
-    uses: Zer0pa/workflows/.github/workflows/release-pypi.yml@d0188f05e8ff011723c7d5d8c3a766647aed762e
-    with:
-      wheel-artifact-name: wheels
-      environment: pypi
+    steps:
+      - name: Download distribution artifacts
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: wheels
+          path: dist
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@cef221092ed1bacb1cc03d23a2d87d1d172e277b # release/v1
+        with:
+          attestations: true
+          packages-dir: dist
