@@ -78,6 +78,7 @@ jobs:
       url: https://pypi.org/p/zpe-neuro
     permissions:
       contents: read
+      id-token: write
     steps:
       - name: Download distribution artifacts
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
@@ -87,5 +88,5 @@ jobs:
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@cef221092ed1bacb1cc03d23a2d87d1d172e277b # release/v1
         with:
-          password: ${{ secrets.PYPI_API_TOKEN }}
+          attestations: true
           packages-dir: dist
