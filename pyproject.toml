@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "zpe-neuro"
-version = "0.1.0"
-description = "Private staged repo for the ZPE Neuro Wave-1 package and curated proof surface."
+version = "0.1.1"
+description = "Deterministic spike-event extraction codec for electrophysiology signals; Python; Gate C/D PASS on bounded DANDI 000034"
 requires-python = ">=3.11"
 readme = "README.md"
 authors = [
