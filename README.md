@@ -130,3 +130,10 @@ ZPE-Neuro is not in this table. It is not a lossless general-purpose compressor 
 ### ZPE event-extraction ratio (lossy by design)
 
 ZPE-Neuro's 401x ratio is a LOSSY event-extraction operation: it drops non-event samples and retains spike events (41 events kept from 48000 input samples; 768000 raw bits -> 1915 encoded bits on the same window). Window-scoped fidelity at this operating point is RMSE 78.44 uV with `roundtrip_exact=False` and `roundtrip_fidelity=0.0792` per [`benchmark_summary.json`](proofs/artifacts/dandi000034_benchmark/benchmark_summary.json). This is not comparable to the lossless CRs above; reading "401x vs gzip 2.2x" as "ZPE is ~180x better than gzip" is a category error - they are different operations on different outputs. For lossless raw-channel storage, gzip/lz4/zstd remain the appropriate baselines.
+
+## Upcoming Workstreams
+
+This section captures the active lane priorities — what the next agent or contributor picks up, and what investors should expect. Cadence is continuous, not milestoned.
+
+- **Second passing DANDI corpus** — Active Engineering. Pure data-ingestion work; closes the breadth gap (currently 1 passing corpus) and unlocks the commercialization-safe release gate.
+- **DANDI 000003 FAIL diagnosis** — Research-Deferred — Investigation Underway. Determine whether the failure is a corpus property (announce out-of-scope) or a primitive gap (close it).
