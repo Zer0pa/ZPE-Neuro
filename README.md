@@ -19,24 +19,23 @@ The strongest CI-anchored result to date: deterministic encode-decode round-trip
 
 This front door promotes only claims backed by a tracked proof artifact and exercised in CI. Treat [CURRENT_AUTHORITY_PACKET.md](proofs/manifests/CURRENT_AUTHORITY_PACKET.md) as the April 24 routing layer; the full proof archive goes deeper.
 
-## Current Verified Surface
+## Key Metrics
 
-| Claim | Proof artifact | CI coverage |
-|-------|----------------|-------------|
-| DANDI `000034` remains the positive public anchor with `41` events, `401.04x` event ratio, and `78.44 uV` RMSE. | [`public_corpus_eval_dandi_000034_mouse412804_ecephys.json`](proofs/selected_artifacts/2026-04-24_zpe_neuro_dandi000003_breadth/public_corpus_eval_dandi_000034_mouse412804_ecephys.json) | `tests/test_dandi_offline.py` |
-| Blind-clone replay from current repo truth closed with Gate C and Gate D both `PASS`. | [`verification_summary.md`](proofs/selected_artifacts/2026-04-24_zpe_neuro_blind_clone_replay/verification_summary.md), [`gate_c_summary.json`](proofs/selected_artifacts/2026-04-24_zpe_neuro_blind_clone_replay/gate_c_summary.json), [`gate_d_summary.json`](proofs/selected_artifacts/2026-04-24_zpe_neuro_blind_clone_replay/gate_d_summary.json) | `Verify Package Surface / proof-import-smoke`, `gate-slice`, `tests/test_roundtrip.py`, `tests/test_wave1_determinism.py` |
-| Breadth adjudication records IBL as the counted second extracellular target and does not count the Tier 1 DANDI anchor as breadth closure. | [`public_corpus_summary.json`](proofs/selected_artifacts/2026-04-24_zpe_neuro_dandi000003_breadth/public_corpus_summary.json), [`public_corpus_ibl_waveform_eval.json`](proofs/selected_artifacts/2026-04-24_zpe_neuro_dandi000003_breadth/public_corpus_ibl_waveform_eval.json) | `tests/test_breadth_adjudication.py` |
-| DANDI `000003` was executed as the first next-family DANDI breadth probe and recorded `FAIL`. | [`public_corpus_eval_dandi_000003_yutamouse20_ecephys.json`](proofs/selected_artifacts/2026-04-24_zpe_neuro_dandi000003_breadth/public_corpus_eval_dandi_000003_yutamouse20_ecephys.json), [`dandi000003_decision.md`](proofs/selected_artifacts/2026-04-24_zpe_neuro_dandi000003_breadth/dandi000003_decision.md) | `tests/test_breadth_adjudication.py` |
-| AJILE12 remains explicitly out of family and is excluded from counted breadth. | [`ajile12_family_boundary_decision.md`](proofs/selected_artifacts/2026-04-24_zpe_neuro_dandi000003_breadth/ajile12_family_boundary_decision.md), [`public_corpus_summary.json`](proofs/selected_artifacts/2026-04-24_zpe_neuro_dandi000003_breadth/public_corpus_summary.json) | `tests/test_breadth_adjudication.py` |
+| Metric | Value | Source |
+|--------|-------|--------|
+| DANDI `000034` event ratio (window-scoped) | 401x | [`benchmark_summary.json`](proofs/artifacts/dandi000034_benchmark/benchmark_summary.json) |
+| DANDI `000034` RMSE | 78.44 µV | [`benchmark_summary.json`](proofs/artifacts/dandi000034_benchmark/benchmark_summary.json) |
+| Gate D embedded latency (p99) | 850 ns | [`neuro_embedded_latency.json`](proofs/selected_artifacts/2026-04-24_zpe_neuro_blind_clone_replay/neuro_embedded_latency.json) |
+| Determinism (identical-hash runs) | 5 / 5 seeds | [`determinism_replay_results.json`](proofs/selected_artifacts/2026-04-24_zpe_neuro_blind_clone_replay/determinism_replay_results.json) |
 
-## Current Metrics
+> Source: April 24 blind-clone replay from `origin/main`. All four rows are CI-anchored or artifact-anchored per the proof packets in `proofs/selected_artifacts/2026-04-24_zpe_neuro_blind_clone_replay/`. Window-scoped metrics (6000-sample, 8-channel window at 30 kHz). Embedded latency uses a hardware-proxy cycle model at 80 MHz ARM-class clock; not a measured on-silicon result.
 
 ### DANDI `000034` Tier-1 Authority Anchor
 
 | Metric | Value | Proof artifact | CI test |
 |--------|-------|----------------|---------|
 | Event ratio (window-scoped) | 401x | [`benchmark_summary.json`](proofs/artifacts/dandi000034_benchmark/benchmark_summary.json) | `tests/test_dandi_offline.py::test_fixture_reproduces_benchmark_metrics` |
-| RMSE | 78.44 uV | [`benchmark_summary.json`](proofs/artifacts/dandi000034_benchmark/benchmark_summary.json) | `tests/test_dandi_offline.py::test_fixture_reproduces_benchmark_metrics` |
+| RMSE | 78.44 µV | [`benchmark_summary.json`](proofs/artifacts/dandi000034_benchmark/benchmark_summary.json) | `tests/test_dandi_offline.py::test_fixture_reproduces_benchmark_metrics` |
 | Encode latency (mean / max) | 0.089 ms / 0.208 ms | [`benchmark_summary.json`](proofs/artifacts/dandi000034_benchmark/benchmark_summary.json) | artifact only — no pytest bound asserted |
 | Decode latency (mean / max) | 0.474 ms / 0.686 ms | [`benchmark_summary.json`](proofs/artifacts/dandi000034_benchmark/benchmark_summary.json) | artifact only — no pytest bound asserted |
 
@@ -47,7 +46,7 @@ These are window-scoped metrics (6000-sample, 8-channel window at 30 kHz). They 
 | Metric | Value | Proof artifact | CI test |
 |--------|-------|----------------|---------|
 | Event ratio (window-scoped) | 224x | [`public_corpus_ibl_waveform_eval.json`](proofs/selected_artifacts/2026-04-24_zpe_neuro_dandi000003_breadth/public_corpus_ibl_waveform_eval.json) | artifact only — `tests/test_breadth_adjudication.py` tests logic, not this metric value |
-| RMSE | 38.16 uV | [`public_corpus_ibl_waveform_eval.json`](proofs/selected_artifacts/2026-04-24_zpe_neuro_dandi000003_breadth/public_corpus_ibl_waveform_eval.json) | artifact only — `tests/test_breadth_adjudication.py` tests logic, not this metric value |
+| RMSE | 38.16 µV | [`public_corpus_ibl_waveform_eval.json`](proofs/selected_artifacts/2026-04-24_zpe_neuro_dandi000003_breadth/public_corpus_ibl_waveform_eval.json) | artifact only — `tests/test_breadth_adjudication.py` tests logic, not this metric value |
 
 ### Gate D: Embedded Latency and Drift Resilience
 
@@ -75,6 +74,14 @@ Embedded latency uses a hardware-proxy cycle model at 80 MHz ARM-class clock plu
 - No claim of commercialization-safe closure or tagged public release.
 - No claim beyond the bounded extracellular lane.
 
+## What We Prove
+
+- DANDI `000034` remains the positive public anchor with `41` events, `401.04x` event ratio, and `78.44 µV` RMSE. Artifact: [`public_corpus_eval_dandi_000034_mouse412804_ecephys.json`](proofs/selected_artifacts/2026-04-24_zpe_neuro_dandi000003_breadth/public_corpus_eval_dandi_000034_mouse412804_ecephys.json). CI: `tests/test_dandi_offline.py`.
+- Blind-clone replay from current repo truth closed with Gate C and Gate D both `PASS`. Artifacts: [`verification_summary.md`](proofs/selected_artifacts/2026-04-24_zpe_neuro_blind_clone_replay/verification_summary.md), [`gate_c_summary.json`](proofs/selected_artifacts/2026-04-24_zpe_neuro_blind_clone_replay/gate_c_summary.json), [`gate_d_summary.json`](proofs/selected_artifacts/2026-04-24_zpe_neuro_blind_clone_replay/gate_d_summary.json). CI: `Verify Package Surface / proof-import-smoke`, `gate-slice`, `tests/test_roundtrip.py`, `tests/test_wave1_determinism.py`.
+- Breadth adjudication records IBL as the counted second extracellular target and does not count the Tier 1 DANDI anchor as breadth closure. Artifacts: [`public_corpus_summary.json`](proofs/selected_artifacts/2026-04-24_zpe_neuro_dandi000003_breadth/public_corpus_summary.json), [`public_corpus_ibl_waveform_eval.json`](proofs/selected_artifacts/2026-04-24_zpe_neuro_dandi000003_breadth/public_corpus_ibl_waveform_eval.json). CI: `tests/test_breadth_adjudication.py`.
+- DANDI `000003` was executed as the first next-family DANDI breadth probe and recorded `FAIL`. Artifacts: [`public_corpus_eval_dandi_000003_yutamouse20_ecephys.json`](proofs/selected_artifacts/2026-04-24_zpe_neuro_dandi000003_breadth/public_corpus_eval_dandi_000003_yutamouse20_ecephys.json), [`dandi000003_decision.md`](proofs/selected_artifacts/2026-04-24_zpe_neuro_dandi000003_breadth/dandi000003_decision.md). CI: `tests/test_breadth_adjudication.py`.
+- AJILE12 remains explicitly out of family and is excluded from counted breadth. Artifacts: [`ajile12_family_boundary_decision.md`](proofs/selected_artifacts/2026-04-24_zpe_neuro_dandi000003_breadth/ajile12_family_boundary_decision.md), [`public_corpus_summary.json`](proofs/selected_artifacts/2026-04-24_zpe_neuro_dandi000003_breadth/public_corpus_summary.json). CI: `tests/test_breadth_adjudication.py`.
+
 ## Repo Shape
 
 | Field | Value |
@@ -88,6 +95,17 @@ Embedded latency uses a hardware-proxy cycle model at 80 MHz ARM-class clock plu
 - `tools/`: gate runners and operator scripts.
 - `proofs/`: current authority packet plus April 24 replay and breadth packets.
 - `docs/`: architecture, legal boundaries, release status, and dataset-scope notes.
+
+## Commercial Readiness
+
+| Field | Value |
+|-------|-------|
+| Verdict | PARTIAL |
+| Scope | Extracellular recording lane only; single positive corpus (DANDI `000034`); DANDI `000003` recorded FAIL |
+| Gate status | Gate C PASS, Gate D PASS; breadth gate not closed (1 of required 2 passing corpora) |
+| Blocker | Second passing DANDI corpus required before commercialization-safe release gate opens |
+
+Read [docs/LEGAL_BOUNDARIES.md](docs/LEGAL_BOUNDARIES.md) before widening any claim from this repo state.
 
 ## Quick Start
 
@@ -109,9 +127,34 @@ python tools/run_gate_c.py --artifact-root artifacts/manual_gate_c --seed 202602
 python tools/run_gate_d.py --artifact-root artifacts/manual_gate_d --replay-seeds 20260220,20260221,20260222,20260223,20260224
 ```
 
-Read [docs/LEGAL_BOUNDARIES.md](docs/LEGAL_BOUNDARIES.md) before widening any claim from this repo state.
+## Tests and Verification
 
-## Comp Benchmarks
+| Code | Check | Verdict |
+|------|-------|---------|
+| `tests/test_dandi_offline.py::test_fixture_reproduces_benchmark_metrics` | DANDI `000034` event ratio and RMSE match proof artifact | PASS |
+| `tests/test_roundtrip.py` | Encode-decode NWB roundtrip SHA256 bit-consistency | PASS |
+| `tests/test_wave1_determinism.py` | 5/5 seed determinism across blind-clone replay | PASS |
+| `tests/test_breadth_adjudication.py` | IBL counted breadth logic; DANDI `000003` FAIL recorded | PASS |
+| CI `gate-slice` | Gate D embedded latency p99 < 900 ns; drift cliff at 20 µm | PASS |
+| CI `Verify Package Surface / proof-import-smoke` | Package importable; proof artifacts present | PASS |
+
+## Proof Anchors
+
+| Path | State |
+|------|-------|
+| `proofs/manifests/CURRENT_AUTHORITY_PACKET.md` | present |
+| `proofs/artifacts/dandi000034_benchmark/benchmark_summary.json` | present |
+| `proofs/selected_artifacts/2026-04-24_zpe_neuro_blind_clone_replay/verification_summary.md` | present |
+| `proofs/selected_artifacts/2026-04-24_zpe_neuro_blind_clone_replay/gate_c_summary.json` | present |
+| `proofs/selected_artifacts/2026-04-24_zpe_neuro_blind_clone_replay/gate_d_summary.json` | present |
+| `proofs/selected_artifacts/2026-04-24_zpe_neuro_blind_clone_replay/determinism_replay_results.json` | present |
+| `proofs/selected_artifacts/2026-04-24_zpe_neuro_blind_clone_replay/neuro_embedded_latency.json` | present |
+| `proofs/selected_artifacts/2026-04-24_zpe_neuro_dandi000003_breadth/public_corpus_summary.json` | present |
+| `proofs/selected_artifacts/2026-04-24_zpe_neuro_dandi000003_breadth/dandi000003_decision.md` | present |
+| `proofs/selected_artifacts/2026-04-24_zpe_neuro_dandi000003_breadth/ajile12_family_boundary_decision.md` | present |
+| `proofs/artifacts/comp_benchmarks/neuro_codec_comparison.json` | present |
+
+## Competitive Benchmarks
 
 Two non-commensurable metrics, reported in two separate sections so they cannot be conflated. Reproduce with `python scripts/comp_benchmark/run_neuro_comparison.py`. Full numbers in [`proofs/artifacts/comp_benchmarks/neuro_codec_comparison.json`](proofs/artifacts/comp_benchmarks/neuro_codec_comparison.json).
 
@@ -129,7 +172,7 @@ ZPE-Neuro is not in this table. It is not a lossless general-purpose compressor 
 
 ### ZPE event-extraction ratio (lossy by design)
 
-ZPE-Neuro's 401x ratio is a LOSSY event-extraction operation: it drops non-event samples and retains spike events (41 events kept from 48000 input samples; 768000 raw bits -> 1915 encoded bits on the same window). Window-scoped fidelity at this operating point is RMSE 78.44 uV with `roundtrip_exact=False` and `roundtrip_fidelity=0.0792` per [`benchmark_summary.json`](proofs/artifacts/dandi000034_benchmark/benchmark_summary.json). This is not comparable to the lossless CRs above; reading "401x vs gzip 2.2x" as "ZPE is ~180x better than gzip" is a category error - they are different operations on different outputs. For lossless raw-channel storage, gzip/lz4/zstd remain the appropriate baselines.
+ZPE-Neuro's 401x ratio is a LOSSY event-extraction operation: it drops non-event samples and retains spike events (41 events kept from 48000 input samples; 768000 raw bits -> 1915 encoded bits on the same window). Window-scoped fidelity at this operating point is RMSE 78.44 µV with `roundtrip_exact=False` and `roundtrip_fidelity=0.0792` per [`benchmark_summary.json`](proofs/artifacts/dandi000034_benchmark/benchmark_summary.json). This is not comparable to the lossless CRs above; reading "401x vs gzip 2.2x" as "ZPE is ~180x better than gzip" is a category error - they are different operations on different outputs. For lossless raw-channel storage, gzip/lz4/zstd remain the appropriate baselines.
 
 ## Upcoming Workstreams
 
