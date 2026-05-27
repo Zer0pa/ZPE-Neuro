@@ -74,7 +74,7 @@ python tools/run_gate_d.py --artifact-root artifacts/manual_gate_d --replay-seed
 <table width="100%">
 <tr>
 <td width="100%" valign="top">
-<div><b>03 · VALUE</b></div>
+<div><b>03 · VALUE OF MARKET</b></div>
       <div>$33.6<span>B</span></div>
       <div>The 2031 electrophysiology market; <b>a spike-event codec is the unpriced layer beneath it.</b></div>
 </td>
