@@ -2,6 +2,32 @@
 
 ## Install / Developer Commands
 
+<!-- INSTALL-DX:START -->
+#### Package Install
+
+Installable package: `python3.11 -m pip install zpe-neuro`.
+Current release: `0.1.1` on [PyPI](https://pypi.org/project/zpe-neuro/).
+Source: [Zer0pa/ZPE-Neuro](https://github.com/Zer0pa/ZPE-Neuro/).
+
+```bash
+python3.11 -m pip install zpe-neuro
+```
+
+Import smoke:
+
+```bash
+python3.11 - <<'PY'
+import importlib.metadata as md
+import zpe_neuro
+
+print("zpe-neuro", md.version("zpe-neuro"))
+PY
+```
+
+Install success only proves package acquisition/import. Product scope, stale PyPI state, platform limits, and blockers remain in the front-door sections below.
+- PyPI copy is stale and PR-status/blocker language below remains authoritative.
+<!-- INSTALL-DX:END -->
+
 #### Quick Start
 
 ```bash
