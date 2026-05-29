@@ -1,9 +1,6 @@
 # ZPE-Neuro
 
-## Install / Developer Commands
-
-<!-- INSTALL-DX:START -->
-#### Package Install
+## Package Install
 
 Installable package: `python3.11 -m pip install zpe-neuro`.
 Current release: `0.1.1` on [PyPI](https://pypi.org/project/zpe-neuro/).
@@ -13,40 +10,9 @@ Source: [Zer0pa/ZPE-Neuro](https://github.com/Zer0pa/ZPE-Neuro/).
 python3.11 -m pip install zpe-neuro
 ```
 
-Import smoke:
+For full install, smoke, source, and developer commands, [click here](#install-developer-commands-detailed).
 
-```bash
-python3.11 - <<'PY'
-import importlib.metadata as md
-import zpe_neuro
-
-print("zpe-neuro", md.version("zpe-neuro"))
-PY
-```
-
-Install success only proves package acquisition/import. Product scope, stale PyPI state, platform limits, and blockers remain in the front-door sections below.
-- PyPI copy is stale and PR-status/blocker language below remains authoritative.
-<!-- INSTALL-DX:END -->
-
-#### Quick Start
-
-```bash
-git clone https://github.com/Zer0pa/ZPE-Neuro.git
-cd ZPE-Neuro
-python3.11 -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
-python -m pip install -e '.[dev]'
-python -m pytest tests
-```
-
-For the bounded gate slice:
-
-```bash
-python -m pip install -e '.[gate,proof]'
-python tools/run_gate_c.py --artifact-root artifacts/manual_gate_c --seed 20260220
-python tools/run_gate_d.py --artifact-root artifacts/manual_gate_d --replay-seeds 20260220,20260221,20260222,20260223,20260224
-```
+---
 
 <table width="100%">
 <tr>
@@ -258,3 +224,55 @@ python tools/run_gate_d.py --artifact-root artifacts/manual_gate_d --replay-seed
 </td>
 </tr>
 </table>
+
+---
+
+<a id="install-developer-commands-detailed"></a>
+
+## Install / Developer Commands Detailed
+
+<!-- INSTALL-DX:START -->
+#### Package Install
+
+Installable package: `python3.11 -m pip install zpe-neuro`.
+Current release: `0.1.1` on [PyPI](https://pypi.org/project/zpe-neuro/).
+Source: [Zer0pa/ZPE-Neuro](https://github.com/Zer0pa/ZPE-Neuro/).
+
+```bash
+python3.11 -m pip install zpe-neuro
+```
+
+Import smoke:
+
+```bash
+python3.11 - <<'PY'
+import importlib.metadata as md
+import zpe_neuro
+
+print("zpe-neuro", md.version("zpe-neuro"))
+PY
+```
+
+Install success only proves package acquisition/import. Product scope, stale PyPI state, platform limits, and blockers remain in the front-door sections below.
+- PyPI copy is stale and PR-status/blocker language below remains authoritative.
+<!-- INSTALL-DX:END -->
+
+#### Quick Start
+
+```bash
+git clone https://github.com/Zer0pa/ZPE-Neuro.git
+cd ZPE-Neuro
+python3.11 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -e '.[dev]'
+python -m pytest tests
+```
+
+For the bounded gate slice:
+
+```bash
+python -m pip install -e '.[gate,proof]'
+python tools/run_gate_c.py --artifact-root artifacts/manual_gate_c --seed 20260220
+python tools/run_gate_d.py --artifact-root artifacts/manual_gate_d --replay-seeds 20260220,20260221,20260222,20260223,20260224
+```
