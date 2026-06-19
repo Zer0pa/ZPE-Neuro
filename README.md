@@ -19,6 +19,7 @@ For full install, smoke, source, and developer commands, [click here](#install-d
 <td width="100%" valign="top">
 <div><span><b>00 · ZPE-Neuro</b> · SPIKE-EVENT EXTRACTOR</span> <span>RESEARCH-READY · BREADTH OPEN</span></div>
       <h1>Event Horizons <span>of Neural Spikes</span></h1>
+      <p><strong>Live experiment. Not a release. Ambition headlined. Claims bounded.</strong></p>
       <p>Extracellular spike-event codec · ZPE-Neuro · PyPI <em>zpe-neuro</em> v0.1.1 · github.com/Zer0pa/ZPE-Neuro</p>
       <p>A neuron fires when the voltage crosses a threshold &mdash; not before, not after. At that exact moment, a spike exists. Extracellular recordings catch millions of those crossings and return them as gigabytes of raw voltage. ZPE-Neuro works at the threshold: it extracts spike events on DANDI 000034 at <strong>481&times;</strong> event-ratio compression and <strong>74.44 &micro;V</strong> residual, then replays them bit-identical across five seeds. The window is bounded. The crossing is precise. Latency is a modeled cycle figure, not measured on silicon. Breadth beyond 000034 stays open.</p>
 </td>
